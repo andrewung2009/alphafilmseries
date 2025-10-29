@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Course Resources - Training, Talks & Guides</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #ecf0f1;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #f8f9fa;
+        }
+
+        /* Header Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+            padding: 0.5rem 1rem !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,133.3C960,128,1056,96,1152,90.7C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+
+        /* Card Styles */
+        .resource-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            height: 100%;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary-color), #5dade2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .resource-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .resource-link:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        /* Video Card Styles */
+        .video-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .video-card:hover .video-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .video-card:hover .play-button {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Training Video Card Styles */
+        .training-video-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+        }
+
+        .training-video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .training-video-thumbnail {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .training-video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .training-video-card:hover .training-video-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .training-video-info {
+            padding: 1.5rem;
+        }
+
+        .training-video-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .training-video-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Guest Guide Card Styles */
+        .guide-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .guide-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .guide-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+            font-size: 1.3rem;
+        }
+
+        .guide-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            line-height: 1.3;
+        }
+
+        .guide-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .guide-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .guide-link:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 3rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 80px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .video-thumbnail {
+                height: 150px;
+            }
+            
+            .training-video-thumbnail {
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="bi bi-book-half me-2"></i>Alpha Resources
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#training">Team Training</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#talks">Talks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#briefings">Weekly Briefings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#guides">Guest Guides</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Alpha Course Resources</h1>
+                <p class="hero-subtitle">Complete training materials, talks, and guides for your Alpha journey</p>
+                <div class="hero-buttons">
+                    <a href="#training" class="btn btn-light btn-lg me-3 px-4">
+                        <i class="bi bi-play-circle me-2"></i>Get Started
+                    </a>
+                    <a href="#talks" class="btn btn-outline-light btn-lg px-4">
+                        <i class="bi bi-collection-play me-2"></i>Watch Talks
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Training Section -->
+    <section id="training" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Team Training</h2>
+                <p class="section-subtitle">Essential training resources for your Alpha team</p>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" id="trainingSearch" placeholder="Search training resources...">
+            </div>
+
+            <div class="row" id="trainingGrid">
+                <div class="col-lg-4 col-md-6 mb-4 training-item">
+                    <div class="training-video-card" onclick="openVideoModal('https://player.vimeo.com/video/273602720', 'Essentials Training')">
+                        <div class="training-video-thumbnail">
+                            <img src="https://vumbnail.com/273602720.jpg" alt="Essentials Training" onerror="this.src='https://picsum.photos/seed/alpha1/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="training-video-info">
+                            <h3 class="training-video-title">Essentials Training</h3>
+                            <p class="training-video-description">Core training for all Alpha team members</p>
+                            <a href="https://player.vimeo.com/video/273602720" class="resource-link" onclick="event.stopPropagation()" target="_blank">
+                                Watch Video <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 training-item">
+                    <div class="training-video-card" onclick="openVideoModal('https://player.vimeo.com/video/490924040', 'Online: Introduction')">
+                        <div class="training-video-thumbnail">
+                            <img src="https://vumbnail.com/490924040.jpg" alt="Online: Introduction" onerror="this.src='https://picsum.photos/seed/alpha2/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="training-video-info">
+                            <h3 class="training-video-title">Online: Introduction</h3>
+                            <p class="training-video-description">Introduction to running Alpha online</p>
+                            <a href="https://player.vimeo.com/video/490924040" class="resource-link" onclick="event.stopPropagation()" target="_blank">
+                                Watch Video <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 training-item">
+                    <div class="training-video-card" onclick="openVideoModal('https://player.vimeo.com/video/214170130', 'Small Group Training')">
+                        <div class="training-video-thumbnail">
+                            <img src="https://vumbnail.com/214170130.jpg" alt="Small Group Training" onerror="this.src='https://picsum.photos/seed/alpha3/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="training-video-info">
+                            <h3 class="training-video-title">Small Group Training</h3>
+                            <p class="training-video-description">Training for small group leaders</p>
+                            <a href="https://player.vimeo.com/video/214170130" class="resource-link" onclick="event.stopPropagation()" target="_blank">
+                                Watch Video <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 training-item">
+                    <div class="training-video-card" onclick="openVideoModal('https://player.vimeo.com/video/214170194', 'Prayer & The Weekend Training')">
+                        <div class="training-video-thumbnail">
+                            <img src="https://vumbnail.com/214170194.jpg" alt="Prayer & The Weekend Training" onerror="this.src='https://picsum.photos/seed/alpha4/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="training-video-info">
+                            <h3 class="training-video-title">Prayer & The Weekend Training</h3>
+                            <p class="training-video-description">Preparing for the prayer weekend</p>
+                            <a href="https://player.vimeo.com/video/214170194" class="resource-link" onclick="event.stopPropagation()" target="_blank">
+                                Watch Video <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 training-item">
+                    <div class="training-video-card" onclick="openVideoModal('https://player.vimeo.com/video/490974388', 'Online: Prayer Ministry')">
+                        <div class="training-video-thumbnail">
+                            <img src="https://vumbnail.com/490974388.jpg" alt="Online: Prayer Ministry" onerror="this.src='https://picsum.photos/seed/alpha5/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="training-video-info">
+                            <h3 class="training-video-title">Online: Prayer Ministry</h3>
+                            <p class="training-video-description">Prayer ministry in an online context</p>
+                            <a href="https://player.vimeo.com/video/490974388" class="resource-link" onclick="event.stopPropagation()" target="_blank">
+                                Watch Video <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 training-item">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="bi bi-file-earmark-pdf"></i>
+                        </div>
+                        <h3 class="resource-title">Alpha Online - Host Notes</h3>
+                        <p class="resource-description">PDF guide for online hosts</p>
+                        <a href="https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view" class="resource-link" target="_blank">
+                            Download PDF <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Talks Section -->
+    <section id="talks" class="section bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Alpha Talks</h2>
+                <p class="section-subtitle">Core talks for the Alpha course</p>
+            </div>
+
+            <div class="search-container">
+                <input type="text" class="search-input" id="talksSearch" placeholder="Search talks...">
+            </div>
+
+            <div class="row" id="talksGrid">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/184825483', 'Is There More To Life Than This?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/184825483.jpg" alt="Is There More To Life Than This?" onerror="this.src='https://picsum.photos/seed/talk1/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Is There More To Life Than This?</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/184825484', 'Who Is Jesus?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/184825484.jpg" alt="Who Is Jesus?" onerror="this.src='https://picsum.photos/seed/talk2/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Who Is Jesus?</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/250767723', 'Why Did Jesus Die?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/250767723.jpg" alt="Why Did Jesus Die?" onerror="this.src='https://picsum.photos/seed/talk3/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Why Did Jesus Die?</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/250771916', 'How Can I Have Faith?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/250771916.jpg" alt="How Can I Have Faith?" onerror="this.src='https://picsum.photos/seed/talk4/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">How Can I Have Faith?</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/250771919', 'Why and How Do I Pray?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/250771919.jpg" alt="Why and How Do I Pray?" onerror="this.src='https://picsum.photos/seed/talk5/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Why and How Do I Pray?</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/184825488', 'Why and How Should I Read the Bible?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/184825488.jpg" alt="Why and How Should I Read the Bible?" onerror="this.src='https://picsum.photos/seed/talk6/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Why and How Should I Read the Bible?</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/250771931', 'How Does God Guide Us?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/250771931.jpg" alt="How Does God Guide Us?" onerror="this.src='https://picsum.photos/seed/talk7/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">How Does God Guide Us?</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/184825491', 'Introduction To The Weekend')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/184825491.jpg" alt="Introduction To The Weekend" onerror="this.src='https://picsum.photos/seed/talk8/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Introduction To The Weekend</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/184825492', 'Who Is The Holy Spirit?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/184825492.jpg" alt="Who Is The Holy Spirit?" onerror="this.src='https://picsum.photos/seed/talk9/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Who Is The Holy Spirit?</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/184825493', 'What Does The Holy Spirit Do?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/184825493.jpg" alt="What Does The Holy Spirit Do?" onerror="this.src='https://picsum.photos/seed/talk10/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">What Does The Holy Spirit Do?</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/184825495', 'How Can I Be Filled With The Holy Spirit?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/184825495.jpg" alt="How Can I Be Filled With The Holy Spirit?" onerror="this.src='https://picsum.photos/seed/talk11/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">How Can I Be Filled With The Holy Spirit?</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/250771942', 'How Can I Make The Most Of The Rest Of My Life?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/250771942.jpg" alt="How Can I Make The Most Of The Rest Of My Life?" onerror="this.src='https://picsum.photos/seed/talk12/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">How Can I Make The Most Of The Rest Of My Life?</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/250771966', 'How Can I Resist Evil?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/250771966.jpg" alt="How Can I Resist Evil?" onerror="this.src='https://picsum.photos/seed/talk13/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">How Can I Resist Evil?</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/184825498', 'Why and How Should I Tell Others?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/184825498.jpg" alt="Why and How Should I Tell Others?" onerror="this.src='https://picsum.photos/seed/talk14/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Why and How Should I Tell Others?</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/184825500', 'Does God Heal Today?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/184825500.jpg" alt="Does God Heal Today?" onerror="this.src='https://picsum.photos/seed/talk15/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Does God Heal Today?</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 talk-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/250771976', 'What About The Church?')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/250771976.jpg" alt="What About The Church?" onerror="this.src='https://picsum.photos/seed/talk16/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">What About The Church?</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Briefings Section -->
+    <section id="briefings" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Weekly Briefings</h2>
+                <p class="section-subtitle">Host & Helper briefings for each week</p>
+            </div>
+
+            <div class="search-container">
+                <input type="text" class="search-input" id="briefingsSearch" placeholder="Search weekly briefings...">
+            </div>
+
+            <div class="row" id="briefingsGrid">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 briefing-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/340385686', 'Host & Helper: Week 1')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/340385686.jpg" alt="Week 1" onerror="this.src='https://picsum.photos/seed/week1/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <span class="badge bg-primary mb-2">Week 1</span>
+                            <h5 class="video-title">Host & Helper: Week 1</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 briefing-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/340385692', 'Host & Helper: Week 2')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/340385692.jpg" alt="Week 2" onerror="this.src='https://picsum.photos/seed/week2/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <span class="badge bg-primary mb-2">Week 2</span>
+                            <h5 class="video-title">Host & Helper: Week 2</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 briefing-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/340385698', 'Host & Helper: Week 3')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/340385698.jpg" alt="Week 3" onerror="this.src='https://picsum.photos/seed/week3/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <span class="badge bg-primary mb-2">Week 3</span>
+                            <h5 class="video-title">Host & Helper: Week 3</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 briefing-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/340385704', 'Host & Helper: Week 4')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/340385704.jpg" alt="Week 4" onerror="this.src='https://picsum.photos/seed/week4/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <span class="badge bg-primary mb-2">Week 4</span>
+                            <h5 class="video-title">Host & Helper: Week 4</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 briefing-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/340385710', 'Host & Helper: Week 5')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/340385710.jpg" alt="Week 5" onerror="this.src='https://picsum.photos/seed/week5/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <span class="badge bg-primary mb-2">Week 5</span>
+                            <h5 class="video-title">Host & Helper: Week 5</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 briefing-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/340385742', 'Host & Helper: Week 6')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/340385742.jpg" alt="Week 6" onerror="this.src='https://picsum.photos/seed/week6/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <span class="badge bg-primary mb-2">Week 6</span>
+                            <h5 class="video-title">Host & Helper: Week 6</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 briefing-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/340385751', 'Host & Helper: Week 7')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/340385751.jpg" alt="Week 7" onerror="this.src='https://picsum.photos/seed/week7/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <span class="badge bg-primary mb-2">Week 7</span>
+                            <h5 class="video-title">Host & Helper: Week 7</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 briefing-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/340385762', 'Host & Helper: Week 8')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/340385762.jpg" alt="Week 8" onerror="this.src='https://picsum.photos/seed/week8/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <span class="badge bg-primary mb-2">Week 8</span>
+                            <h5 class="video-title">Host & Helper: Week 8</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 briefing-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/340385769', 'Host & Helper: Week 9')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/340385769.jpg" alt="Week 9" onerror="this.src='https://picsum.photos/seed/week9/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <span class="badge bg-primary mb-2">Week 9</span>
+                            <h5 class="video-title">Host & Helper: Week 9</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 briefing-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/340385776', 'Host & Helper: Week 10')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/340385776.jpg" alt="Week 10" onerror="this.src='https://picsum.photos/seed/week10/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <span class="badge bg-primary mb-2">Week 10</span>
+                            <h5 class="video-title">Host & Helper: Week 10</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 briefing-item">
+                    <div class="video-card" onclick="openVideoModal('https://player.vimeo.com/video/340385788', 'Host & Helper: Week 11')">
+                        <div class="video-thumbnail">
+                            <img src="https://vumbnail.com/340385788.jpg" alt="Week 11" onerror="this.src='https://picsum.photos/seed/week11/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <span class="badge bg-primary mb-2">Week 11</span>
+                            <h5 class="video-title">Host & Helper: Week 11</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guest Guides Section -->
+    <section id="guides" class="section bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Guest Guides</h2>
+                <p class="section-subtitle">Downloadable guides for Alpha guests</p>
+            </div>
+
+            <div class="search-container">
+                <input type="text" class="search-input" id="guidesSearch" placeholder="Search guest guides...">
+            </div>
+
+            <div class="row" id="guidesGrid">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">Is There More To Life Than This?</h5>
+                        </div>
+                        <p class="guide-description">Guest guide for the first session</p>
+                        <a href="https://drive.google.com/drive/folders/1N2wuDY9YybXy1xsxgcjemgzaoGFzFOXj" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">Who Is Jesus?</h5>
+                        </div>
+                        <p class="guide-description">Guide for exploring Jesus' identity</p>
+                        <a href="https://drive.google.com/file/d/1jttEyvllS8ycR4CDC8f82mvUWGlTg16-/view" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">Why Did Jesus Die?</h5>
+                        </div>
+                        <p class="guide-description">Understanding the cross</p>
+                        <a href="https://drive.google.com/file/d/1LDm9PCstXIIU1gl78HX94eLXRIW2xi0Y/view" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">How Can I Have Faith?</h5>
+                        </div>
+                        <p class="guide-description">Exploring faith in daily life</p>
+                        <a href="https://drive.google.com/file/d/1R9wtBc35n3DldO3DrnFMecvD9PtTU4wK/view" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">Why and How Do I Pray?</h5>
+                        </div>
+                        <p class="guide-description">Guide to prayer</p>
+                        <a href="https://drive.google.com/file/d/1J5F89h_vh1YINetIuC5pmMnuUYB6qSGe/view" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">Why and How Should I Read the Bible?</h5>
+                        </div>
+                        <p class="guide-description">Bible reading guide</p>
+                        <a href="https://drive.google.com/file/d/1AIJLM9BV0z-EM5GQlGMrKk1OAbl0JefY/view" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">How Does God Guide Us?</h5>
+                        </div>
+                        <p class="guide-description">Understanding divine guidance</p>
+                        <a href="https://drive.google.com/file/d/1Gd8A8fB32sPo810aLz0Ydd7mj4v0tUJn/view" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">Who Is The Holy Spirit?</h5>
+                        </div>
+                        <p class="guide-description">Introduction to the Holy Spirit</p>
+                        <a href="https://drive.google.com/file/d/1fN1i5ql7BCbHKpk1iRxGlywYJWWnBcXN/view" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">What Does The Holy Spirit Do?</h5>
+                        </div>
+                        <p class="guide-description">The work of the Holy Spirit</p>
+                        <a href="https://drive.google.com/file/d/1yDghXCu0EBqrQcmjxQNx1nUv5PtTqw96/view" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">How Can I Be Filled With The Holy Spirit?</h5>
+                        </div>
+                        <p class="guide-description">Experiencing the Holy Spirit</p>
+                        <a href="https://drive.google.com/file/d/1S5wDQykDAsPliN8Tzy7xCA1bpgWgwdm3/view" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">How Can I Make The Most Of The Rest Of My Life?</h5>
+                        </div>
+                        <p class="guide-description">Living with purpose</p>
+                        <a href="https://drive.google.com/file/d/1Jn3Q8vFh2wENFUmHeLIg64-SMujpd-p-/view" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">How Can I Resist Evil?</h5>
+                        </div>
+                        <p class="guide-description">Spiritual warfare guide</p>
+                        <a href="https://drive.google.com/file/d/1G_9lYiis0sOzIA3FM-q5BWP_FEonnNfV/view" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">Why and How Should I Tell Others?</h5>
+                        </div>
+                        <p class="guide-description">Sharing your faith</p>
+                        <a href="https://drive.google.com/file/d/1kTNr7UaThJlzqxeAMjxqjuBivOplQhex/view" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">Does God Heal Today?</h5>
+                        </div>
+                        <p class="guide-description">Understanding divine healing</p>
+                        <a href="https://drive.google.com/file/d/1zxy6UX9O4hU0FkzbdKficsBck4PV1-tj/view" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 guide-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <h5 class="guide-title">What About The Church?</h5>
+                        </div>
+                        <p class="guide-description">The role of the church</p>
+                        <a href="https://drive.google.com/file/d/1v3UGl1PkaKO6RpelLj6gLplNo5X-kLg_/view" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Alpha Course Resources</h5>
+                    <p>Providing comprehensive training materials and resources for Alpha courses worldwide.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#training" class="text-white-50 text-decoration-none">Team Training</a></li>
+                        <li><a href="#talks" class="text-white-50 text-decoration-none">Talks</a></li>
+                        <li><a href="#briefings" class="text-white-50 text-decoration-none">Weekly Briefings</a></li>
+                        <li><a href="#guides" class="text-white-50 text-decoration-none">Guest Guides</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Contact</h5>
+                    <p class="text-white-50">
+                        <i class="bi bi-globe me-2"></i>www.alpha.org
+                    </p>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="text-center py-3">
+                <p class="mb-0 text-white-50">&copy; 2024 Alpha Course Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalTitle">Video Title</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div style="padding:56.25% 0 0 0;position:relative;">
+                        <iframe id="videoFrame" src="" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Video Modal Function
+        function openVideoModal(videoUrl, title) {
+            const modal = new bootstrap.Modal(document.getElementById('videoModal'));
+            document.getElementById('videoModalTitle').textContent = title;
+            document.getElementById('videoFrame').src = videoUrl;
+            modal.show();
+        }
+
+        // Close modal and stop video
+        document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+            document.getElementById('videoFrame').src = '';
+        });
+
+        // Search functionality for Training
+        document.getElementById('trainingSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.training-item');
+            
+            items.forEach(item => {
+                const title = item.querySelector('.training-video-title, .resource-title').textContent.toLowerCase();
+                const description = item.querySelector('.training-video-description, .resource-description').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Search functionality for Talks
+        document.getElementById('talksSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.talk-item');
+            
+            items.forEach(item => {
+                const title = item.querySelector('.video-title').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Search functionality for Briefings
+        document.getElementById('briefingsSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.briefing-item');
+            
+            items.forEach(item => {
+                const title = item.querySelector('.video-title').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Search functionality for Guides
+        document.getElementById('guidesSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.guide-item');
+            
+            items.forEach(item => {
+                const title = item.querySelector('.guide-title').textContent.toLowerCase();
+                const description = item.querySelector('.guide-description').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all resource cards
+        document.querySelectorAll('.resource-card, .video-card, .training-video-card, .guide-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add active state to navigation based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelectorAll('.navbar-nav a').forEach(navLink => {
+                        navLink.classList.remove('active');
+                        if (navLink.getAttribute('href') === '#' + sectionId) {
+                            navLink.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
