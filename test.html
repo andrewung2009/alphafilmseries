@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Course Resources - Training, Talks & Guides</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #c62828;
+            --secondary-color: #ef5350;
+            --accent-color: #ff9800;
+            --light-bg: #ffebee;
+            --text-dark: #b71c1c;
+            --text-light: #d32f2f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            z-index: 9999;
+            transition: width 0.2s ease;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            overflow: hidden;
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(0deg);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Header Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+            padding: 0.5rem 1rem !important;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 80%;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #c62828 0%, #d32f2f 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,133.3C960,128,1056,96,1152,90.7C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-buttons {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-section.animated .hero-title,
+        .hero-section.animated .hero-subtitle,
+        .hero-section.animated .hero-buttons {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-section.animated .hero-title {
+            transition: all 0.8s ease;
+        }
+
+        .hero-section.animated .hero-subtitle {
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .hero-section.animated .hero-buttons {
+            transition: all 0.8s ease 0.4s;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .section-title,
+        .section.animated .section-subtitle {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.animated .section-title {
+            transition: all 0.6s ease;
+        }
+
+        .section.animated .section-subtitle {
+            transition: all 0.6s ease 0.2s;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* Card Styles */
+        .resource-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            height: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .resource-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary-color), #ef9a9a);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .resource-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .resource-link:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        /* Video Card Styles */
+        .video-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .video-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .video-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .video-card:hover .video-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .video-card:hover .play-button {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Training Video Card Styles */
+        .training-video-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .training-video-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .training-video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .training-video-thumbnail {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .training-video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .training-video-card:hover .training-video-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .training-video-info {
+            padding: 1.5rem;
+        }
+
+        .training-video-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .training-video-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Guest Guide Card Styles */
+        .guide-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .guide-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .guide-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .guide-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff9800, #ffb74d);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+            font-size: 1.3rem;
+        }
+
+        .guide-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            line-height: 1.3;
+        }
+
+        .guide-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .guide-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .guide-link:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        /* Weekly Resources Accordion Styles */
+        .weekly-accordion {
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            background: white;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .weekly-accordion {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .accordion-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 1.2rem 1.5rem;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: none;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border: none;
+        }
+
+        .accordion-button::after {
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-item {
+            border: none;
+            margin-bottom: 0.5rem;
+            border-radius: 12px !important;
+            overflow: hidden;
+        }
+
+        .accordion-body {
+            padding: 1.5rem;
+            background: #fafafa;
+        }
+
+        .week-resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .week-resource-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .week-resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .week-resource-type {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .week-resource-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .week-resource-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .week-resource-action:hover {
+            color: var(--primary-color);
+            transform: translateX(3px);
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .search-container {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease 0.3s;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(239, 83, 80, 0.1);
+        }
+
+        /* Parallax Elements */
+        .parallax-element {
+            position: absolute;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .parallax-circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+        }
+
+        .parallax-circle-1 {
+            top: 10%;
+            right: -150px;
+        }
+
+        .parallax-circle-2 {
+            bottom: 10%;
+            left: -150px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 80px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Staggered Animation */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .stagger-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .video-thumbnail {
+                height: 150px;
+            }
+            
+            .training-video-thumbnail {
+                height: 160px;
+            }
+
+            .week-resources {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="bi bi-book-half me-2"></i>Alpha Resources
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#training">Team Training</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#weekly">Weekly Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#guides">Guest Guides</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Alpha Course Resources</h1>
+                <p class="hero-subtitle">Complete training materials, talks, and guides for your Alpha journey</p>
+                <div class="hero-buttons">
+                    <a href="#training" class="btn btn-light btn-lg me-3 px-4">
+                        <i class="bi bi-play-circle me-2"></i>Get Started
+                    </a>
+                    <a href="#weekly" class="btn btn-outline-light btn-lg px-4">
+                        <i class="bi bi-collection-play me-2"></i>Weekly Resources
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Training Section -->
+    <section id="training" class="section">
+        <!-- Parallax Elements -->
+        <div class="parallax-element parallax-circle parallax-circle-1"></div>
+        
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Team Training</h2>
+                <p class="section-subtitle">Essential training resources for your Alpha team</p>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" id="trainingSearch" placeholder="Search training resources...">
+            </div>
+
+            <div class="row" id="trainingGrid">
+                <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
+                    <div class="training-video-card" onclick="openVideoModal('https://player.vimeo.com/video/273602720', 'Essentials Training')">
+                        <div class="training-video-thumbnail">
+                            <img src="https://vumbnail.com/273602720.jpg" alt="Essentials Training" onerror="this.src='https://picsum.photos/seed/alpha1/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="training-video-info">
+                            <h3 class="training-video-title">Essentials Training</h3>
+                            <a href="https://player.vimeo.com/video/273602720" class="resource-link" onclick="event.stopPropagation()" target="_blank">
+                                Watch Video <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
+                    <div class="training-video-card" onclick="openVideoModal('https://player.vimeo.com/video/490924040', 'Online: Introduction')">
+                        <div class="training-video-thumbnail">
+                            <img src="https://vumbnail.com/490924040.jpg" alt="Online: Introduction" onerror="this.src='https://picsum.photos/seed/alpha2/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="training-video-info">
+                            <h3 class="training-video-title">Online: Introduction</h3>
+                            <a href="https://player.vimeo.com/video/490924040" class="resource-link" onclick="event.stopPropagation()" target="_blank">
+                                Watch Video <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
+                    <div class="training-video-card" onclick="openVideoModal('https://player.vimeo.com/video/214170130', 'Small Group Training')">
+                        <div class="training-video-thumbnail">
+                            <img src="https://vumbnail.com/214170130.jpg" alt="Small Group Training" onerror="this.src='https://picsum.photos/seed/alpha3/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="training-video-info">
+                            <h3 class="training-video-title">Small Group Training</h3>
+                            <a href="https://player.vimeo.com/video/214170130" class="resource-link" onclick="event.stopPropagation()" target="_blank">
+                                Watch Video <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
+                    <div class="training-video-card" onclick="openVideoModal('https://player.vimeo.com/video/214170194', 'Prayer & The Weekend Training')">
+                        <div class="training-video-thumbnail">
+                            <img src="https://vumbnail.com/214170194.jpg" alt="Prayer & The Weekend Training" onerror="this.src='https://picsum.photos/seed/alpha4/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="training-video-info">
+                            <h3 class="training-video-title">Prayer & The Weekend Training</h3>
+                            <a href="https://player.vimeo.com/video/214170194" class="resource-link" onclick="event.stopPropagation()" target="_blank">
+                                Watch Video <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
+                    <div class="training-video-card" onclick="openVideoModal('https://player.vimeo.com/video/490974388', 'Online: Prayer Ministry')">
+                        <div class="training-video-thumbnail">
+                            <img src="https://vumbnail.com/490974388.jpg" alt="Online: Prayer Ministry" onerror="this.src='https://picsum.photos/seed/alpha5/400/225.jpg'">
+                            <div class="video-overlay">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="training-video-info">
+                            <h3 class="training-video-title">Online: Prayer Ministry</h3>
+                            <a href="https://player.vimeo.com/video/490974388" class="resource-link" onclick="event.stopPropagation()" target="_blank">
+                                Watch Video <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="bi bi-file-earmark-pdf"></i>
+                        </div>
+                        <h3 class="resource-title">Alpha Online - Host Notes</h3>
+                        <a href="https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view" class="resource-link" target="_blank">
+                            Download PDF <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Resources Section -->
+    <section id="weekly" class="section bg-light">
+        <!-- Parallax Elements -->
+        <div class="parallax-element parallax-circle parallax-circle-2"></div>
+        
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Weekly Resources</h2>
+                <p class="section-subtitle">All resources for each week in one place</p>
+            </div>
+
+            <div class="search-container">
+                <input type="text" class="search-input" id="weeklySearch" placeholder="Search weekly resources...">
+            </div>
+
+            <div class="accordion" id="weeklyAccordion">
+                <!-- Week 1 -->
+                <div class="accordion-item weekly-accordion">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#week1">
+                            <i class="bi bi-calendar-week me-2"></i> Week 1: Is There More To Life Than This?
+                        </button>
+                    </h2>
+                    <div id="week1" class="accordion-collapse collapse show" data-bs-parent="#weeklyAccordion">
+                        <div class="accordion-body">
+                            <div class="week-resources">
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">Is There More To Life Than This?</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/184825483', 'Is There More To Life Than This?'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-people me-1"></i> Hosts and Helpers Briefing
+                                    </div>
+                                    <h5 class="week-resource-title">Host & Helper: Week 1</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/340385686', 'Host & Helper: Week 1'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Guest Guide</h5>
+                                    <a href="https://drive.google.com/drive/folders/1N2wuDY9YybXy1xsxgcjemgzaoGFzFOXj" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 2 -->
+                <div class="accordion-item weekly-accordion">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week2">
+                            <i class="bi bi-calendar-week me-2"></i> Week 2: Who Is Jesus?
+                        </button>
+                    </h2>
+                    <div id="week2" class="accordion-collapse collapse" data-bs-parent="#weeklyAccordion">
+                        <div class="accordion-body">
+                            <div class="week-resources">
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">Who Is Jesus?</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/184825484', 'Who Is Jesus?'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-people me-1"></i> Hosts and Helpers Briefing
+                                    </div>
+                                    <h5 class="week-resource-title">Host & Helper: Week 2</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/340385692', 'Host & Helper: Week 2'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Guest Guide</h5>
+                                    <a href="https://drive.google.com/file/d/1jttEyvllS8ycR4CDC8f82mvUWGlTg16-/view" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 3 -->
+                <div class="accordion-item weekly-accordion">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week3">
+                            <i class="bi bi-calendar-week me-2"></i> Week 3: Why Did Jesus Die?
+                        </button>
+                    </h2>
+                    <div id="week3" class="accordion-collapse collapse" data-bs-parent="#weeklyAccordion">
+                        <div class="accordion-body">
+                            <div class="week-resources">
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">Why Did Jesus Die?</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/250767723', 'Why Did Jesus Die?'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-people me-1"></i> Hosts and Helpers Briefing
+                                    </div>
+                                    <h5 class="week-resource-title">Host & Helper: Week 3</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/340385698', 'Host & Helper: Week 3'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Guest Guide</h5>
+                                    <a href="https://drive.google.com/file/d/1LDm9PCstXIIU1gl78HX94eLXRIW2xi0Y/view" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 4 -->
+                <div class="accordion-item weekly-accordion">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week4">
+                            <i class="bi bi-calendar-week me-2"></i> Week 4: How Can I Have Faith?
+                        </button>
+                    </h2>
+                    <div id="week4" class="accordion-collapse collapse" data-bs-parent="#weeklyAccordion">
+                        <div class="accordion-body">
+                            <div class="week-resources">
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">How Can I Have Faith?</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/250771916', 'How Can I Have Faith?'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-people me-1"></i> Hosts and Helpers Briefing
+                                    </div>
+                                    <h5 class="week-resource-title">Host & Helper: Week 4</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/340385704', 'Host & Helper: Week 4'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Guest Guide</h5>
+                                    <a href="https://drive.google.com/file/d/1R9wtBc35n3DldO3DrnFMecvD9PtTU4wK/view" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 5 -->
+                <div class="accordion-item weekly-accordion">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week5">
+                            <i class="bi bi-calendar-week me-2"></i> Week 5: Why and How Do I Pray?
+                        </button>
+                    </h2>
+                    <div id="week5" class="accordion-collapse collapse" data-bs-parent="#weeklyAccordion">
+                        <div class="accordion-body">
+                            <div class="week-resources">
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">Why and How Do I Pray?</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/250771919', 'Why and How Do I Pray?'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-people me-1"></i> Hosts and Helpers Briefing
+                                    </div>
+                                    <h5 class="week-resource-title">Host & Helper: Week 5</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/340385710', 'Host & Helper: Week 5'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Guest Guide</h5>
+                                    <a href="https://drive.google.com/file/d/1J5F89h_vh1YINetIuC5pmMnuUYB6qSGe/view" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 6 -->
+                <div class="accordion-item weekly-accordion">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week6">
+                            <i class="bi bi-calendar-week me-2"></i> Week 6: Why and How Should I Read the Bible?
+                        </button>
+                    </h2>
+                    <div id="week6" class="accordion-collapse collapse" data-bs-parent="#weeklyAccordion">
+                        <div class="accordion-body">
+                            <div class="week-resources">
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">Why and How Should I Read the Bible?</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/184825488', 'Why and How Should I Read the Bible?'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-people me-1"></i> Hosts and Helpers Briefing
+                                    </div>
+                                    <h5 class="week-resource-title">Host & Helper: Week 6</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/340385742', 'Host & Helper: Week 6'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Guest Guide</h5>
+                                    <a href="https://drive.google.com/file/d/1AIJLM9BV0z-EM5GQlGMrKk1OAbl0JefY/view" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 7 -->
+                <div class="accordion-item weekly-accordion">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week7">
+                            <i class="bi bi-calendar-week me-2"></i> Week 7: How Does God Guide Us?
+                        </button>
+                    </h2>
+                    <div id="week7" class="accordion-collapse collapse" data-bs-parent="#weeklyAccordion">
+                        <div class="accordion-body">
+                            <div class="week-resources">
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">How Does God Guide Us?</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/250771931', 'How Does God Guide Us?'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-people me-1"></i> Hosts and Helpers Briefing
+                                    </div>
+                                    <h5 class="week-resource-title">Host & Helper: Week 7</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/340385751', 'Host & Helper: Week 7'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Guest Guide</h5>
+                                    <a href="https://drive.google.com/file/d/1Gd8A8fB32sPo810aLz0Ydd7mj4v0tUJn/view" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekend -->
+                <div class="accordion-item weekly-accordion">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#weekend">
+                            <i class="bi bi-calendar-event me-2"></i> Weekend Away
+                        </button>
+                    </h2>
+                    <div id="weekend" class="accordion-collapse collapse" data-bs-parent="#weeklyAccordion">
+                        <div class="accordion-body">
+                            <div class="week-resources">
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">Introduction To The Weekend</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/184825491', 'Introduction To The Weekend'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">Who Is The Holy Spirit?</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/184825492', 'Who Is The Holy Spirit?'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">What Does The Holy Spirit Do?</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/184825493', 'What Does The Holy Spirit Do?'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">How Can I Be Filled With The Holy Spirit?</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/184825495', 'How Can I Be Filled With The Holy Spirit?'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Holy Spirit Guest Guide</h5>
+                                    <a href="https://drive.google.com/file/d/1fN1i5ql7BCbHKpk1iRxGlywYJWWnBcXN/view" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Holy Spirit Actions Guest Guide</h5>
+                                    <a href="https://drive.google.com/file/d/1yDghXCu0EBqrQcmjxQNx1nUv5PtTqw96/view" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Filled With Holy Spirit Guest Guide</h5>
+                                    <a href="https://drive.google.com/file/d/1S5wDQykDAsPliN8Tzy7xCA1bpgWgwdm3/view" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Making The Most Guest Guide</h5>
+                                    <a href="https://drive.google.com/file/d/1Jn3Q8vFh2wENFUmHeLIg64-SMujpd-p-/view" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 8 -->
+                <div class="accordion-item weekly-accordion">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week8">
+                            <i class="bi bi-calendar-week me-2"></i> Week 8: How Can I Resist Evil?
+                        </button>
+                    </h2>
+                    <div id="week8" class="accordion-collapse collapse" data-bs-parent="#weeklyAccordion">
+                        <div class="accordion-body">
+                            <div class="week-resources">
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">How Can I Resist Evil?</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/250771966', 'How Can I Resist Evil?'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-people me-1"></i> Hosts and Helpers Briefing
+                                    </div>
+                                    <h5 class="week-resource-title">Host & Helper: Week 8</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/340385762', 'Host & Helper: Week 8'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Guest Guide</h5>
+                                    <a href="https://drive.google.com/file/d/1G_9lYiis0sOzIA3FM-q5BWP_FEonnNfV/view" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 9 -->
+                <div class="accordion-item weekly-accordion">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week9">
+                            <i class="bi bi-calendar-week me-2"></i> Week 9: Why and How Should I Tell Others?
+                        </button>
+                    </h2>
+                    <div id="week9" class="accordion-collapse collapse" data-bs-parent="#weeklyAccordion">
+                        <div class="accordion-body">
+                            <div class="week-resources">
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">Why and How Should I Tell Others?</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/184825498', 'Why and How Should I Tell Others?'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-people me-1"></i> Hosts and Helpers Briefing
+                                    </div>
+                                    <h5 class="week-resource-title">Host & Helper: Week 9</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/340385769', 'Host & Helper: Week 9'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Guest Guide</h5>
+                                    <a href="https://drive.google.com/file/d/1kTNr7UaThJlzqxeAMjxqjuBivOplQhex/view" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 10 -->
+                <div class="accordion-item weekly-accordion">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week10">
+                            <i class="bi bi-calendar-week me-2"></i> Week 10: Does God Heal Today?
+                        </button>
+                    </h2>
+                    <div id="week10" class="accordion-collapse collapse" data-bs-parent="#weeklyAccordion">
+                        <div class="accordion-body">
+                            <div class="week-resources">
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">Does God Heal Today?</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/184825500', 'Does God Heal Today?'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-people me-1"></i> Hosts and Helpers Briefing
+                                    </div>
+                                    <h5 class="week-resource-title">Host & Helper: Week 10</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/340385776', 'Host & Helper: Week 10'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Guest Guide</h5>
+                                    <a href="https://drive.google.com/file/d/1zxy6UX9O4hU0FkzbdKficsBck4PV1-tj/view" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 11 -->
+                <div class="accordion-item weekly-accordion">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week11">
+                            <i class="bi bi-calendar-week me-2"></i> Week 11: What About The Church?
+                        </button>
+                    </h2>
+                    <div id="week11" class="accordion-collapse collapse" data-bs-parent="#weeklyAccordion">
+                        <div class="accordion-body">
+                            <div class="week-resources">
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-play-circle me-1"></i> Alpha Talk
+                                    </div>
+                                    <h5 class="week-resource-title">What About The Church?</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/250771976', 'What About The Church?'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-people me-1"></i> Hosts and Helpers Briefing
+                                    </div>
+                                    <h5 class="week-resource-title">Host & Helper: Week 11</h5>
+                                    <a href="#" class="week-resource-action" onclick="openVideoModal('https://player.vimeo.com/video/340385788', 'Host & Helper: Week 11'); return false;">
+                                        <i class="bi bi-play-fill"></i> Watch Now
+                                    </a>
+                                </div>
+                                <div class="week-resource-card">
+                                    <div class="week-resource-type">
+                                        <i class="bi bi-file-earmark-text me-1"></i> Session Questions and Guide
+                                    </div>
+                                    <h5 class="week-resource-title">Guest Guide</h5>
+                                    <a href="https://drive.google.com/file/d/1v3UGl1PkaKO6RpelLj6gLplNo5X-kLg_/view" class="week-resource-action" target="_blank">
+                                        <i class="bi bi-download"></i> Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guest Guides Section -->
+    <section id="guides" class="section">
+        <!-- Parallax Elements -->
+        <div class="parallax-element parallax-circle parallax-circle-1"></div>
+        
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Additional Resources</h2>
+                <p class="section-subtitle">Extra guides and materials for your Alpha course</p>
+            </div>
+
+            <div class="search-container">
+                <input type="text" class="search-input" id="guidesSearch" placeholder="Search additional resources...">
+            </div>
+
+            <div class="row" id="guidesGrid">
+                <div class="col-lg-4 col-md-6 mb-4 guide-item stagger-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-book"></i>
+                            </div>
+                            <h5 class="guide-title">Alpha Team Handbook</h5>
+                        </div>
+                        <p class="guide-description">Complete guide for running an Alpha course</p>
+                        <a href="#" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 guide-item stagger-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-megaphone"></i>
+                            </div>
+                            <h5 class="guide-title">Promotional Materials</h5>
+                        </div>
+                        <p class="guide-description">Posters, flyers, and social media templates</p>
+                        <a href="#" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 guide-item stagger-item">
+                    <div class="guide-card">
+                        <div class="guide-header">
+                            <div class="guide-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h5 class="guide-title">Small Group Leaders Guide</h5>
+                        </div>
+                        <p class="guide-description">Tips and best practices for facilitators</p>
+                        <a href="#" class="guide-link" target="_blank">
+                            Download <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Alpha Course Resources</h5>
+                    <p>Providing comprehensive training materials and resources for Alpha courses worldwide.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#training" class="text-white-50 text-decoration-none">Team Training</a></li>
+                        <li><a href="#weekly" class="text-white-50 text-decoration-none">Weekly Resources</a></li>
+                        <li><a href="#guides" class="text-white-50 text-decoration-none">Additional Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Contact</h5>
+                    <p class="text-white-50">
+                        <i class="bi bi-globe me-2"></i>www.alpha.org
+                    </p>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="text-center py-3">
+                <p class="mb-0 text-white-50">&copy; 2024 Alpha Course Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="bi bi-arrow-up"></i>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalTitle">Video Title</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div style="padding:56.25% 0 0 0;position:relative;">
+                        <iframe id="videoFrame" src="" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Video Modal Function
+        function openVideoModal(videoUrl, title) {
+            const modal = new bootstrap.Modal(document.getElementById('videoModal'));
+            document.getElementById('videoModalTitle').textContent = title;
+            document.getElementById('videoFrame').src = videoUrl;
+            modal.show();
+        }
+
+        // Close modal and stop video
+        document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+            document.getElementById('videoFrame').src = '';
+        });
+
+        // Search functionality for Training
+        document.getElementById('trainingSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.training-item');
+            
+            items.forEach(item => {
+                const title = item.querySelector('.training-video-title, .resource-title').textContent.toLowerCase();
+                const description = item.querySelector('.training-video-description, .resource-description')?.textContent.toLowerCase() || '';
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Search functionality for Weekly Resources
+        document.getElementById('weeklySearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const accordions = document.querySelectorAll('.weekly-accordion');
+            
+            accordions.forEach(accordion => {
+                const title = accordion.querySelector('.accordion-button').textContent.toLowerCase();
+                const resources = accordion.querySelectorAll('.week-resource-card');
+                let hasVisibleResource = false;
+                
+                resources.forEach(resource => {
+                    const resourceTitle = resource.querySelector('.week-resource-title').textContent.toLowerCase();
+                    const resourceType = resource.querySelector('.week-resource-type').textContent.toLowerCase();
+                    
+                    if (resourceTitle.includes(searchTerm) || resourceType.includes(searchTerm) || title.includes(searchTerm)) {
+                        resource.style.display = 'block';
+                        hasVisibleResource = true;
+                    } else {
+                        resource.style.display = 'none';
+                    }
+                });
+                
+                if (hasVisibleResource || title.includes(searchTerm)) {
+                    accordion.style.display = 'block';
+                } else {
+                    accordion.style.display = 'none';
+                }
+            });
+        });
+
+        // Search functionality for Guides
+        document.getElementById('guidesSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.guide-item');
+            
+            items.forEach(item => {
+                const title = item.querySelector('.guide-title').textContent.toLowerCase();
+                const description = item.querySelector('.guide-description').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', function() {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPosition = window.scrollY;
+            const scrollPercentage = (scrollPosition / scrollHeight) * 100;
+            document.getElementById('scrollProgress').style.width = scrollPercentage + '%';
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Enhanced Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    
+                    // Trigger staggered animations for items within the section
+                    if (entry.target.classList.contains('section')) {
+                        const staggerItems = entry.target.querySelectorAll('.stagger-item');
+                        staggerItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.style.transition = `all 0.6s ease ${index * 0.1}s`;
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 100);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and hero
+        document.querySelectorAll('.section, .hero-section').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for background elements
+        window.addEventListener('scroll', function() {
+            const scrolled = window.scrollY;
+            
+            document.querySelectorAll('.parallax-element').forEach(element => {
+                const speed = element.dataset.speed || 0.5;
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Add active state to navigation based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelectorAll('.navbar-nav a').forEach(navLink => {
+                        navLink.classList.remove('active');
+                        if (navLink.getAttribute('href') === '#' + sectionId) {
+                            navLink.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Initialize hero animation on page load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.querySelector('.hero-section').classList.add('animated');
+            }, 300);
+        });
+    </script>
+</body>
+</html>
