@@ -77,7 +77,12 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             padding: 1rem 0;
             transition: all 0.3s ease;
-            z-index: 1000;
+            z-index: 1030; /* Bootstrap's modal z-index is 1050, navbar should be below that but above everything else */
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
         }
 
         .navbar.scrolled {
@@ -127,6 +132,39 @@
         .navbar-nav .nav-link:hover {
             background-color: rgba(255,255,255,0.1);
             transform: translateY(-2px);
+        }
+
+        /* Mobile navbar styles */
+        .navbar-toggler {
+            border: none;
+            padding: 0.25rem 0.5rem;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background-color: #c62828;
+                padding: 1rem;
+                border-radius: 0 0 10px 10px;
+                margin-top: 0.5rem;
+            }
+            
+            .navbar-nav {
+                padding: 0.5rem 0;
+            }
+            
+            .navbar-nav .nav-link {
+                padding: 0.75rem 1rem !important;
+                margin: 0.25rem 0;
+            }
         }
 
         /* Hero Section */
@@ -798,6 +836,18 @@
             body {
                 padding-top: 66px; /* Adjust for smaller navbar on mobile */
             }
+
+            .navbar {
+                min-height: 66px !important;
+            }
+
+            .navbar-brand {
+                font-size: 1.25rem;
+            }
+
+            .navbar-brand img {
+                height: 25px;
+            }
         }
     </style>
 </head>
@@ -812,9 +862,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#home">
-                <img src="alphalogo.jpg" alt="Alpha Logo" style="height: 30px; margin-right: 8px;">Alpha Resource Hub
+                <img src="assets/alphalogo.jpg" alt="Alpha Logo" style="height: 30px; margin-right: 8px;">Alpha Resource Hub
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -837,7 +887,7 @@
     <section id="home" class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Alpha Course Resources</h1>
+                <h1 class="hero-title">Alpha Resource Hub</h1>
                 <p class="hero-subtitle">Complete training materials, talks, and guides for your Alpha journey</p>
                 <div class="hero-buttons">
                     <a href="#training" class="btn btn-light btn-lg me-3 px-4">
