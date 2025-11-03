@@ -4,6 +4,626 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alpha Course Resources - Training, Talks & Guides</title>
+    
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // ============================================
+        // CONFIGURATION SECTION - EASILY EDIT LINKS HERE
+        // ============================================
+        
+        // Training Videos Configuration
+        const trainingVideos = [
+            {
+                title: "Essentials Training",
+                url: "https://player.vimeo.com/video/273602720",
+                thumbnail: "https://vumbnail.com/273602720.jpg"
+            },
+            {
+                title: "Online: Introduction",
+                url: "https://player.vimeo.com/video/490924040",
+                thumbnail: "https://vumbnail.com/490924040.jpg"
+            },
+            {
+                title: "Small Group Training",
+                url: "https://player.vimeo.com/video/214170130",
+                thumbnail: "https://vumbnail.com/214170130.jpg"
+            },
+            {
+                title: "Prayer & The Weekend Training",
+                url: "https://player.vimeo.com/video/214170194",
+                thumbnail: "https://vumbnail.com/214170194.jpg"
+            },
+            {
+                title: "Online: Prayer Ministry",
+                url: "https://player.vimeo.com/video/490974388",
+                thumbnail: "https://vumbnail.com/490974388.jpg"
+            }
+        ];
+        
+        // Training Documents Configuration
+        const trainingDocuments = [
+            {
+                title: "Alpha Online - Host Notes",
+                url: "https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view",
+                icon: "fas fa-file-pdf"
+            }
+        ];
+        
+        // Weekly Resources Configuration
+        const weeklyResources = [
+            {
+                week: 1,
+                title: "Is There More To Life Than This?",
+                talk: {
+                    title: "Is There More To Life Than This?",
+                    url: "https://player.vimeo.com/video/184825483"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 1",
+                    url: "https://player.vimeo.com/video/340385686"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/drive/folders/1N2wuDY9YybXy1xsxgcjemgzaoGFzFOXj"
+                }
+            },
+            {
+                week: 2,
+                title: "Who Is Jesus?",
+                talk: {
+                    title: "Who Is Jesus?",
+                    url: "https://player.vimeo.com/video/184825484"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 2",
+                    url: "https://player.vimeo.com/video/340385692"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1jttEyvllS8ycR4CDC8f82mvUWGlTg16-/view"
+                }
+            },
+            {
+                week: 3,
+                title: "Why Did Jesus Die?",
+                talk: {
+                    title: "Why Did Jesus Die?",
+                    url: "https://player.vimeo.com/video/250767723"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 3",
+                    url: "https://player.vimeo.com/video/340385698"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1LDm9PCstXIIU1gl78HX94eLXRIW2xi0Y/view"
+                }
+            },
+            {
+                week: 4,
+                title: "How Can I Have Faith?",
+                talk: {
+                    title: "How Can I Have Faith?",
+                    url: "https://player.vimeo.com/video/250771916"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 4",
+                    url: "https://player.vimeo.com/video/340385704"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1R9wtBc35n3DldO3DrnFMecvD9PtTU4wK/view"
+                }
+            },
+            {
+                week: 5,
+                title: "Why and How Do I Pray?",
+                talk: {
+                    title: "Why and How Do I Pray?",
+                    url: "https://player.vimeo.com/video/250771919"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 5",
+                    url: "https://player.vimeo.com/video/340385710"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1J5F89h_vh1YINetIuC5pmMnuUYB6qSGe/view"
+                }
+            },
+            {
+                week: 6,
+                title: "Why and How Should I Read the Bible?",
+                talk: {
+                    title: "Why and How Should I Read the Bible?",
+                    url: "https://player.vimeo.com/video/184825488"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 6",
+                    url: "https://player.vimeo.com/video/340385742"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1AIJLM9BV0z-EM5GQlGMrKk1OAbl0JefY/view"
+                }
+            },
+            {
+                week: 7,
+                title: "How Does God Guide Us?",
+                talk: {
+                    title: "How Does God Guide Us?",
+                    url: "https://player.vimeo.com/video/250771931"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 7",
+                    url: "https://player.vimeo.com/video/340385751"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1Gd8A8fB32sPo810aLz0Ydd7mj4v0tUJn/view"
+                }
+            },
+            {
+                week: 8,
+                title: "How Can I Resist Evil?",
+                talk: {
+                    title: "How Can I Resist Evil?",
+                    url: "https://player.vimeo.com/video/250771966"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 8",
+                    url: "https://player.vimeo.com/video/340385762"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1G_9lYiis0sOzIA3FM-q5BWP_FEonnNfV/view"
+                }
+            },
+            {
+                week: 9,
+                title: "Why and How Should I Tell Others?",
+                talk: {
+                    title: "Why and How Should I Tell Others?",
+                    url: "https://player.vimeo.com/video/184825498"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 9",
+                    url: "https://player.vimeo.com/video/340385769"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1kTNr7UaThJlzqxeAMjxqjuBivOplQhex/view"
+                }
+            },
+            {
+                week: 10,
+                title: "Does God Heal Today?",
+                talk: {
+                    title: "Does God Heal Today?",
+                    url: "https://player.vimeo.com/video/184825500"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 10",
+                    url: "https://player.vimeo.com/video/340385776"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1zxy6UX9O4hU0FkzbdKficsBck4PV1-tj/view"
+                }
+            },
+            {
+                week: 11,
+                title: "What About The Church?",
+                talk: {
+                    title: "What About The Church?",
+                    url: "https://player.vimeo.com/video/250771976"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 11",
+                    url: "https://player.vimeo.com/video/340385788"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1v3UGl1PkaKO6RpelLj6gLplNo5X-kLg_/view"
+                }
+            }
+        ];
+        
+        // Weekend Resources Configuration
+        const weekendResources = {
+            title: "Weekend Away",
+            talks: [
+                {
+                    title: "Introduction To The Weekend",
+                    url: "https://player.vimeo.com/video/184825491"
+                },
+                {
+                    title: "Who Is The Holy Spirit?",
+                    url: "https://player.vimeo.com/video/184825492"
+                },
+                {
+                    title: "What Does The Holy Spirit Do?",
+                    url: "https://player.vimeo.com/video/184825493"
+                },
+                {
+                    title: "How Can I Be Filled With The Holy Spirit?",
+                    url: "https://player.vimeo.com/video/184825495"
+                }
+            ],
+            guides: [
+                {
+                    title: "Holy Spirit Guest Guide",
+                    url: "https://drive.google.com/file/d/1fN1i5ql7BCbHKpk1iRxGlywYJWWnBcXN/view"
+                },
+                {
+                    title: "Holy Spirit Actions Guest Guide",
+                    url: "https://drive.google.com/file/d/1yDghXCu0EBqrQcmjxQNx1nUv5PtTqw96/view"
+                },
+                {
+                    title: "Filled With Holy Spirit Guest Guide",
+                    url: "https://drive.google.com/file/d/1S5wDQykDAsPliN8Tzy7xCA1bpgWgwdm3/view"
+                },
+                {
+                    title: "Making The Most Guest Guide",
+                    url: "https://drive.google.com/file/d/1Jn3Q8vFh2wENFUmHeLIg64-SMujpd-p-/view"
+                }
+            ]
+        };
+        
+        // Additional Guides Configuration
+        const additionalGuides = [
+            {
+                title: "Alpha Team Handbook",
+                description: "Complete guide for running an Alpha course",
+                url: "#",
+                icon: "fas fa-book"
+            },
+            {
+                title: "Promotional Materials",
+                description: "Posters, flyers, and social media templates",
+                url: "#",
+                icon: "fas fa-bullhorn"
+            },
+            {
+                title: "Small Group Leaders Guide",
+                description: "Tips and best practices for facilitators",
+                url: "#",
+                icon: "fas fa-users"
+            }
+        ];
+        
+        // ============================================
+        // END OF CONFIGURATION SECTION
+        // ============================================
+        
+        // Function to initialize everything after DOM is loaded
+        function initializeApp() {
+            // Generate Training Videos HTML
+            function generateTrainingVideos() {
+                const container = document.getElementById('trainingGrid');
+                let html = '';
+                
+                // Add video cards
+                trainingVideos.forEach((video, index) => {
+                    html += `
+                        <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
+                            <div class="training-video-card" onclick="openVideoModal('${video.url}', '${video.title}')">
+                                <div class="training-video-thumbnail">
+                                    <img src="${video.thumbnail}" alt="${video.title}" onerror="this.src='https://picsum.photos/seed/alpha${index}/400/225.jpg'">
+                                    <div class="video-overlay">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="training-video-info">
+                                    <h3 class="training-video-title">${video.title}</h3>
+                                    <a href="${video.url}" class="resource-link" onclick="event.stopPropagation()" target="_blank">
+                                        Watch Video <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                // Add document cards
+                trainingDocuments.forEach(doc => {
+                    html += `
+                        <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
+                            <div class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="${doc.icon}"></i>
+                                </div>
+                                <h3 class="resource-title">${doc.title}</h3>
+                                <a href="${doc.url}" class="resource-link" target="_blank">
+                                    Download PDF <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+            }
+            
+            // Generate Weekly Resources HTML
+            function generateWeeklyResources() {
+                const container = document.getElementById('weeklyAccordion');
+                let html = '';
+                
+                // Add weekly resources
+                weeklyResources.forEach((week, index) => {
+                    const isExpanded = index === 0 ? 'show' : '';
+                    const isCollapsed = index === 0 ? '' : 'collapsed';
+                    
+                    html += `
+                        <div class="accordion-item weekly-accordion">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button ${isCollapsed}" type="button" data-bs-toggle="collapse" data-bs-target="#week${week.week}">
+                                    <i class="fas fa-calendar-week me-2"></i> Week ${week.week}: ${week.title}
+                                </button>
+                            </h2>
+                            <div id="week${week.week}" class="accordion-collapse collapse ${isExpanded}" data-bs-parent="#weeklyAccordion">
+                                <div class="accordion-body">
+                                    <div class="week-resources">
+                                        <div class="week-resource-card">
+                                            <div class="week-resource-type">
+                                                <i class="fas fa-play-circle me-1"></i> Alpha Talk
+                                            </div>
+                                            <h5 class="week-resource-title">${week.talk.title}</h5>
+                                            <a href="#" class="week-resource-action" onclick="openVideoModal('${week.talk.url}', '${week.talk.title}'); return false;">
+                                                <i class="fas fa-play"></i> Watch Now
+                                            </a>
+                                        </div>
+                                        <div class="week-resource-card">
+                                            <div class="week-resource-type">
+                                                <i class="fas fa-users me-1"></i> Hosts and Helpers Briefing
+                                            </div>
+                                            <h5 class="week-resource-title">${week.briefing.title}</h5>
+                                            <a href="#" class="week-resource-action" onclick="openVideoModal('${week.briefing.url}', '${week.briefing.title}'); return false;">
+                                                <i class="fas fa-play"></i> Watch Now
+                                            </a>
+                                        </div>
+                                        <div class="week-resource-card">
+                                            <div class="week-resource-type">
+                                                <i class="fas fa-file-alt me-1"></i> Session Questions and Guide
+                                            </div>
+                                            <h5 class="week-resource-title">${week.guide.title}</h5>
+                                            <a href="${week.guide.url}" class="week-resource-action" target="_blank">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                // Add weekend resources
+                html += `
+                    <div class="accordion-item weekly-accordion">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#weekend">
+                                <i class="fas fa-calendar-alt me-2"></i> ${weekendResources.title}
+                            </button>
+                        </h2>
+                        <div id="weekend" class="accordion-collapse collapse" data-bs-parent="#weeklyAccordion">
+                            <div class="accordion-body">
+                                <div class="week-resources">
+                `;
+                
+                // Add weekend talks
+                weekendResources.talks.forEach(talk => {
+                    html += `
+                        <div class="week-resource-card">
+                            <div class="week-resource-type">
+                                <i class="fas fa-play-circle me-1"></i> Alpha Talk
+                            </div>
+                            <h5 class="week-resource-title">${talk.title}</h5>
+                            <a href="#" class="week-resource-action" onclick="openVideoModal('${talk.url}', '${talk.title}'); return false;">
+                                <i class="fas fa-play"></i> Watch Now
+                            </a>
+                        </div>
+                    `;
+                });
+                
+                // Add weekend guides
+                weekendResources.guides.forEach(guide => {
+                    html += `
+                        <div class="week-resource-card">
+                            <div class="week-resource-type">
+                                <i class="fas fa-file-alt me-1"></i> Session Questions and Guide
+                            </div>
+                            <h5 class="week-resource-title">${guide.title}</h5>
+                            <a href="${guide.url}" class="week-resource-action" target="_blank">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    `;
+                });
+                
+                html += `
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                container.innerHTML = html;
+            }
+            
+            // Generate Additional Guides HTML
+            function generateAdditionalGuides() {
+                const container = document.getElementById('guidesGrid');
+                let html = '';
+                
+                additionalGuides.forEach(guide => {
+                    html += `
+                        <div class="col-lg-4 col-md-6 mb-4 guide-item stagger-item">
+                            <div class="guide-card">
+                                <div class="guide-header">
+                                    <div class="guide-icon">
+                                        <i class="${guide.icon}"></i>
+                                    </div>
+                                    <h5 class="guide-title">${guide.title}</h5>
+                                </div>
+                                <p class="guide-description">${guide.description}</p>
+                                <a href="${guide.url}" class="guide-link" target="_blank">
+                                    Download <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+            }
+            
+            // Initialize all dynamic content
+            generateTrainingVideos();
+            generateWeeklyResources();
+            generateAdditionalGuides();
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Video Modal Function
+            window.openVideoModal = function(videoUrl, title) {
+                const modal = new bootstrap.Modal(document.getElementById('videoModal'));
+                document.getElementById('videoModalTitle').textContent = title;
+                document.getElementById('videoFrame').src = videoUrl;
+                modal.show();
+            }
+
+            // Close modal and stop video
+            document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+                document.getElementById('videoFrame').src = '';
+            });
+
+            // Scroll Progress Bar
+            window.addEventListener('scroll', function() {
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPosition = window.scrollY;
+                const scrollPercentage = (scrollPosition / scrollHeight) * 100;
+                document.getElementById('scrollProgress').style.width = scrollPercentage + '%';
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.getElementById('mainNav');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Scroll to Top Button
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Enhanced Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        
+                        // Trigger staggered animations for items within the section
+                        if (entry.target.classList.contains('section')) {
+                            const staggerItems = entry.target.querySelectorAll('.stagger-item');
+                            staggerItems.forEach((item, index) => {
+                                setTimeout(() => {
+                                    item.style.transition = `all 0.6s ease ${index * 0.1}s`;
+                                    item.style.opacity = '1';
+                                    item.style.transform = 'translateY(0)';
+                                }, 100);
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections and hero
+            document.querySelectorAll('.section, .hero-section').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Parallax effect for background elements
+            window.addEventListener('scroll', function() {
+                const scrolled = window.scrollY;
+                
+                document.querySelectorAll('.parallax-element').forEach(element => {
+                    const speed = element.dataset.speed || 0.5;
+                    const yPos = -(scrolled * speed);
+                    element.style.transform = `translateY(${yPos}px)`;
+                });
+            });
+
+            // Add active state to navigation based on scroll position
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section[id]');
+                const scrollY = window.pageYOffset;
+
+                sections.forEach(section => {
+                    const sectionHeight = section.offsetHeight;
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelectorAll('.navbar-nav a').forEach(navLink => {
+                            navLink.classList.remove('active');
+                            if (navLink.getAttribute('href') === '#' + sectionId) {
+                                navLink.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Initialize hero animation on page load
+            setTimeout(() => {
+                document.querySelector('.hero-section').classList.add('animated');
+            }, 300);
+        }
+        
+        // Wait for DOM to be fully loaded before initializing
+        document.addEventListener('DOMContentLoaded', initializeApp);
+    </script>
+    
+    <!-- CSS Styles -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css" integrity="sha384-Vq76wejb3QJM4nDatBa5rUOve+9gkegsjCebvV/9fvXlGWo4HCMR4cJZjjcF6Viv" crossorigin="anonymous">
@@ -976,621 +1596,5 @@
             </div>
         </div>
     </div>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // ============================================
-        // CONFIGURATION SECTION - EASILY EDIT LINKS HERE
-        // ============================================
-        
-        // Training Videos Configuration
-        const trainingVideos = [
-            {
-                title: "Essentials Training",
-                url: "https://player.vimeo.com/video/273602720",
-                thumbnail: "https://vumbnail.com/273602720.jpg"
-            },
-            {
-                title: "Online: Introduction",
-                url: "https://player.vimeo.com/video/490924040",
-                thumbnail: "https://vumbnail.com/490924040.jpg"
-            },
-            {
-                title: "Small Group Training",
-                url: "https://player.vimeo.com/video/214170130",
-                thumbnail: "https://vumbnail.com/214170130.jpg"
-            },
-            {
-                title: "Prayer & The Weekend Training",
-                url: "https://player.vimeo.com/video/214170194",
-                thumbnail: "https://vumbnail.com/214170194.jpg"
-            },
-            {
-                title: "Online: Prayer Ministry",
-                url: "https://player.vimeo.com/video/490974388",
-                thumbnail: "https://vumbnail.com/490974388.jpg"
-            }
-        ];
-        
-        // Training Documents Configuration
-        const trainingDocuments = [
-            {
-                title: "Alpha Online - Host Notes",
-                url: "https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view",
-                icon: "fas fa-file-pdf"
-            }
-        ];
-        
-        // Weekly Resources Configuration
-        const weeklyResources = [
-            {
-                week: 1,
-                title: "Is There More To Life Than This?",
-                talk: {
-                    title: "Is There More To Life Than This?",
-                    url: "https://player.vimeo.com/video/184825483"
-                },
-                briefing: {
-                    title: "Host & Helper: Week 1",
-                    url: "https://player.vimeo.com/video/340385686"
-                },
-                guide: {
-                    title: "Guest Guide",
-                    url: "https://drive.google.com/drive/folders/1N2wuDY9YybXy1xsxgcjemgzaoGFzFOXj"
-                }
-            },
-            {
-                week: 2,
-                title: "Who Is Jesus?",
-                talk: {
-                    title: "Who Is Jesus?",
-                    url: "https://player.vimeo.com/video/184825484"
-                },
-                briefing: {
-                    title: "Host & Helper: Week 2",
-                    url: "https://player.vimeo.com/video/340385692"
-                },
-                guide: {
-                    title: "Guest Guide",
-                    url: "https://drive.google.com/file/d/1jttEyvllS8ycR4CDC8f82mvUWGlTg16-/view"
-                }
-            },
-            {
-                week: 3,
-                title: "Why Did Jesus Die?",
-                talk: {
-                    title: "Why Did Jesus Die?",
-                    url: "https://player.vimeo.com/video/250767723"
-                },
-                briefing: {
-                    title: "Host & Helper: Week 3",
-                    url: "https://player.vimeo.com/video/340385698"
-                },
-                guide: {
-                    title: "Guest Guide",
-                    url: "https://drive.google.com/file/d/1LDm9PCstXIIU1gl78HX94eLXRIW2xi0Y/view"
-                }
-            },
-            {
-                week: 4,
-                title: "How Can I Have Faith?",
-                talk: {
-                    title: "How Can I Have Faith?",
-                    url: "https://player.vimeo.com/video/250771916"
-                },
-                briefing: {
-                    title: "Host & Helper: Week 4",
-                    url: "https://player.vimeo.com/video/340385704"
-                },
-                guide: {
-                    title: "Guest Guide",
-                    url: "https://drive.google.com/file/d/1R9wtBc35n3DldO3DrnFMecvD9PtTU4wK/view"
-                }
-            },
-            {
-                week: 5,
-                title: "Why and How Do I Pray?",
-                talk: {
-                    title: "Why and How Do I Pray?",
-                    url: "https://player.vimeo.com/video/250771919"
-                },
-                briefing: {
-                    title: "Host & Helper: Week 5",
-                    url: "https://player.vimeo.com/video/340385710"
-                },
-                guide: {
-                    title: "Guest Guide",
-                    url: "https://drive.google.com/file/d/1J5F89h_vh1YINetIuC5pmMnuUYB6qSGe/view"
-                }
-            },
-            {
-                week: 6,
-                title: "Why and How Should I Read the Bible?",
-                talk: {
-                    title: "Why and How Should I Read the Bible?",
-                    url: "https://player.vimeo.com/video/184825488"
-                },
-                briefing: {
-                    title: "Host & Helper: Week 6",
-                    url: "https://player.vimeo.com/video/340385742"
-                },
-                guide: {
-                    title: "Guest Guide",
-                    url: "https://drive.google.com/file/d/1AIJLM9BV0z-EM5GQlGMrKk1OAbl0JefY/view"
-                }
-            },
-            {
-                week: 7,
-                title: "How Does God Guide Us?",
-                talk: {
-                    title: "How Does God Guide Us?",
-                    url: "https://player.vimeo.com/video/250771931"
-                },
-                briefing: {
-                    title: "Host & Helper: Week 7",
-                    url: "https://player.vimeo.com/video/340385751"
-                },
-                guide: {
-                    title: "Guest Guide",
-                    url: "https://drive.google.com/file/d/1Gd8A8fB32sPo810aLz0Ydd7mj4v0tUJn/view"
-                }
-            },
-            {
-                week: 8,
-                title: "How Can I Resist Evil?",
-                talk: {
-                    title: "How Can I Resist Evil?",
-                    url: "https://player.vimeo.com/video/250771966"
-                },
-                briefing: {
-                    title: "Host & Helper: Week 8",
-                    url: "https://player.vimeo.com/video/340385762"
-                },
-                guide: {
-                    title: "Guest Guide",
-                    url: "https://drive.google.com/file/d/1G_9lYiis0sOzIA3FM-q5BWP_FEonnNfV/view"
-                }
-            },
-            {
-                week: 9,
-                title: "Why and How Should I Tell Others?",
-                talk: {
-                    title: "Why and How Should I Tell Others?",
-                    url: "https://player.vimeo.com/video/184825498"
-                },
-                briefing: {
-                    title: "Host & Helper: Week 9",
-                    url: "https://player.vimeo.com/video/340385769"
-                },
-                guide: {
-                    title: "Guest Guide",
-                    url: "https://drive.google.com/file/d/1kTNr7UaThJlzqxeAMjxqjuBivOplQhex/view"
-                }
-            },
-            {
-                week: 10,
-                title: "Does God Heal Today?",
-                talk: {
-                    title: "Does God Heal Today?",
-                    url: "https://player.vimeo.com/video/184825500"
-                },
-                briefing: {
-                    title: "Host & Helper: Week 10",
-                    url: "https://player.vimeo.com/video/340385776"
-                },
-                guide: {
-                    title: "Guest Guide",
-                    url: "https://drive.google.com/file/d/1zxy6UX9O4hU0FkzbdKficsBck4PV1-tj/view"
-                }
-            },
-            {
-                week: 11,
-                title: "What About The Church?",
-                talk: {
-                    title: "What About The Church?",
-                    url: "https://player.vimeo.com/video/250771976"
-                },
-                briefing: {
-                    title: "Host & Helper: Week 11",
-                    url: "https://player.vimeo.com/video/340385788"
-                },
-                guide: {
-                    title: "Guest Guide",
-                    url: "https://drive.google.com/file/d/1v3UGl1PkaKO6RpelLj6gLplNo5X-kLg_/view"
-                }
-            }
-        ];
-        
-        // Weekend Resources Configuration
-        const weekendResources = {
-            title: "Weekend Away",
-            talks: [
-                {
-                    title: "Introduction To The Weekend",
-                    url: "https://player.vimeo.com/video/184825491"
-                },
-                {
-                    title: "Who Is The Holy Spirit?",
-                    url: "https://player.vimeo.com/video/184825492"
-                },
-                {
-                    title: "What Does The Holy Spirit Do?",
-                    url: "https://player.vimeo.com/video/184825493"
-                },
-                {
-                    title: "How Can I Be Filled With The Holy Spirit?",
-                    url: "https://player.vimeo.com/video/184825495"
-                }
-            ],
-            guides: [
-                {
-                    title: "Holy Spirit Guest Guide",
-                    url: "https://drive.google.com/file/d/1fN1i5ql7BCbHKpk1iRxGlywYJWWnBcXN/view"
-                },
-                {
-                    title: "Holy Spirit Actions Guest Guide",
-                    url: "https://drive.google.com/file/d/1yDghXCu0EBqrQcmjxQNx1nUv5PtTqw96/view"
-                },
-                {
-                    title: "Filled With Holy Spirit Guest Guide",
-                    url: "https://drive.google.com/file/d/1S5wDQykDAsPliN8Tzy7xCA1bpgWgwdm3/view"
-                },
-                {
-                    title: "Making The Most Guest Guide",
-                    url: "https://drive.google.com/file/d/1Jn3Q8vFh2wENFUmHeLIg64-SMujpd-p-/view"
-                }
-            ]
-        };
-        
-        // Additional Guides Configuration
-        const additionalGuides = [
-            {
-                title: "Alpha Team Handbook",
-                description: "Complete guide for running an Alpha course",
-                url: "#",
-                icon: "fas fa-book"
-            },
-            {
-                title: "Promotional Materials",
-                description: "Posters, flyers, and social media templates",
-                url: "#",
-                icon: "fas fa-bullhorn"
-            },
-            {
-                title: "Small Group Leaders Guide",
-                description: "Tips and best practices for facilitators",
-                url: "#",
-                icon: "fas fa-users"
-            }
-        ];
-        
-        // ============================================
-        // END OF CONFIGURATION SECTION
-        // ============================================
-        
-        // Generate Training Videos HTML
-        function generateTrainingVideos() {
-            const container = document.getElementById('trainingGrid');
-            let html = '';
-            
-            // Add video cards
-            trainingVideos.forEach((video, index) => {
-                html += `
-                    <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
-                        <div class="training-video-card" onclick="openVideoModal('${video.url}', '${video.title}')">
-                            <div class="training-video-thumbnail">
-                                <img src="${video.thumbnail}" alt="${video.title}" onerror="this.src='https://picsum.photos/seed/alpha${index}/400/225.jpg'">
-                                <div class="video-overlay">
-                                    <div class="play-button">
-                                        <i class="fas fa-play"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="training-video-info">
-                                <h3 class="training-video-title">${video.title}</h3>
-                                <a href="${video.url}" class="resource-link" onclick="event.stopPropagation()" target="_blank">
-                                    Watch Video <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            // Add document cards
-            trainingDocuments.forEach(doc => {
-                html += `
-                    <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
-                        <div class="resource-card">
-                            <div class="resource-icon">
-                                <i class="${doc.icon}"></i>
-                            </div>
-                            <h3 class="resource-title">${doc.title}</h3>
-                            <a href="${doc.url}" class="resource-link" target="_blank">
-                                Download PDF <i class="fas fa-download"></i>
-                            </a>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            container.innerHTML = html;
-        }
-        
-        // Generate Weekly Resources HTML
-        function generateWeeklyResources() {
-            const container = document.getElementById('weeklyAccordion');
-            let html = '';
-            
-            // Add weekly resources
-            weeklyResources.forEach((week, index) => {
-                const isExpanded = index === 0 ? 'show' : '';
-                const isCollapsed = index === 0 ? '' : 'collapsed';
-                
-                html += `
-                    <div class="accordion-item weekly-accordion">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button ${isCollapsed}" type="button" data-bs-toggle="collapse" data-bs-target="#week${week.week}">
-                                <i class="fas fa-calendar-week me-2"></i> Week ${week.week}: ${week.title}
-                            </button>
-                        </h2>
-                        <div id="week${week.week}" class="accordion-collapse collapse ${isExpanded}" data-bs-parent="#weeklyAccordion">
-                            <div class="accordion-body">
-                                <div class="week-resources">
-                                    <div class="week-resource-card">
-                                        <div class="week-resource-type">
-                                            <i class="fas fa-play-circle me-1"></i> Alpha Talk
-                                        </div>
-                                        <h5 class="week-resource-title">${week.talk.title}</h5>
-                                        <a href="#" class="week-resource-action" onclick="openVideoModal('${week.talk.url}', '${week.talk.title}'); return false;">
-                                            <i class="fas fa-play"></i> Watch Now
-                                        </a>
-                                    </div>
-                                    <div class="week-resource-card">
-                                        <div class="week-resource-type">
-                                            <i class="fas fa-users me-1"></i> Hosts and Helpers Briefing
-                                        </div>
-                                        <h5 class="week-resource-title">${week.briefing.title}</h5>
-                                        <a href="#" class="week-resource-action" onclick="openVideoModal('${week.briefing.url}', '${week.briefing.title}'); return false;">
-                                            <i class="fas fa-play"></i> Watch Now
-                                        </a>
-                                    </div>
-                                    <div class="week-resource-card">
-                                        <div class="week-resource-type">
-                                            <i class="fas fa-file-alt me-1"></i> Session Questions and Guide
-                                        </div>
-                                        <h5 class="week-resource-title">${week.guide.title}</h5>
-                                        <a href="${week.guide.url}" class="week-resource-action" target="_blank">
-                                            <i class="fas fa-download"></i> Download
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            // Add weekend resources
-            html += `
-                <div class="accordion-item weekly-accordion">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#weekend">
-                            <i class="fas fa-calendar-alt me-2"></i> ${weekendResources.title}
-                        </button>
-                    </h2>
-                    <div id="weekend" class="accordion-collapse collapse" data-bs-parent="#weeklyAccordion">
-                        <div class="accordion-body">
-                            <div class="week-resources">
-            `;
-            
-            // Add weekend talks
-            weekendResources.talks.forEach(talk => {
-                html += `
-                    <div class="week-resource-card">
-                        <div class="week-resource-type">
-                            <i class="fas fa-play-circle me-1"></i> Alpha Talk
-                        </div>
-                        <h5 class="week-resource-title">${talk.title}</h5>
-                        <a href="#" class="week-resource-action" onclick="openVideoModal('${talk.url}', '${talk.title}'); return false;">
-                            <i class="fas fa-play"></i> Watch Now
-                        </a>
-                    </div>
-                `;
-            });
-            
-            // Add weekend guides
-            weekendResources.guides.forEach(guide => {
-                html += `
-                    <div class="week-resource-card">
-                        <div class="week-resource-type">
-                            <i class="fas fa-file-alt me-1"></i> Session Questions and Guide
-                        </div>
-                        <h5 class="week-resource-title">${guide.title}</h5>
-                        <a href="${guide.url}" class="week-resource-action" target="_blank">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </div>
-                `;
-            });
-            
-            html += `
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            container.innerHTML = html;
-        }
-        
-        // Generate Additional Guides HTML
-        function generateAdditionalGuides() {
-            const container = document.getElementById('guidesGrid');
-            let html = '';
-            
-            additionalGuides.forEach(guide => {
-                html += `
-                    <div class="col-lg-4 col-md-6 mb-4 guide-item stagger-item">
-                        <div class="guide-card">
-                            <div class="guide-header">
-                                <div class="guide-icon">
-                                    <i class="${guide.icon}"></i>
-                                </div>
-                                <h5 class="guide-title">${guide.title}</h5>
-                            </div>
-                            <p class="guide-description">${guide.description}</p>
-                            <a href="${guide.url}" class="guide-link" target="_blank">
-                                Download <i class="fas fa-download"></i>
-                            </a>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            container.innerHTML = html;
-        }
-        
-        // Initialize all dynamic content
-        document.addEventListener('DOMContentLoaded', function() {
-            generateTrainingVideos();
-            generateWeeklyResources();
-            generateAdditionalGuides();
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Video Modal Function
-        function openVideoModal(videoUrl, title) {
-            const modal = new bootstrap.Modal(document.getElementById('videoModal'));
-            document.getElementById('videoModalTitle').textContent = title;
-            document.getElementById('videoFrame').src = videoUrl;
-            modal.show();
-        }
-
-        // Close modal and stop video
-        document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
-            document.getElementById('videoFrame').src = '';
-        });
-
-        // Scroll Progress Bar
-        window.addEventListener('scroll', function() {
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPosition = window.scrollY;
-            const scrollPercentage = (scrollPosition / scrollHeight) * 100;
-            document.getElementById('scrollProgress').style.width = scrollPercentage + '%';
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('mainNav');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Scroll to Top Button
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-        
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
-        });
-        
-        scrollToTopBtn.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Enhanced Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                    
-                    // Trigger staggered animations for items within the section
-                    if (entry.target.classList.contains('section')) {
-                        const staggerItems = entry.target.querySelectorAll('.stagger-item');
-                        staggerItems.forEach((item, index) => {
-                            setTimeout(() => {
-                                item.style.transition = `all 0.6s ease ${index * 0.1}s`;
-                                item.style.opacity = '1';
-                                item.style.transform = 'translateY(0)';
-                            }, 100);
-                        });
-                    }
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections and hero
-        document.querySelectorAll('.section, .hero-section').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Parallax effect for background elements
-        window.addEventListener('scroll', function() {
-            const scrolled = window.scrollY;
-            
-            document.querySelectorAll('.parallax-element').forEach(element => {
-                const speed = element.dataset.speed || 0.5;
-                const yPos = -(scrolled * speed);
-                element.style.transform = `translateY(${yPos}px)`;
-            });
-        });
-
-        // Add active state to navigation based on scroll position
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section[id]');
-            const scrollY = window.pageYOffset;
-
-            sections.forEach(section => {
-                const sectionHeight = section.offsetHeight;
-                const sectionTop = section.offsetTop - 100;
-                const sectionId = section.getAttribute('id');
-                
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    document.querySelectorAll('.navbar-nav a').forEach(navLink => {
-                        navLink.classList.remove('active');
-                        if (navLink.getAttribute('href') === '#' + sectionId) {
-                            navLink.classList.add('active');
-                        }
-                    });
-                }
-            });
-        });
-
-        // Initialize hero animation on page load
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.querySelector('.hero-section').classList.add('animated');
-            }, 300);
-        });
-    </script>
 </body>
 </html>
