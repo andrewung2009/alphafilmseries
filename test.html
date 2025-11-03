@@ -683,35 +683,6 @@
             transform: translateX(3px);
         }
 
-        /* Search Bar */
-        .search-container {
-            max-width: 500px;
-            margin: 0 auto 3rem;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .section.animated .search-container {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.6s ease 0.3s;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 1rem 3rem 1rem 1.5rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 50px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(239, 83, 80, 0.1);
-        }
-
         /* Parallax Elements */
         .parallax-element {
             position: absolute;
@@ -914,10 +885,6 @@
                 <h2 class="section-title">Team Training</h2>
                 <p class="section-subtitle">Essential training resources for your Alpha team</p>
             </div>
-            
-            <div class="search-container">
-                <input type="text" class="search-input" id="trainingSearch" placeholder="Search training resources...">
-            </div>
 
             <div class="row" id="trainingGrid">
                 <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
@@ -1039,10 +1006,6 @@
             <div class="text-center mb-5">
                 <h2 class="section-title">Weekly Resources</h2>
                 <p class="section-subtitle">All resources for each week in one place</p>
-            </div>
-
-            <div class="search-container">
-                <input type="text" class="search-input" id="weeklySearch" placeholder="Search weekly resources...">
             </div>
 
             <div class="accordion" id="weeklyAccordion">
@@ -1609,10 +1572,6 @@
                 <p class="section-subtitle">Extra guides and materials for your Alpha course</p>
             </div>
 
-            <div class="search-container">
-                <input type="text" class="search-input" id="guidesSearch" placeholder="Search additional resources...">
-            </div>
-
             <div class="row" id="guidesGrid">
                 <div class="col-lg-4 col-md-6 mb-4 guide-item stagger-item">
                     <div class="guide-card">
@@ -1742,70 +1701,6 @@
         // Close modal and stop video
         document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
             document.getElementById('videoFrame').src = '';
-        });
-
-        // Search functionality for Training
-        document.getElementById('trainingSearch').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const items = document.querySelectorAll('.training-item');
-            
-            items.forEach(item => {
-                const title = item.querySelector('.training-video-title, .resource-title').textContent.toLowerCase();
-                const description = item.querySelector('.training-video-description, .resource-description')?.textContent.toLowerCase() || '';
-                
-                if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-
-        // Search functionality for Weekly Resources
-        document.getElementById('weeklySearch').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const accordions = document.querySelectorAll('.weekly-accordion');
-            
-            accordions.forEach(accordion => {
-                const title = accordion.querySelector('.accordion-button').textContent.toLowerCase();
-                const resources = accordion.querySelectorAll('.week-resource-card');
-                let hasVisibleResource = false;
-                
-                resources.forEach(resource => {
-                    const resourceTitle = resource.querySelector('.week-resource-title').textContent.toLowerCase();
-                    const resourceType = resource.querySelector('.week-resource-type').textContent.toLowerCase();
-                    
-                    if (resourceTitle.includes(searchTerm) || resourceType.includes(searchTerm) || title.includes(searchTerm)) {
-                        resource.style.display = 'block';
-                        hasVisibleResource = true;
-                    } else {
-                        resource.style.display = 'none';
-                    }
-                });
-                
-                if (hasVisibleResource || title.includes(searchTerm)) {
-                    accordion.style.display = 'block';
-                } else {
-                    accordion.style.display = 'none';
-                }
-            });
-        });
-
-        // Search functionality for Guides
-        document.getElementById('guidesSearch').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const items = document.querySelectorAll('.guide-item');
-            
-            items.forEach(item => {
-                const title = item.querySelector('.guide-title').textContent.toLowerCase();
-                const description = item.querySelector('.guide-description').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
         });
 
         // Scroll Progress Bar
