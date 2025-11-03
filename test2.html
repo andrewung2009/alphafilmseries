@@ -527,27 +527,31 @@
                                                 <i class="fas fa-snowflake me-1"></i> Icebreaker
                                             </div>
                                             <h5 class="week-resource-title">${week.icebreaker.title}</h5>
-                                            <a href="#" class="week-resource-action" onclick="openContentModal('icebreaker', ${week.week}); return false;">
-                                                <i class="fas fa-eye"></i> View
-                                            </a>
+                                            <div class="week-resource-content">
+                                                <p>${week.icebreaker.content}</p>
+                                            </div>
                                         </div>
                                         <div class="week-resource-card">
                                             <div class="week-resource-type">
                                                 <i class="fas fa-comments me-1"></i> Discussion Questions
                                             </div>
                                             <h5 class="week-resource-title">${week.discussion.title}</h5>
-                                            <a href="#" class="week-resource-action" onclick="openContentModal('discussion', ${week.week}); return false;">
-                                                <i class="fas fa-eye"></i> View
-                                            </a>
+                                            <div class="week-resource-content">
+                                                <ul>
+                                                    ${week.discussion.content.map(question => `<li>${question}</li>`).join('')}
+                                                </ul>
+                                            </div>
                                         </div>
                                         <div class="week-resource-card">
                                             <div class="week-resource-type">
                                                 <i class="fas fa-lightbulb me-1"></i> Tips
                                             </div>
                                             <h5 class="week-resource-title">${week.tips.title}</h5>
-                                            <a href="#" class="week-resource-action" onclick="openContentModal('tips', ${week.week}); return false;">
-                                                <i class="fas fa-eye"></i> View
-                                            </a>
+                                            <div class="week-resource-content">
+                                                <ul>
+                                                    ${week.tips.content.map(tip => `<li>${tip}</li>`).join('')}
+                                                </ul>
+                                            </div>
                                         </div>
                                         <div class="week-resource-card">
                                             <div class="week-resource-type">
@@ -664,40 +668,6 @@
                 const modal = new bootstrap.Modal(document.getElementById('videoModal'));
                 document.getElementById('videoModalTitle').textContent = title;
                 document.getElementById('videoFrame').src = videoUrl;
-                modal.show();
-            }
-
-            // Content Modal Function for Icebreakers, Discussion Questions, and Tips
-            window.openContentModal = function(type, weekNumber) {
-                const week = weeklyResources.find(w => w.week === weekNumber);
-                if (!week) return;
-                
-                let content = '';
-                let title = '';
-                
-                if (type === 'icebreaker') {
-                    title = week.icebreaker.title;
-                    content = `<p>${week.icebreaker.content}</p>`;
-                } else if (type === 'discussion') {
-                    title = week.discussion.title;
-                    content = '<ul>';
-                    week.discussion.content.forEach(question => {
-                        content += `<li>${question}</li>`;
-                    });
-                    content += '</ul>';
-                } else if (type === 'tips') {
-                    title = week.tips.title;
-                    content = '<ul>';
-                    week.tips.content.forEach(tip => {
-                        content += `<li>${tip}</li>`;
-                    });
-                    content += '</ul>';
-                }
-                
-                document.getElementById('contentModalTitle').textContent = title;
-                document.getElementById('contentModalBody').innerHTML = content;
-                
-                const modal = new bootstrap.Modal(document.getElementById('contentModal'));
                 modal.show();
             }
 
@@ -1540,6 +1510,28 @@
             transform: translateX(3px);
         }
 
+        .week-resource-content {
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .week-resource-content p {
+            margin-bottom: 0;
+        }
+
+        .week-resource-content ul {
+            margin-bottom: 0;
+            padding-left: 1.2rem;
+        }
+
+        .week-resource-content li {
+            margin-bottom: 0.3rem;
+        }
+
         /* Weekend Resource Card Styles */
         .weekend-resource-card {
             background: white;
@@ -1769,7 +1761,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#home">
-                <i class="fas fa-question" style="transform: skewX(-15deg); color: #c62828; margin-right: 8px;"></i>Alpha Resource Hub
+                <img src="assets/alphalogo.jpg" alt="Alpha Logo">
+                Alpha Resource Hub
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -1806,12 +1799,6 @@
                 <h1 class="hero-title">Alpha Resource Hub for Hosts and Helpers</h1>
                 <p class="hero-subtitle">Equipping you to create welcoming spaces for conversations about life, faith and God.</p>
                 <div class="hero-buttons">
-                    <a href="#getready" class="btn btn-light btn-lg me-3 px-4">
-                        <i class="fas fa-play-circle me-2"></i>Get Started
-                    </a>
-                    <a href="#weekly" class="btn btn-outline-light btn-lg px-4">
-                        <i class="fas fa-play me-2"></i>Week-by-Week Guide
-                    </a>
                 </div>
             </div>
         </div>
@@ -2037,21 +2024,6 @@
                     <div style="padding:56.25% 0 0 0;position:relative;">
                         <iframe id="videoFrame" src="" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Content Modal for Icebreakers, Discussion Questions, and Tips -->
-    <div class="modal fade" id="contentModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="contentModalTitle">Content Title</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body" id="contentModalBody">
-                    <!-- Content will be dynamically inserted here -->
                 </div>
             </div>
         </div>
