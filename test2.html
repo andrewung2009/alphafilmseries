@@ -1,0 +1,2085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Resource Hub for Hosts and Helpers</title>
+    
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // ============================================
+        // CONFIGURATION SECTION - EASILY EDIT LINKS HERE
+        // ============================================
+        
+        // Training Videos Configuration
+        const trainingVideos = [
+            {
+                title: "Alpha Training: The Essentials",
+                url: "https://player.vimeo.com/video/273602720",
+                thumbnail: "https://vumbnail.com/273602720.jpg"
+            },
+            {
+                title: "Alpha Onsite Small Group Training",
+                url: "https://player.vimeo.com/video/214170130",
+                thumbnail: "https://vumbnail.com/214170130.jpg"
+            },
+            {
+                title: "Alpha Online Small Group Training",
+                url: "https://player.vimeo.com/video/490924040",
+                thumbnail: "https://vumbnail.com/490924040.jpg"
+            },
+            {
+                title: "Alpha Training: Prayer & The Weekend",
+                url: "https://player.vimeo.com/video/214170194",
+                thumbnail: "https://vumbnail.com/214170194.jpg"
+            },
+            {
+                title: "Alpha Training: Prayer Ministry",
+                url: "https://player.vimeo.com/video/490974388",
+                thumbnail: "https://vumbnail.com/490974388.jpg"
+            }
+        ];
+        
+        // Training Documents Configuration
+        const trainingDocuments = [
+            {
+                title: "Alpha Online - Host Notes",
+                url: "https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view",
+                icon: "fas fa-file-pdf"
+            }
+        ];
+        
+        // Weekly Resources Configuration
+        const weeklyResources = [
+            {
+                week: 1,
+                title: "Is There More To Life Than This?",
+                talk: {
+                    title: "Is There More To Life Than This?",
+                    url: "https://player.vimeo.com/video/184825483"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 1",
+                    url: "https://player.vimeo.com/video/340385686"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/drive/folders/1N2wuDY9YybXy1xsxgcjemgzaoGFzFOXj"
+                },
+                icebreaker: {
+                    title: "Icebreaker",
+                    content: "Say your name with an adjective that starts with the same letter as your name. It can describe you or just be something fun. For example, 'Gentle George,' 'Brilliant Bella,' or 'Curious Chloe.' The fun part? Each person has to repeat everyone's name and adjective who came before them—then add their own!"
+                },
+                discussion: {
+                    title: "Discussion Questions",
+                    content: ["What made you decide to do Alpha?", "If you could ask God a question, what would you ask?", "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"]
+                },
+                tips: {
+                    title: "Tips",
+                    content: ["Arrive early. Make guests feel welcomed and cared for.", "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.", "Finish on time."]
+                }
+            },
+            {
+                week: 2,
+                title: "Who Is Jesus?",
+                talk: {
+                    title: "Who Is Jesus?",
+                    url: "https://player.vimeo.com/video/184825484"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 2",
+                    url: "https://player.vimeo.com/video/340385692"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1jttEyvllS8ycR4CDC8f82mvUWGlTg16-/view"
+                },
+                icebreaker: {
+                    title: "Icebreaker",
+                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                },
+                discussion: {
+                    title: "Discussion Questions",
+                    content: ["What made you decide to do Alpha?", "If you could ask God a question, what would you ask?", "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"]
+                },
+                tips: {
+                    title: "Tips",
+                    content: ["Arrive early. Make guests feel welcomed and cared for.", "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.", "Finish on time."]
+                }
+            },
+            {
+                week: 3,
+                title: "Why Did Jesus Die?",
+                talk: {
+                    title: "Why Did Jesus Die?",
+                    url: "https://player.vimeo.com/video/250767723"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 3",
+                    url: "https://player.vimeo.com/video/340385698"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1LDm9PCstXIIU1gl78HX94eLXRIW2xi0Y/view"
+                },
+                icebreaker: {
+                    title: "Icebreaker",
+                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                },
+                discussion: {
+                    title: "Discussion Questions",
+                    content: ["What made you decide to do Alpha?", "If you could ask God a question, what would you ask?", "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"]
+                },
+                tips: {
+                    title: "Tips",
+                    content: ["Arrive early. Make guests feel welcomed and cared for.", "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.", "Finish on time."]
+                }
+            },
+            {
+                week: 4,
+                title: "How Can I Have Faith?",
+                talk: {
+                    title: "How Can I Have Faith?",
+                    url: "https://player.vimeo.com/video/250771916"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 4",
+                    url: "https://player.vimeo.com/video/340385704"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1R9wtBc35n3DldO3DrnFMecvD9PtTU4wK/view"
+                },
+                icebreaker: {
+                    title: "Icebreaker",
+                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                },
+                discussion: {
+                    title: "Discussion Questions",
+                    content: ["What made you decide to do Alpha?", "If you could ask God a question, what would you ask?", "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"]
+                },
+                tips: {
+                    title: "Tips",
+                    content: ["Arrive early. Make guests feel welcomed and cared for.", "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.", "Finish on time."]
+                }
+            },
+            {
+                week: 5,
+                title: "Why and How Do I Pray?",
+                talk: {
+                    title: "Why and How Do I Pray?",
+                    url: "https://player.vimeo.com/video/250771919"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 5",
+                    url: "https://player.vimeo.com/video/340385710"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1J5F89h_vh1YINetIuC5pmMnuUYB6qSGe/view"
+                },
+                icebreaker: {
+                    title: "Icebreaker",
+                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                },
+                discussion: {
+                    title: "Discussion Questions",
+                    content: ["What made you decide to do Alpha?", "If you could ask God a question, what would you ask?", "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"]
+                },
+                tips: {
+                    title: "Tips",
+                    content: ["Arrive early. Make guests feel welcomed and cared for.", "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.", "Finish on time."]
+                }
+            },
+            {
+                week: 6,
+                title: "Why and How Should I Read the Bible?",
+                talk: {
+                    title: "Why and How Should I Read the Bible?",
+                    url: "https://player.vimeo.com/video/184825488"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 6",
+                    url: "https://player.vimeo.com/video/340385742"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1AIJLM9BV0z-EM5GQlGMrKk1OAbl0JefY/view"
+                },
+                icebreaker: {
+                    title: "Icebreaker",
+                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                },
+                discussion: {
+                    title: "Discussion Questions",
+                    content: ["What made you decide to do Alpha?", "If you could ask God a question, what would you ask?", "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"]
+                },
+                tips: {
+                    title: "Tips",
+                    content: ["Arrive early. Make guests feel welcomed and cared for.", "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.", "Finish on time."]
+                }
+            },
+            {
+                week: 7,
+                title: "How Does God Guide Us?",
+                talk: {
+                    title: "How Does God Guide Us?",
+                    url: "https://player.vimeo.com/video/250771931"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 7",
+                    url: "https://player.vimeo.com/video/340385751"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1Gd8A8fB32sPo810aLz0Ydd7mj4v0tUJn/view"
+                },
+                icebreaker: {
+                    title: "Icebreaker",
+                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                },
+                discussion: {
+                    title: "Discussion Questions",
+                    content: ["What made you decide to do Alpha?", "If you could ask God a question, what would you ask?", "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"]
+                },
+                tips: {
+                    title: "Tips",
+                    content: ["Arrive early. Make guests feel welcomed and cared for.", "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.", "Finish on time."]
+                }
+            },
+            {
+                week: 8,
+                title: "How Can I Resist Evil?",
+                talk: {
+                    title: "How Can I Resist Evil?",
+                    url: "https://player.vimeo.com/video/250771966"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 8",
+                    url: "https://player.vimeo.com/video/340385762"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1G_9lYiis0sOzIA3FM-q5BWP_FEonnNfV/view"
+                },
+                icebreaker: {
+                    title: "Icebreaker",
+                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                },
+                discussion: {
+                    title: "Discussion Questions",
+                    content: ["What made you decide to do Alpha?", "If you could ask God a question, what would you ask?", "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"]
+                },
+                tips: {
+                    title: "Tips",
+                    content: ["Arrive early. Make guests feel welcomed and cared for.", "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.", "Finish on time."]
+                }
+            },
+            {
+                week: 9,
+                title: "Why and How Should I Tell Others?",
+                talk: {
+                    title: "Why and How Should I Tell Others?",
+                    url: "https://player.vimeo.com/video/184825498"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 9",
+                    url: "https://player.vimeo.com/video/340385769"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1kTNr7UaThJlzqxeAMjxqjuBivOplQhex/view"
+                },
+                icebreaker: {
+                    title: "Icebreaker",
+                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                },
+                discussion: {
+                    title: "Discussion Questions",
+                    content: ["What made you decide to do Alpha?", "If you could ask God a question, what would you ask?", "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"]
+                },
+                tips: {
+                    title: "Tips",
+                    content: ["Arrive early. Make guests feel welcomed and cared for.", "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.", "Finish on time."]
+                }
+            },
+            {
+                week: 10,
+                title: "Does God Heal Today?",
+                talk: {
+                    title: "Does God Heal Today?",
+                    url: "https://player.vimeo.com/video/184825500"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 10",
+                    url: "https://player.vimeo.com/video/340385776"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1zxy6UX9O4hU0FkzbdKficsBck4PV1-tj/view"
+                },
+                icebreaker: {
+                    title: "Icebreaker",
+                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                },
+                discussion: {
+                    title: "Discussion Questions",
+                    content: ["What made you decide to do Alpha?", "If you could ask God a question, what would you ask?", "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"]
+                },
+                tips: {
+                    title: "Tips",
+                    content: ["Arrive early. Make guests feel welcomed and cared for.", "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.", "Finish on time."]
+                }
+            },
+            {
+                week: 11,
+                title: "What About The Church?",
+                talk: {
+                    title: "What About The Church?",
+                    url: "https://player.vimeo.com/video/250771976"
+                },
+                briefing: {
+                    title: "Host & Helper: Week 11",
+                    url: "https://player.vimeo.com/video/340385788"
+                },
+                guide: {
+                    title: "Guest Guide",
+                    url: "https://drive.google.com/file/d/1v3UGl1PkaKO6RpelLj6gLplNo5X-kLg_/view"
+                },
+                icebreaker: {
+                    title: "Icebreaker",
+                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                },
+                discussion: {
+                    title: "Discussion Questions",
+                    content: ["What made you decide to do Alpha?", "If you could ask God a question, what would you ask?", "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"]
+                },
+                tips: {
+                    title: "Tips",
+                    content: ["Arrive early. Make guests feel welcomed and cared for.", "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.", "Finish on time."]
+                }
+            }
+        ];
+        
+        // Weekend Resources Configuration
+        const weekendResources = {
+            title: "Weekend Away",
+            talks: [
+                {
+                    title: "Introduction to the weekend",
+                    url: "https://player.vimeo.com/video/184825491"
+                },
+                {
+                    title: "Who is the Holy Spirit?",
+                    url: "https://player.vimeo.com/video/184825492"
+                },
+                {
+                    title: "What does the Holy Spirit do?",
+                    url: "https://player.vimeo.com/video/184825493"
+                },
+                {
+                    title: "How can I be filled with the Holy Spirit?",
+                    url: "https://player.vimeo.com/video/184825495"
+                },
+                {
+                    title: "How can I make the most out of the rest of my life?",
+                    url: "https://player.vimeo.com/video/184825496"
+                }
+            ],
+            guides: [
+                {
+                    title: "Holy Spirit Guest Guide",
+                    url: "https://drive.google.com/file/d/1fN1i5ql7BCbHKpk1iRxGlywYJWWnBcXN/view"
+                },
+                {
+                    title: "Holy Spirit Actions Guest Guide",
+                    url: "https://drive.google.com/file/d/1yDghXCu0EBqrQcmjxQNx1nUv5PtTqw96/view"
+                },
+                {
+                    title: "Filled With Holy Spirit Guest Guide",
+                    url: "https://drive.google.com/file/d/1S5wDQykDAsPliN8Tzy7xCA1bpgWgwdm3/view"
+                },
+                {
+                    title: "Making The Most Guest Guide",
+                    url: "https://drive.google.com/file/d/1Jn3Q8vFh2wENFUmHeLIg64-SMujpd-p-/view"
+                }
+            ]
+        };
+        
+        // Additional Guides Configuration
+        const additionalGuides = [
+            {
+                title: "Alpha Team Handbook",
+                description: "Complete guide for running an Alpha course",
+                url: "#",
+                icon: "fas fa-book"
+            },
+            {
+                title: "Promotional Materials",
+                description: "Posters, flyers, and social media templates",
+                url: "#",
+                icon: "fas fa-bullhorn"
+            },
+            {
+                title: "Small Group Leaders Guide",
+                description: "Tips and best practices for facilitators",
+                url: "#",
+                icon: "fas fa-users"
+            }
+        ];
+        
+        // ============================================
+        // END OF CONFIGURATION SECTION
+        // ============================================
+        
+        // Function to initialize everything after DOM is loaded
+        function initializeApp() {
+            // Generate Training Videos HTML
+            function generateTrainingVideos() {
+                const container = document.getElementById('trainingGrid');
+                let html = '';
+                
+                // Add video cards
+                trainingVideos.forEach((video, index) => {
+                    html += `
+                        <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
+                            <div class="training-video-card" onclick="openVideoModal('${video.url}', '${video.title}')">
+                                <div class="training-video-thumbnail">
+                                    <img src="${video.thumbnail}" alt="${video.title}" onerror="this.src='https://picsum.photos/seed/alpha${index}/400/225.jpg'">
+                                    <div class="video-overlay">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="training-video-info">
+                                    <h3 class="training-video-title">${video.title}</h3>
+                                    <a href="${video.url}" class="resource-link" onclick="event.stopPropagation()" target="_blank">
+                                        Watch Video <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                // Add document cards
+                trainingDocuments.forEach(doc => {
+                    html += `
+                        <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
+                            <div class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="${doc.icon}"></i>
+                                </div>
+                                <h3 class="resource-title">${doc.title}</h3>
+                                <a href="${doc.url}" class="resource-link" target="_blank">
+                                    Download PDF <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+            }
+            
+            // Generate Weekly Resources HTML (without weekend)
+            function generateWeeklyResources() {
+                const container = document.getElementById('weeklyAccordion');
+                let html = '';
+                
+                // Add weekly resources only
+                weeklyResources.forEach((week, index) => {
+                    const isExpanded = index === 0 ? 'show' : '';
+                    const isCollapsed = index === 0 ? '' : 'collapsed';
+                    
+                    html += `
+                        <div class="accordion-item weekly-accordion">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button ${isCollapsed}" type="button" data-bs-toggle="collapse" data-bs-target="#week${week.week}">
+                                    <i class="fas fa-calendar-week me-2"></i> Week ${week.week}: ${week.title}
+                                </button>
+                            </h2>
+                            <div id="week${week.week}" class="accordion-collapse collapse ${isExpanded}" data-bs-parent="#weeklyAccordion">
+                                <div class="accordion-body">
+                                    <div class="week-resources">
+                                        <div class="week-resource-card">
+                                            <div class="week-resource-type">
+                                                <i class="fas fa-play-circle me-1"></i> Alpha Talk
+                                            </div>
+                                            <h5 class="week-resource-title">${week.talk.title}</h5>
+                                            <a href="#" class="week-resource-action" onclick="openVideoModal('${week.talk.url}', '${week.talk.title}'); return false;">
+                                                <i class="fas fa-play"></i> Watch Now
+                                            </a>
+                                        </div>
+                                        <div class="week-resource-card">
+                                            <div class="week-resource-type">
+                                                <i class="fas fa-users me-1"></i> Hosts and Helpers Briefing
+                                            </div>
+                                            <h5 class="week-resource-title">${week.briefing.title}</h5>
+                                            <a href="#" class="week-resource-action" onclick="openVideoModal('${week.briefing.url}', '${week.briefing.title}'); return false;">
+                                                <i class="fas fa-play"></i> Watch Now
+                                            </a>
+                                        </div>
+                                        <div class="week-resource-card">
+                                            <div class="week-resource-type">
+                                                <i class="fas fa-snowflake me-1"></i> Icebreaker
+                                            </div>
+                                            <h5 class="week-resource-title">${week.icebreaker.title}</h5>
+                                            <a href="#" class="week-resource-action" onclick="openContentModal('icebreaker', ${week.week}); return false;">
+                                                <i class="fas fa-eye"></i> View
+                                            </a>
+                                        </div>
+                                        <div class="week-resource-card">
+                                            <div class="week-resource-type">
+                                                <i class="fas fa-comments me-1"></i> Discussion Questions
+                                            </div>
+                                            <h5 class="week-resource-title">${week.discussion.title}</h5>
+                                            <a href="#" class="week-resource-action" onclick="openContentModal('discussion', ${week.week}); return false;">
+                                                <i class="fas fa-eye"></i> View
+                                            </a>
+                                        </div>
+                                        <div class="week-resource-card">
+                                            <div class="week-resource-type">
+                                                <i class="fas fa-lightbulb me-1"></i> Tips
+                                            </div>
+                                            <h5 class="week-resource-title">${week.tips.title}</h5>
+                                            <a href="#" class="week-resource-action" onclick="openContentModal('tips', ${week.week}); return false;">
+                                                <i class="fas fa-eye"></i> View
+                                            </a>
+                                        </div>
+                                        <div class="week-resource-card">
+                                            <div class="week-resource-type">
+                                                <i class="fas fa-file-alt me-1"></i> Guest Guide
+                                            </div>
+                                            <h5 class="week-resource-title">${week.guide.title}</h5>
+                                            <a href="${week.guide.url}" class="week-resource-action" target="_blank">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+            }
+            
+            // Generate Weekend Resources HTML
+            function generateWeekendResources() {
+                const talksContainer = document.getElementById('weekendTalks');
+                const guidesContainer = document.getElementById('weekendGuides');
+                
+                // Generate talks
+                let talksHtml = '';
+                weekendResources.talks.forEach((talk, index) => {
+                    talksHtml += `
+                        <div class="col-md-6 mb-3">
+                            <div class="weekend-resource-card">
+                                <div class="weekend-resource-icon">
+                                    <i class="fas fa-play-circle"></i>
+                                </div>
+                                <h5 class="weekend-resource-title">${talk.title}</h5>
+                                <a href="#" class="weekend-resource-action" onclick="openVideoModal('${talk.url}', '${talk.title}'); return false;">
+                                    <i class="fas fa-play"></i> Watch Now
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                });
+                talksContainer.innerHTML = talksHtml;
+                
+                // Generate guides
+                let guidesHtml = '';
+                weekendResources.guides.forEach((guide, index) => {
+                    guidesHtml += `
+                        <div class="col-md-6 mb-3">
+                            <div class="weekend-resource-card">
+                                <div class="weekend-resource-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <h5 class="weekend-resource-title">${guide.title}</h5>
+                                <a href="${guide.url}" class="weekend-resource-action" target="_blank">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                });
+                guidesContainer.innerHTML = guidesHtml;
+            }
+            
+            // Generate Additional Guides HTML
+            function generateAdditionalGuides() {
+                const container = document.getElementById('guidesGrid');
+                let html = '';
+                
+                additionalGuides.forEach(guide => {
+                    html += `
+                        <div class="col-lg-4 col-md-6 mb-4 guide-item stagger-item">
+                            <div class="guide-card">
+                                <div class="guide-header">
+                                    <div class="guide-icon">
+                                        <i class="${guide.icon}"></i>
+                                    </div>
+                                    <h5 class="guide-title">${guide.title}</h5>
+                                </div>
+                                <p class="guide-description">${guide.description}</p>
+                                <a href="${guide.url}" class="guide-link" target="_blank">
+                                    Download <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+            }
+            
+            // Initialize all dynamic content
+            generateTrainingVideos();
+            generateWeeklyResources();
+            generateWeekendResources();
+            generateAdditionalGuides();
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Video Modal Function
+            window.openVideoModal = function(videoUrl, title) {
+                const modal = new bootstrap.Modal(document.getElementById('videoModal'));
+                document.getElementById('videoModalTitle').textContent = title;
+                document.getElementById('videoFrame').src = videoUrl;
+                modal.show();
+            }
+
+            // Content Modal Function for Icebreakers, Discussion Questions, and Tips
+            window.openContentModal = function(type, weekNumber) {
+                const week = weeklyResources.find(w => w.week === weekNumber);
+                if (!week) return;
+                
+                let content = '';
+                let title = '';
+                
+                if (type === 'icebreaker') {
+                    title = week.icebreaker.title;
+                    content = `<p>${week.icebreaker.content}</p>`;
+                } else if (type === 'discussion') {
+                    title = week.discussion.title;
+                    content = '<ul>';
+                    week.discussion.content.forEach(question => {
+                        content += `<li>${question}</li>`;
+                    });
+                    content += '</ul>';
+                } else if (type === 'tips') {
+                    title = week.tips.title;
+                    content = '<ul>';
+                    week.tips.content.forEach(tip => {
+                        content += `<li>${tip}</li>`;
+                    });
+                    content += '</ul>';
+                }
+                
+                document.getElementById('contentModalTitle').textContent = title;
+                document.getElementById('contentModalBody').innerHTML = content;
+                
+                const modal = new bootstrap.Modal(document.getElementById('contentModal'));
+                modal.show();
+            }
+
+            // Close modal and stop video
+            document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+                document.getElementById('videoFrame').src = '';
+            });
+
+            // Scroll Progress Bar
+            window.addEventListener('scroll', function() {
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPosition = window.scrollY;
+                const scrollPercentage = (scrollPosition / scrollHeight) * 100;
+                document.getElementById('scrollProgress').style.width = scrollPercentage + '%';
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.getElementById('mainNav');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Enhanced Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        
+                        // Trigger staggered animations for items within the section
+                        if (entry.target.classList.contains('section')) {
+                            const staggerItems = entry.target.querySelectorAll('.stagger-item');
+                            staggerItems.forEach((item, index) => {
+                                setTimeout(() => {
+                                    item.style.transition = `all 0.6s ease ${index * 0.1}s`;
+                                    item.style.opacity = '1';
+                                    item.style.transform = 'translateY(0)';
+                                }, 100);
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections and hero
+            document.querySelectorAll('.section, .hero-section').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Parallax effect for background elements
+            window.addEventListener('scroll', function() {
+                const scrolled = window.scrollY;
+                
+                document.querySelectorAll('.parallax-element').forEach(element => {
+                    const speed = element.dataset.speed || 0.5;
+                    const yPos = -(scrolled * speed);
+                    element.style.transform = `translateY(${yPos}px)`;
+                });
+            });
+
+            // Add active state to navigation based on scroll position
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section[id]');
+                const scrollY = window.pageYOffset;
+
+                sections.forEach(section => {
+                    const sectionHeight = section.offsetHeight;
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelectorAll('.navbar-nav a').forEach(navLink => {
+                            navLink.classList.remove('active');
+                            if (navLink.getAttribute('href') === '#' + sectionId) {
+                                navLink.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Initialize hero animation on page load
+            setTimeout(() => {
+                document.querySelector('.hero-section').classList.add('animated');
+            }, 300);
+        }
+        
+        // Wait for DOM to be fully loaded before initializing
+        document.addEventListener('DOMContentLoaded', initializeApp);
+    </script>
+    
+    <!-- CSS Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css" integrity="sha384-Vq76wejb3QJM4nDatBa5rUOve+9gkegsjCebvV/9fvXlGWo4HCMR4cJZjjcF6Viv" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans%3Aital%2Cwght%400%2C100..900%3B1%2C100..900&#038;ver=6.7.2" media="all">
+    <style>
+        :root {
+            --primary-color: #c62828;
+            --secondary-color: #ef5350;
+            --accent-color: #ff9800;
+            --light-bg: #ffebee;
+            --text-dark: #b71c1c;
+            --text-light: #d32f2f;
+            --beige-color: #f5f5dc;
+            --blue-color: #3b82f6;
+            --grey-color: #e5e7eb;
+            --pink-color: #f9a8d4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+            padding-top: 76px; /* Account for fixed navbar */
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            z-index: 9999;
+            transition: width 0.2s ease;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            overflow: hidden;
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(0deg);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Header Styles */
+        .navbar {
+            background-color: var(--beige-color) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            z-index: 1030; /* Bootstrap's modal z-index is 1050, navbar should be below that but above everything else */
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #000000 !important;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            height: 30px;
+            margin-right: 8px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #000000 !important;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+            padding: 0.5rem 1rem !important;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #000000;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 80%;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile navbar styles */
+        .navbar-toggler {
+            border: none;
+            padding: 0.25rem 0.5rem;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background-color: var(--beige-color);
+                padding: 1rem;
+                border-radius: 0 0 10px 10px;
+                margin-top: 0.5rem;
+            }
+            
+            .navbar-nav {
+                padding: 0.5rem 0;
+            }
+            
+            .navbar-nav .nav-link {
+                padding: 0.75rem 1rem !important;
+                margin: 0.25rem 0;
+            }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: var(--beige-color);
+            color: #000000;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23000000" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,133.3C960,128,1056,96,1152,90.7C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-buttons {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-section.animated .hero-title,
+        .hero-section.animated .hero-subtitle,
+        .hero-section.animated .hero-buttons {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-section.animated .hero-title {
+            transition: all 0.8s ease;
+        }
+
+        .hero-section.animated .hero-subtitle {
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .hero-section.animated .hero-buttons {
+            transition: all 0.8s ease 0.4s;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section-subtitle {
+            color: #000000;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .section-title,
+        .section.animated .section-subtitle {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.animated .section-title {
+            transition: all 0.6s ease;
+        }
+
+        .section.animated .section-subtitle {
+            transition: all 0.6s ease 0.2s;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* Get Ready Section */
+        #getready {
+            background-color: var(--blue-color);
+        }
+
+        #getready .section-title,
+        #getready .section-subtitle {
+            color: #000000;
+        }
+
+        /* Week-by-Week Guide Section */
+        #weekly {
+            background-color: var(--grey-color);
+        }
+
+        #weekly .section-title,
+        #weekly .section-subtitle {
+            color: #000000;
+        }
+
+        /* Weekend Away Section */
+        #weekend {
+            background-color: var(--beige-color);
+        }
+
+        #weekend .section-title,
+        #weekend .section-subtitle {
+            color: #000000;
+        }
+
+        /* FAQs Section */
+        #faqs {
+            background-color: var(--blue-color);
+        }
+
+        #faqs .section-title,
+        #faqs .section-subtitle {
+            color: #000000;
+        }
+
+        /* Make Alpha Better Section */
+        #makebetter {
+            background-color: var(--grey-color);
+        }
+
+        #makebetter .section-title,
+        #makebetter .section-subtitle {
+            color: #000000;
+        }
+
+        /* Additional Resources Section */
+        #guides {
+            background-color: var(--pink-color);
+        }
+
+        #guides .section-title,
+        #guides .section-subtitle {
+            color: #000000;
+        }
+
+        /* Card Styles */
+        .resource-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            height: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .resource-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary-color), #ef9a9a);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .resource-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-description {
+            color: #000000;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .resource-link:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        /* Video Card Styles */
+        .video-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .video-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .video-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .video-card:hover .video-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .video-card:hover .play-button {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-title {
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Training Video Card Styles */
+        .training-video-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .training-video-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .training-video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .training-video-thumbnail {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .training-video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .training-video-card:hover .training-video-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .training-video-info {
+            padding: 1.5rem;
+        }
+
+        .training-video-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 0.5rem;
+        }
+
+        .training-video-description {
+            color: #000000;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Guest Guide Card Styles */
+        .guide-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .guide-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .guide-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .guide-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff9800, #ffb74d);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+            font-size: 1.3rem;
+        }
+
+        .guide-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #000000;
+            line-height: 1.3;
+        }
+
+        .guide-description {
+            color: #000000;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .guide-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .guide-link:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        /* Weekly Resources Accordion Styles */
+        .weekly-accordion {
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            background: white;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .weekly-accordion {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .accordion-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 1.2rem 1.5rem;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: none;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border: none;
+        }
+
+        .accordion-button::after {
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-item {
+            border: none;
+            margin-bottom: 0.5rem;
+            border-radius: 12px !important;
+            overflow: hidden;
+        }
+
+        .accordion-body {
+            padding: 1.5rem;
+            background: #fafafa;
+        }
+
+        .week-resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .week-resource-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .week-resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .week-resource-type {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .week-resource-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .week-resource-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .week-resource-action:hover {
+            color: var(--primary-color);
+            transform: translateX(3px);
+        }
+
+        /* Weekend Resource Card Styles */
+        .weekend-resource-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .weekend-resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .weekend-resource-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary-color), #ef9a9a);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .weekend-resource-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .weekend-resource-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .weekend-resource-action:hover {
+            color: var(--primary-color);
+            transform: translateX(3px);
+        }
+
+        /* Form Styles */
+        .feedback-form {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(198, 40, 40, 0.1);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(198, 40, 40, 0.3);
+        }
+
+        /* Parallax Elements */
+        .parallax-element {
+            position: absolute;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .parallax-circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+        }
+
+        .parallax-circle-1 {
+            top: 10%;
+            right: -150px;
+        }
+
+        .parallax-circle-2 {
+            bottom: 10%;
+            left: -150px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--blue-color);
+            color: #000000;
+            padding: 3rem 0 1.5rem;
+            margin-top: 80px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+        }
+
+        /* Staggered Animation */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.animated .stagger-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .video-thumbnail {
+                height: 150px;
+            }
+            
+            .training-video-thumbnail {
+                height: 160px;
+            }
+
+            .week-resources {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding-top: 66px; /* Adjust for smaller navbar on mobile */
+            }
+
+            .navbar {
+                min-height: 66px !important;
+            }
+
+            .navbar-brand {
+                font-size: 1.25rem;
+            }
+
+            .navbar-brand img {
+                height: 25px;
+            }
+
+            .weekend-resource-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .feedback-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-question" style="transform: skewX(-15deg); color: #c62828; margin-right: 8px;"></i>Alpha Resource Hub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#getready">Get Ready</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#weekly">Week-by-Week Guide</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#weekend">Weekend Away</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faqs">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#makebetter">Make Alpha Better</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#guides">Additional Resources</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Alpha Resource Hub for Hosts and Helpers</h1>
+                <p class="hero-subtitle">Equipping you to create welcoming spaces for conversations about life, faith and God.</p>
+                <div class="hero-buttons">
+                    <a href="#getready" class="btn btn-light btn-lg me-3 px-4">
+                        <i class="fas fa-play-circle me-2"></i>Get Started
+                    </a>
+                    <a href="#weekly" class="btn btn-outline-light btn-lg px-4">
+                        <i class="fas fa-play me-2"></i>Week-by-Week Guide
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Ready Section -->
+    <section id="getready" class="section">
+        <!-- Parallax Elements -->
+        <div class="parallax-element parallax-circle parallax-circle-1"></div>
+        
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Get Ready to Run Alpha</h2>
+                <p class="section-subtitle">Training videos to help you prepare for your Alpha journey, onsite or online.</p>
+            </div>
+
+            <div class="row" id="trainingGrid">
+                <!-- Training videos will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Week-by-Week Guide Section -->
+    <section id="weekly" class="section bg-light">
+        <!-- Parallax Elements -->
+        <div class="parallax-element parallax-circle parallax-circle-2"></div>
+        
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Week-by-Week Guide</h2>
+                <p class="section-subtitle">Everything you need for each week — talks, briefings, icebreakers, discussion questions and tips.</p>
+            </div>
+
+            <div class="accordion" id="weeklyAccordion">
+                <!-- Weekly resources will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekend Away Section -->
+    <section id="weekend" class="section">
+        <!-- Parallax Elements -->
+        <div class="parallax-element parallax-circle parallax-circle-1"></div>
+        
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Weekend Away</h2>
+                <p class="section-subtitle">Talks, material and guides to help host your Alpha Weekend, onsite or online.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <h3 class="mb-3">Trainings</h3>
+                    <div class="row" id="weekendTalks">
+                        <!-- Weekend talks will be dynamically inserted here -->
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <h3 class="mb-3">Guides</h3>
+                    <div class="row" id="weekendGuides">
+                        <!-- Weekend guides will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faqs" class="section bg-light">
+        <!-- Parallax Elements -->
+        <div class="parallax-element parallax-circle parallax-circle-2"></div>
+        
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Frequently Asked Questions - Coming Soon</h2>
+                <p class="section-subtitle">Answers to common questions about running Alpha and supporting your group.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="text-center">
+                        <i class="fas fa-clock fa-4x mb-4 text-muted"></i>
+                        <p class="lead">This section is coming soon. We're working on compiling the most common questions and answers to help you run Alpha successfully.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Make Alpha Better Section -->
+    <section id="makebetter" class="section">
+        <!-- Parallax Elements -->
+        <div class="parallax-element parallax-circle parallax-circle-1"></div>
+        
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Help Us Make Alpha Even Better - Coming Soon</h2>
+                <p class="section-subtitle">Got a great idea? Contribute icebreakers, discussion questions or tips that worked for your group. We'll review and include selected submissions.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <form class="feedback-form" id="feedbackForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Name (optional)</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="role" class="form-label">Role</label>
+                                <select class="form-select" id="role">
+                                    <option value="">Select your role...</option>
+                                    <option value="host">Host</option>
+                                    <option value="helper">Helper</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="category" class="form-label">Category</label>
+                                <select class="form-select" id="category">
+                                    <option value="">Select category...</option>
+                                    <option value="icebreaker">Icebreaker</option>
+                                    <option value="discussion">Discussion Question</option>
+                                    <option value="tip">Tip</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="weekNumber" class="form-label">Week Number</label>
+                                <select class="form-select" id="weekNumber">
+                                    <option value="">Select week...</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="weekend">Weekend Away</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="idea" class="form-label">Share Your Idea</label>
+                            <textarea class="form-control" id="idea" rows="5"></textarea>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-submit">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Idea
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Resources Section -->
+    <section id="guides" class="section bg-light">
+        <!-- Parallax Elements -->
+        <div class="parallax-element parallax-circle parallax-circle-2"></div>
+        
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Additional Resources</h2>
+                <p class="section-subtitle">Extra tools and materials to support your Alpha journey.</p>
+            </div>
+
+            <div class="row" id="guidesGrid">
+                <!-- Guest guides will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Alpha Resource Hub for Hosts and Helpers</h5>
+                    <p>Providing comprehensive training materials and resources for Alpha courses worldwide.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#getready" class="text-black-50 text-decoration-none">Get Ready</a></li>
+                        <li><a href="#weekly" class="text-black-50 text-decoration-none">Week-by-Week Guide</a></li>
+                        <li><a href="#weekend" class="text-black-50 text-decoration-none">Weekend Away</a></li>
+                        <li><a href="#faqs" class="text-black-50 text-decoration-none">FAQs</a></li>
+                        <li><a href="#makebetter" class="text-black-50 text-decoration-none">Make Alpha Better</a></li>
+                        <li><a href="#guides" class="text-black-50 text-decoration-none">Additional Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Contact</h5>
+                    <p class="text-black-50">
+                        <i class="fas fa-globe me-2"></i>www.alpha.org
+                    </p>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="text-center py-3">
+                <p class="mb-0 text-black-50">&copy; 2024 Alpha Course Resources. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalTitle">Video Title</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div style="padding:56.25% 0 0 0;position:relative;">
+                        <iframe id="videoFrame" src="" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Modal for Icebreakers, Discussion Questions, and Tips -->
+    <div class="modal fade" id="contentModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contentModalTitle">Content Title</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="contentModalBody">
+                    <!-- Content will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form submission handler
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                role: document.getElementById('role').value,
+                category: document.getElementById('category').value,
+                weekNumber: document.getElementById('weekNumber').value,
+                idea: document.getElementById('idea').value
+            };
+            
+            // Here you would normally send the data to a server
+            console.log('Form submitted:', formData);
+            
+            // Show success message
+            alert('Thank you for sharing! Your ideas will help others create welcoming spaces where faith can grow.');
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
