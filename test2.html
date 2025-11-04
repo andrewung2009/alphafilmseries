@@ -14,7 +14,7 @@
         
         // Google Apps Script URL for form submission
         // Replace this with your own Google Apps Script URL after setting it up
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxDugxMZCkJaqpSgPF4H8SuPNM06EoBOjTxSnJb-NhVp698Z17eHQG1juzr7wF9-LR4bw/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec';
         
         // Training Videos Configuration
         const trainingVideos = [
@@ -2075,6 +2075,15 @@
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Submitting...';
             submitBtn.disabled = true;
+            
+            // Check if Google Script URL is configured
+            if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec') {
+                // Show error if script URL is not configured
+                showFormStatus('error', 'Google Sheets integration is not configured. Please set up your Google Apps Script and update the GOOGLE_SCRIPT_URL variable.');
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                return;
+            }
             
             // Send data to Google Sheets via Google Apps Script
             fetch(GOOGLE_SCRIPT_URL, {
