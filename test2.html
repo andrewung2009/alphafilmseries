@@ -12,6 +12,10 @@
         // CONFIGURATION SECTION - EASILY EDIT LINKS HERE
         // ============================================
         
+        // Google Apps Script URL for form submission
+        // Replace this with your own Google Apps Script URL after setting it up
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxDugxMZCkJaqpSgPF4H8SuPNM06EoBOjTxSnJb-NhVp698Z17eHQG1juzr7wF9-LR4bw/exec';
+        
         // Training Videos Configuration
         const trainingVideos = [
             {
@@ -1630,6 +1634,26 @@
             box-shadow: 0 5px 15px rgba(198, 40, 40, 0.3);
         }
 
+        /* Form submission status */
+        .form-status {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .form-status.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-status.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
         /* Parallax Elements */
         .parallax-element {
             position: absolute;
@@ -1895,7 +1919,7 @@
         
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title">Help Us Make Alpha Even Better - Coming Soon</h2>
+                <h2 class="section-title">Help Us Make Alpha Even Better</h2>
                 <p class="section-subtitle">Got a great idea? Contribute icebreakers, discussion questions or tips that worked for your group. We'll review and include selected submissions.</p>
             </div>
 
@@ -1909,7 +1933,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="role" class="form-label">Role</label>
-                                <select class="form-select" id="role">
+                                <select class="form-select" id="role" required>
                                     <option value="">Select your role...</option>
                                     <option value="host">Host</option>
                                     <option value="helper">Helper</option>
@@ -1920,7 +1944,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="category" class="form-label">Category</label>
-                                <select class="form-select" id="category">
+                                <select class="form-select" id="category" required>
                                     <option value="">Select category...</option>
                                     <option value="icebreaker">Icebreaker</option>
                                     <option value="discussion">Discussion Question</option>
@@ -1929,7 +1953,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="weekNumber" class="form-label">Week Number</label>
-                                <select class="form-select" id="weekNumber">
+                                <select class="form-select" id="weekNumber" required>
                                     <option value="">Select week...</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -1948,14 +1972,16 @@
                         
                         <div class="mb-3">
                             <label for="idea" class="form-label">Share Your Idea</label>
-                            <textarea class="form-control" id="idea" rows="5"></textarea>
+                            <textarea class="form-control" id="idea" rows="5" required></textarea>
                         </div>
                         
                         <div class="text-center">
-                            <button type="submit" class="btn btn-submit">
+                            <button type="submit" class="btn btn-submit" id="submitBtn">
                                 <i class="fas fa-paper-plane me-2"></i>Submit Idea
                             </button>
                         </div>
+                        
+                        <div class="form-status" id="formStatus"></div>
                     </form>
                 </div>
             </div>
@@ -2030,7 +2056,7 @@
     </div>
 
     <script>
-        // Form submission handler
+        // Form submission handler with Google Sheets integration
         document.getElementById('feedbackForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -2040,18 +2066,54 @@
                 role: document.getElementById('role').value,
                 category: document.getElementById('category').value,
                 weekNumber: document.getElementById('weekNumber').value,
-                idea: document.getElementById('idea').value
+                idea: document.getElementById('idea').value,
+                timestamp: new Date().toISOString()
             };
             
-            // Here you would normally send the data to a server
-            console.log('Form submitted:', formData);
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Submitting...';
+            submitBtn.disabled = true;
             
-            // Show success message
-            alert('Thank you for sharing! Your ideas will help others create welcoming spaces where faith can grow.');
-            
-            // Reset form
-            this.reset();
+            // Send data to Google Sheets via Google Apps Script
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Required for Google Apps Script
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                // Since we're using no-cors mode, we won't get a proper response
+                // We'll assume it was successful if no error was thrown
+                showFormStatus('success', 'Thank you for sharing! Your ideas will help others create welcoming spaces where faith can grow.');
+                this.reset();
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+                showFormStatus('error', 'There was an error submitting your form. Please try again later.');
+            })
+            .finally(() => {
+                // Restore button state
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            });
         });
+        
+        // Function to show form status message
+        function showFormStatus(type, message) {
+            const statusElement = document.getElementById('formStatus');
+            statusElement.textContent = message;
+            statusElement.className = 'form-status ' + type;
+            statusElement.style.display = 'block';
+            
+            // Hide the message after 5 seconds
+            setTimeout(() => {
+                statusElement.style.display = 'none';
+            }, 5000);
+        }
     </script>
 </body>
 </html>
