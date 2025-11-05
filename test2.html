@@ -19,40 +19,24 @@
         // Training Videos Configuration
         const trainingVideos = [
             {
-                title: "Alpha Training: The Essentials",
+                title: "The Essentials",
                 url: "https://player.vimeo.com/video/273602720",
-                thumbnail: "https://vumbnail.com/273602720.jpg"
+                noThumbnail: true
             },
             {
-                title: "Alpha Onsite Small Group Training",
+                title: "Onsite Small Group",
                 url: "https://player.vimeo.com/video/214170130",
-                thumbnail: "https://vumbnail.com/214170130.jpg"
+                noThumbnail: true
             },
             {
-                title: "Alpha Online Small Group Training",
+                title: "Online Small Group",
                 url: "https://player.vimeo.com/video/490924040",
-                thumbnail: "https://vumbnail.com/490924040.jpg"
-            },
-            {
-                title: "Alpha Training: Prayer & The Weekend",
-                url: "https://player.vimeo.com/video/214170194",
-                thumbnail: "https://vumbnail.com/214170194.jpg"
-            },
-            {
-                title: "Alpha Training: Prayer Ministry",
-                url: "https://player.vimeo.com/video/490974388",
-                thumbnail: "https://vumbnail.com/490974388.jpg"
+                noThumbnail: true
             }
         ];
         
-        // Training Documents Configuration
-        const trainingDocuments = [
-            {
-                title: "Alpha Online - Host Notes",
-                url: "https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view",
-                icon: "fas fa-file-pdf"
-            }
-        ];
+        // Training Documents Configuration (now empty as Alpha Toolbox moved)
+        const trainingDocuments = [];
         
         // Weekly Resources Configuration
         const weeklyResources = [
@@ -389,6 +373,14 @@
                 {
                     title: "How can I make the most out of the rest of my life?",
                     url: "https://player.vimeo.com/video/184825496"
+                },
+                {
+                    title: "Prayer & The Weekend",
+                    url: "https://player.vimeo.com/video/214170194"
+                },
+                {
+                    title: "Prayer Ministry",
+                    url: "https://player.vimeo.com/video/490974388"
                 }
             ],
             guides: [
@@ -413,6 +405,12 @@
         
         // Additional Guides Configuration
         const additionalGuides = [
+            {
+                title: "Alpha Toolbox",
+                description: "Host notes and resources for running Alpha",
+                url: "https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view",
+                icon: "fas fa-toolbox"
+            },
             {
                 title: "Alpha Team Handbook",
                 description: "Complete guide for running an Alpha course",
@@ -446,26 +444,44 @@
                 
                 // Add video cards
                 trainingVideos.forEach((video, index) => {
-                    html += `
-                        <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
-                            <div class="training-video-card" onclick="openVideoModal('${video.url}', '${video.title}')">
-                                <div class="training-video-thumbnail">
-                                    <img src="${video.thumbnail}" alt="${video.title}" onerror="this.src='https://picsum.photos/seed/alpha${index}/400/225.jpg'">
-                                    <div class="video-overlay">
-                                        <div class="play-button">
-                                            <i class="fas fa-play"></i>
-                                        </div>
+                    if (video.noThumbnail) {
+                        // Video without thumbnail
+                        html += `
+                            <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
+                                <div class="resource-card">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-play-circle"></i>
                                     </div>
-                                </div>
-                                <div class="training-video-info">
-                                    <h3 class="training-video-title">${video.title}</h3>
-                                    <a href="${video.url}" class="resource-link" onclick="event.stopPropagation()" target="_blank">
-                                        Watch Video <i class="fas fa-arrow-right"></i>
+                                    <h3 class="resource-title">${video.title}</h3>
+                                    <a href="#" class="resource-link" onclick="openVideoModal('${video.url}', '${video.title}'); return false;">
+                                        Watch Now <i class="fas fa-arrow-right"></i>
                                     </a>
                                 </div>
                             </div>
-                        </div>
-                    `;
+                        `;
+                    } else {
+                        // Video with thumbnail
+                        html += `
+                            <div class="col-lg-4 col-md-6 mb-4 training-item stagger-item">
+                                <div class="training-video-card" onclick="openVideoModal('${video.url}', '${video.title}')">
+                                    <div class="training-video-thumbnail">
+                                        <img src="${video.thumbnail}" alt="${video.title}" onerror="this.src='https://picsum.photos/seed/alpha${index}/400/225.jpg'">
+                                        <div class="video-overlay">
+                                            <div class="play-button">
+                                                <i class="fas fa-play"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="training-video-info">
+                                        <h3 class="training-video-title">${video.title}</h3>
+                                        <a href="${video.url}" class="resource-link" onclick="event.stopPropagation()" target="_blank">
+                                            Watch Video <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
                 });
                 
                 // Add document cards
@@ -1836,7 +1852,7 @@
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title">Get Ready to Run Alpha</h2>
-                <p class="section-subtitle">Training videos to help you prepare for your Alpha journey, onsite or online.</p>
+                <p class="section-subtitle">Videos to help you prepare for your Alpha journey, onsite or online.</p>
             </div>
 
             <div class="row" id="trainingGrid">
@@ -1875,7 +1891,7 @@
 
             <div class="row">
                 <div class="col-lg-6 mb-4">
-                    <h3 class="mb-3">Trainings</h3>
+                    <h3 class="mb-3">Talks</h3>
                     <div class="row" id="weekendTalks">
                         <!-- Weekend talks will be dynamically inserted here -->
                     </div>
