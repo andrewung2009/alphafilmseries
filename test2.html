@@ -57,7 +57,12 @@
                 },
                 icebreaker: {
                     title: "Icebreaker",
-                    content: "Say your name with an adjective that starts with the same letter as your name. It can describe you or just be something fun. For example, 'Gentle George,' 'Brilliant Bella,' or 'Curious Chloe.' The fun part? Each person has to repeat everyone's name and adjective who came before them—then add their own!"
+                    content: [
+                        "Say your name with an adjective that starts with the same letter as your name.",
+                        "It can describe you or just be something fun.",
+                        "For example: 'Gentle George,' 'Brilliant Bella,' or 'Curious Chloe.'",
+                        "Each person has to repeat everyone's name and adjective who came before them—then add their own!"
+                    ]
                 },
                 discussion: {
                     title: "Discussion Questions",
@@ -85,7 +90,11 @@
                 },
                 icebreaker: {
                     title: "Icebreaker",
-                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                    content: [
+                        "If you were stuck on a desert island and you could take one thing (not a person) with you,",
+                        "You already have the Bible and the complete works of Shakespeare,",
+                        "What would you take and why?"
+                    ]
                 },
                 discussion: {
                     title: "Discussion Questions",
@@ -113,7 +122,11 @@
                 },
                 icebreaker: {
                     title: "Icebreaker",
-                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                    content: [
+                        "Share about a time when someone did something unexpectedly kind for you.",
+                        "How did it make you feel?",
+                        "Did it change your perspective in any way?"
+                    ]
                 },
                 discussion: {
                     title: "Discussion Questions",
@@ -141,7 +154,11 @@
                 },
                 icebreaker: {
                     title: "Icebreaker",
-                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                    content: [
+                        "What's something you believe in that you can't see or prove scientifically?",
+                        "How did you come to believe in it?",
+                        "What gives you confidence in this belief?"
+                    ]
                 },
                 discussion: {
                     title: "Discussion Questions",
@@ -169,7 +186,11 @@
                 },
                 icebreaker: {
                     title: "Icebreaker",
-                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                    content: [
+                        "Have you ever had a conversation that changed your life?",
+                        "What was it about?",
+                        "What made it so impactful?"
+                    ]
                 },
                 discussion: {
                     title: "Discussion Questions",
@@ -197,7 +218,11 @@
                 },
                 icebreaker: {
                     title: "Icebreaker",
-                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                    content: [
+                        "What's a book that has significantly influenced your life?",
+                        "What did you learn from it?",
+                        "Would you recommend it to others? Why or why not?"
+                    ]
                 },
                 discussion: {
                     title: "Discussion Questions",
@@ -225,7 +250,11 @@
                 },
                 icebreaker: {
                     title: "Icebreaker",
-                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                    content: [
+                        "Share about a time you received good advice that helped you make an important decision.",
+                        "Who gave you the advice?",
+                        "How did you know to trust it?"
+                    ]
                 },
                 discussion: {
                     title: "Discussion Questions",
@@ -253,7 +282,11 @@
                 },
                 icebreaker: {
                     title: "Icebreaker",
-                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                    content: [
+                        "What's a temptation you find difficult to resist?",
+                        "What strategies have you tried to overcome it?",
+                        "What has worked and what hasn't?"
+                    ]
                 },
                 discussion: {
                     title: "Discussion Questions",
@@ -281,7 +314,11 @@
                 },
                 icebreaker: {
                     title: "Icebreaker",
-                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                    content: [
+                        "Share about something you're passionate about that others might not know about.",
+                        "What makes it so meaningful to you?",
+                        "How do you share it with others?"
+                    ]
                 },
                 discussion: {
                     title: "Discussion Questions",
@@ -309,7 +346,11 @@
                 },
                 icebreaker: {
                     title: "Icebreaker",
-                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                    content: [
+                        "Have you or someone you know experienced an unexpected recovery from illness or injury?",
+                        "What was the situation?",
+                        "What role did faith play in the healing process?"
+                    ]
                 },
                 discussion: {
                     title: "Discussion Questions",
@@ -337,7 +378,11 @@
                 },
                 icebreaker: {
                     title: "Icebreaker",
-                    content: "If you were stuck on a desert island and you could take one thing (not a person) with you, and you already have the Bible and the complete works of Shakespeare, what would you take?"
+                    content: [
+                        "Describe a community or group where you feel you truly belong.",
+                        "What makes you feel welcome there?",
+                        "What role do you play in that community?"
+                    ]
                 },
                 discussion: {
                     title: "Discussion Questions",
@@ -513,7 +558,9 @@
                                                     </h2>
                                                     <div id="icebreaker${week.week}" class="accordion-collapse collapse" data-bs-parent="#icebreakerAccordion${week.week}">
                                                         <div class="accordion-body">
-                                                            <p>${week.icebreaker.content}</p>
+                                                            <ul>
+                                                                ${week.icebreaker.content.map(point => `<li>${point}</li>`).join('')}
+                                                            </ul>
                                                         </div>
                                                     </div>
                                                 </div>
