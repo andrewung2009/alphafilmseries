@@ -828,14 +828,11 @@
                                             </a>
                                         </div>
                                         <div class="week-resource-card">
-                                            <div class="week-resource-type">
-                                                <i class="fas fa-snowflake me-1"></i> ${week.icebreaker.title}
-                                            </div>
                                             <div class="accordion week-accordion" id="icebreakerAccordion${week.week}">
                                                 <div class="accordion-item">
                                                     <h2 class="accordion-header">
                                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#icebreaker${week.week}">
-                                                            <i class="fas fa-chevron-down me-2"></i> View Icebreaker
+                                                            <i class="fas fa-snowflake me-1"></i> ${week.icebreaker.title}
                                                         </button>
                                                     </h2>
                                                     <div id="icebreaker${week.week}" class="accordion-collapse collapse" data-bs-parent="#icebreakerAccordion${week.week}">
@@ -849,14 +846,11 @@
                                             </div>
                                         </div>
                                         <div class="week-resource-card">
-                                            <div class="week-resource-type">
-                                                <i class="fas fa-comments me-1"></i> ${week.discussion.title}
-                                            </div>
                                             <div class="accordion week-accordion" id="discussionAccordion${week.week}">
                                                 <div class="accordion-item">
                                                     <h2 class="accordion-header">
                                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#discussion${week.week}">
-                                                            <i class="fas fa-chevron-down me-2"></i> View Discussion Questions
+                                                            <i class="fas fa-comments me-1"></i> ${week.discussion.title}
                                                         </button>
                                                     </h2>
                                                     <div id="discussion${week.week}" class="accordion-collapse collapse" data-bs-parent="#discussionAccordion${week.week}">
@@ -870,14 +864,11 @@
                                             </div>
                                         </div>
                                         <div class="week-resource-card">
-                                            <div class="week-resource-type">
-                                                <i class="fas fa-lightbulb me-1"></i> ${week.tips.title}
-                                            </div>
                                             <div class="accordion week-accordion" id="tipsAccordion${week.week}">
                                                 <div class="accordion-item">
                                                     <h2 class="accordion-header">
                                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tips${week.week}">
-                                                            <i class="fas fa-chevron-down me-2"></i> View Tips
+                                                            <i class="fas fa-lightbulb me-1"></i> ${week.tips.title}
                                                         </button>
                                                     </h2>
                                                     <div id="tips${week.week}" class="accordion-collapse collapse" data-bs-parent="#tipsAccordion${week.week}">
@@ -1967,12 +1958,14 @@
         }
 
         .week-accordion .accordion-button {
-            background: #f8f9fa;
-            color: #333;
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 0.75rem 1rem;
-        }
+    background: #f8f9fa;
+    color: var(--secondary-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.75rem 1rem;
+}
 
         .week-accordion .accordion-button:not(.collapsed) {
             background: #e9ecef;
@@ -2701,4 +2694,4 @@
         }
     </script>
 </body>
-</html>
+</html> make the headings for icebreakers, tips, discussions questions, follow the style of alpha talk, host and helpers briefing 
