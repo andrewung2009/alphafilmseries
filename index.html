@@ -440,7 +440,7 @@
                  week: 9,
                  title: "Why and How Should I Tell Others?",
                  talk: {
-                     title: "Why and How Should I Tell Others?",
+                     title: "abc",
                      url: "https://player.vimeo.com/video/184825498"
                  },
                  briefing: {
@@ -652,32 +652,32 @@
          // 📚 ADDITIONAL GUIDES CONFIGURATION
          // ============================================
          // Edit the additional guides that appear in the "Additional Resources" section
-const additionalGuides = [
-    {
-        title: "Alpha Toolbox",
-        description: "Host notes and resources for running Alpha",
-        url: "https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view",
-        icon: "fas fa-toolbox"
-    },
-    {
-        title: "Small Group Training",
-        description: "Training materials for small group leaders",
-        url: "https://drive.google.com/file/d/1Hzpl5qqQlsQXpjelEF1_C1OVaynJkdlZ/view",
-        icon: "fas fa-chalkboard-teacher"
-    },
-    {
-        title: "The Bible with Nicky and Pippa Gumbel",
-        description: "Explore the Bible with Nicky and Pippa Gumbel",
-        url: "https://bible.alpha.org/en/",
-        icon: "fas fa-bible"
-    },
-    {
-        title: "YouVersion",
-        description: "The Bible App",
-        url: "https://www.bible.com/app",
-        icon: "fas fa-mobile-alt"
-    }
-];         
+         const additionalGuides = [
+         {
+         title: "Alpha Toolbox",
+         description: "Host notes and resources for running Alpha",
+         url: "https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view",
+         icon: "fas fa-toolbox"
+         },
+         {
+         title: "Small Group Training",
+         description: "Training materials for small group leaders",
+         url: "https://drive.google.com/file/d/1Hzpl5qqQlsQXpjelEF1_C1OVaynJkdlZ/view",
+         icon: "fas fa-chalkboard-teacher"
+         },
+         {
+         title: "The Bible with Nicky and Pippa Gumbel",
+         description: "Explore the Bible with Nicky and Pippa Gumbel",
+         url: "https://bible.alpha.org/en/",
+         icon: "fas fa-bible"
+         },
+         {
+         title: "YouVersion",
+         description: "The Bible App",
+         url: "https://www.bible.com/app",
+         icon: "fas fa-mobile-alt"
+         }
+         ];         
          // ============================================
          // 🚫 STOP EDITING HERE - NO CODING KNOWLEDGE NEEDED BELOW THIS LINE 🚫
          // ============================================
@@ -770,6 +770,183 @@ const additionalGuides = [
          
          // Function to initialize everything after DOM is loaded
          function initializeApp() {
+           // Add this at the end of your initializeApp function, right before the closing brace
+         function createQuickAccessButton() {
+         // Create the quick access button container
+         const quickAccessBtn = document.createElement('div');
+         quickAccessBtn.id = 'quickAccessBtn';
+         quickAccessBtn.style.cssText = `
+         position: fixed;
+         bottom: 30px;
+         right: 30px;
+         z-index: 1000;
+         opacity: 0;
+         transform: translateY(20px);
+         transition: all 0.3s ease;
+         pointer-events: none;
+         `;
+         
+         // Create the toggle button
+         const toggleBtn = document.createElement('button');
+         toggleBtn.className = 'quick-access-toggle';
+         toggleBtn.style.cssText = `
+         width: 60px;
+         height: 60px;
+         border-radius: 50%;
+         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+         border: none;
+         color: white;
+         font-size: 1.5rem;
+         cursor: pointer;
+         box-shadow: 0 4px 15px rgba(198, 40, 40, 0.3);
+         transition: all 0.3s ease;
+         `;
+         toggleBtn.innerHTML = '<i class="fas fa-compass"></i>';
+         
+         // Create the menu container
+         const menu = document.createElement('div');
+         menu.id = 'quickAccessMenu';
+         menu.style.cssText = `
+         position: absolute;
+         bottom: 70px;
+         right: 0;
+         background: white;
+         border-radius: 12px;
+         box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+         padding: 0.5rem;
+         opacity: 0;
+         transform: translateY(10px);
+         transition: all 0.3s ease;
+         pointer-events: none;
+         min-width: 180px;
+         `;
+         
+         // Add menu items
+         const menuItems = [
+         { href: '#getready', text: 'Get Ready' },
+         { href: '#weekly', text: 'Week-by-Week' },
+         { href: '#weekend', text: 'Weekend Away' },
+         { href: '#faqs', text: 'FAQs' },
+         { href: '#makebetter', text: 'Share What Works' },
+         { href: '#guides', text: 'Resources' }
+         ];
+         
+         menuItems.forEach(item => {
+         const link = document.createElement('a');
+         link.href = item.href;
+         link.className = 'quick-access-item';
+         link.textContent = item.text;
+         link.style.cssText = `
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+         `;
+         link.addEventListener('mouseenter', () => {
+            link.style.background = 'var(--light-bg)';
+            link.style.color = 'var(--primary-color)';
+            link.style.transform = 'translateX(5px)';
+         });
+         link.addEventListener('mouseleave', () => {
+            link.style.background = 'transparent';
+            link.style.color = '#333';
+            link.style.transform = 'translateX(0)';
+         });
+         menu.appendChild(link);
+         });
+         
+         // Add click event to toggle button
+         toggleBtn.addEventListener('click', () => {
+         if (menu.style.opacity === '1') {
+            menu.style.opacity = '0';
+            menu.style.transform = 'translateY(10px)';
+            menu.style.pointerEvents = 'none';
+         } else {
+            menu.style.opacity = '1';
+            menu.style.transform = 'translateY(0)';
+            menu.style.pointerEvents = 'all';
+         }
+         });
+         
+         // Add hover effect to toggle button
+         toggleBtn.addEventListener('mouseenter', () => {
+         toggleBtn.style.transform = 'scale(1.1)';
+         toggleBtn.style.boxShadow = '0 6px 20px rgba(198, 40, 40, 0.4)';
+         });
+         toggleBtn.addEventListener('mouseleave', () => {
+         toggleBtn.style.transform = 'scale(1)';
+         toggleBtn.style.boxShadow = '0 4px 15px rgba(198, 40, 40, 0.3)';
+         });
+         
+         // Append elements
+         quickAccessBtn.appendChild(toggleBtn);
+         quickAccessBtn.appendChild(menu);
+         document.body.appendChild(quickAccessBtn);
+         
+         // Show/hide button on scroll
+         window.addEventListener('scroll', () => {
+         if (window.scrollY > 300) {
+            quickAccessBtn.style.opacity = '1';
+            quickAccessBtn.style.transform = 'translateY(0)';
+            quickAccessBtn.style.pointerEvents = 'all';
+         } else {
+            quickAccessBtn.style.opacity = '0';
+            quickAccessBtn.style.transform = 'translateY(20px)';
+            quickAccessBtn.style.pointerEvents = 'none';
+            menu.style.opacity = '0';
+            menu.style.transform = 'translateY(10px)';
+            menu.style.pointerEvents = 'none';
+         }
+         });
+         
+         // Close menu when clicking outside
+         document.addEventListener('click', (e) => {
+         if (!quickAccessBtn.contains(e.target) && menu.style.opacity === '1') {
+            menu.style.opacity = '0';
+            menu.style.transform = 'translateY(10px)';
+            menu.style.pointerEvents = 'none';
+         }
+         });
+         }
+         
+         // Call the function
+         createQuickAccessButton();
+           // Add this to your initializeApp function
+         const quickAccessBtn = document.createElement('div');
+         quickAccessBtn.id = 'quickAccessBtn';
+         quickAccessBtn.innerHTML = `
+         <button class="quick-access-toggle" onclick="toggleQuickAccess()">
+         <i class="fas fa-compass"></i>
+         </button>
+         <div class="quick-access-menu" id="quickAccessMenu">
+         <a href="#getready" class="quick-access-item">Get Ready</a>
+         <a href="#weekly" class="quick-access-item">Week-by-Week</a>
+         <a href="#weekend" class="quick-access-item">Weekend Away</a>
+         <a href="#faqs" class="quick-access-item">FAQs</a>
+         <a href="#makebetter" class="quick-access-item">Share Ideas</a>
+         <a href="#guides" class="quick-access-item">Resources</a>
+         </div>
+         `;
+         document.body.appendChild(quickAccessBtn);
+         
+         // Toggle function
+         function toggleQuickAccess() {
+         const menu = document.getElementById('quickAccessMenu');
+         menu.classList.toggle('show');
+         }
+         
+         // Show/hide button on scroll
+         window.addEventListener('scroll', () => {
+         const btn = document.getElementById('quickAccessBtn');
+         if (window.scrollY > 300) {
+         btn.classList.add('visible');
+         } else {
+         btn.classList.remove('visible');
+         }
+         });
            // Add this code inside the initializeApp function
          // Auto-collapse navbar after clicking a link
          document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
@@ -2380,6 +2557,79 @@ const additionalGuides = [
          grid-template-columns: 1fr;
          }
          }
+         /* Quick Access Floating Button */
+         #quickAccessBtn {
+         position: fixed;
+         bottom: 30px;
+         right: 30px;
+         z-index: 1000;
+         opacity: 0;
+         transform: translateY(20px);
+         transition: all 0.3s ease;
+         pointer-events: none;
+         }
+         #quickAccessBtn.visible {
+         opacity: 1;
+         transform: translateY(0);
+         pointer-events: all;
+         }
+         .quick-access-toggle {
+         width: 60px;
+         height: 60px;
+         border-radius: 50%;
+         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+         border: none;
+         color: white;
+         font-size: 1.5rem;
+         cursor: pointer;
+         box-shadow: 0 4px 15px rgba(198, 40, 40, 0.3);
+         transition: all 0.3s ease;
+         }
+         .quick-access-toggle:hover {
+         transform: scale(1.1);
+         box-shadow: 0 6px 20px rgba(198, 40, 40, 0.4);
+         }
+         .quick-access-menu {
+         position: absolute;
+         bottom: 70px;
+         right: 0;
+         background: white;
+         border-radius: 12px;
+         box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+         padding: 0.5rem;
+         opacity: 0;
+         transform: translateY(10px);
+         transition: all 0.3s ease;
+         pointer-events: none;
+         min-width: 180px;
+         }
+         .quick-access-menu.show {
+         opacity: 1;
+         transform: translateY(0);
+         pointer-events: all;
+         }
+         .quick-access-item {
+         display: block;
+         padding: 0.75rem 1rem;
+         color: #333;
+         text-decoration: none;
+         border-radius: 8px;
+         transition: all 0.2s ease;
+         font-size: 0.9rem;
+         }
+         .quick-access-item:hover {
+         background: var(--light-bg);
+         color: var(--primary-color);
+         transform: translateX(5px);
+         }
+         /* Close menu when clicking outside */
+         document.addEventListener('click', (e) => {
+         const btn = document.getElementById('quickAccessBtn');
+         const menu = document.getElementById('quickAccessMenu');
+         if (!btn.contains(e.target) && menu.classList.contains('show')) {
+         menu.classList.remove('show');
+         }
+         });
       </style>
    </head>
    <body>
