@@ -651,27 +651,32 @@
          // 📚 ADDITIONAL GUIDES CONFIGURATION
          // ============================================
          // Edit the additional guides that appear in the "Additional Resources" section
-         const additionalGuides = [
-         {
-         title: "Alpha Toolbox",
-         description: "Host notes and resources for running Alpha",
-         url: "https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view",
-         icon: "fas fa-toolbox"
-         },
-         {
-         title: "Small Group Training",
-         description: "Training materials for small group leaders",
-         url: "https://drive.google.com/file/d/1Hzpl5qqQlsQXpjelEF1_C1OVaynJkdlZ/view",
-         icon: "fas fa-chalkboard-teacher"
-         },
-         {
-         title: "The Bible with Nicky and Pippa Gumbel",
-         description: "Explore the Bible with Nicky and Pippa Gumbel",
-         url: "https://bible.alpha.org/en/",
-         icon: "fas fa-bible"
-         }
-         ];
-         
+const additionalGuides = [
+    {
+        title: "Alpha Toolbox",
+        description: "Host notes and resources for running Alpha",
+        url: "https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view",
+        icon: "fas fa-toolbox"
+    },
+    {
+        title: "Small Group Training",
+        description: "Training materials for small group leaders",
+        url: "https://drive.google.com/file/d/1Hzpl5qqQlsQXpjelEF1_C1OVaynJkdlZ/view",
+        icon: "fas fa-chalkboard-teacher"
+    },
+    {
+        title: "The Bible with Nicky and Pippa Gumbel",
+        description: "Explore the Bible with Nicky and Pippa Gumbel",
+        url: "https://bible.alpha.org/en/",
+        icon: "fas fa-bible"
+    },
+    {
+        title: "YouVersion",
+        description: "The Bible App",
+        url: "https://www.bible.com/app",
+        icon: "fas fa-mobile-alt"
+    }
+];         
          // ============================================
          // 🚫 STOP EDITING HERE - NO CODING KNOWLEDGE NEEDED BELOW THIS LINE 🚫
          // ============================================
@@ -1306,6 +1311,9 @@
          --grey-color: #e5e7eb;
          --pink-color: #f9a8d4;
          }
+         footer .container {
+         padding-top: 3rem;
+         }
          * {
          margin: 0;
          padding: 0;
@@ -1534,44 +1542,20 @@
          #getready {
          background-color: var(--blue-color);
          }
-         #getready .section-title,
-         #getready .section-subtitle {
-         color: #000000;
-         }
          #weekly {
          background-color: var(--grey-color);
          }
-         #weekly .section-title,
-         #weekly .section-subtitle {
-         color: #000000;
-         }
          #weekend {
-         background-color: var(--beige-color);
-         }
-         #weekend .section-title,
-         #weekend .section-subtitle {
-         color: #000000;
+         background-color: var(--grey-color); /* Changed to darker grey */
          }
          #faqs {
          background-color: var(--blue-color);
          }
-         #faqs .section-title,
-         #faqs .section-subtitle {
-         color: #000000;
-         }
          #makebetter {
-         background-color: var(--grey-color);
+         background-color: #FDEDED; /* Changed to light pink */
          }
-         #makebetter .section-title,
-         #makebetter .section-subtitle {
-         color: #000000;
-         }
-         #guides {
-         background-color: var(--pink-color);
-         }
-         #guides .section-title,
-         #guides .section-subtitle {
-         color: #000000;
+         section#guides {
+         background-color: #D0DFFE !important;
          }
          /* Card Styles - Desktop First */
          .resource-card {
@@ -2136,9 +2120,16 @@
          }
          /* The fixed version */
          footer {
-         background: var(--blue-color);
-         color: #000000;
-         padding: 3rem 0 1.5rem;
+         background-color: #2D2D2D;
+         }
+         footer * {
+         color: #FFFFFE !important;
+         }
+         footer a:hover {
+         color: #e0e0e0 !important;
+         }
+         footer .text-black-50 {
+         color: #FFFFFE !important;
          }
          /* Animations */
          @keyframes fadeInUp {
