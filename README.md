@@ -1,243 +1,215 @@
-# 📚 Alpha Resource Hub for Hosts and Helpers
+# Alpha Resource Hub for Hosts and Helpers
 
-A comprehensive **web-based resource center** designed to equip **Alpha
-course hosts and helpers** with all the materials needed to create
-welcoming spaces for conversations about life, faith, and God.
+A comprehensive, GitHub‑friendly resource platform designed to equip
+Alpha course hosts and helpers with everything needed to create warm and
+welcoming environments for conversations about life, faith, and God.
 
-------------------------------------------------------------------------
+## Overview
 
-## ✨ Key Features
+The **Alpha Resource Hub** provides organized access to training
+materials, weekly resources, weekend-away content, and additional guides
+to support those running Alpha courses.\
+This responsive web application makes it easy to find, view, and share
+resources for both in‑person and online Alpha sessions.
 
-  -----------------------------------------------------------------------
-  Feature                       Description
-  ----------------------------- -----------------------------------------
-  🎥 **Training Videos**        Curated collection of training videos for
-                                hosts and helpers, including essentials
-                                and specific guidance for onsite and
-                                online small groups
-
-  📅 **Week-by-Week Resources** Complete materials for all 11 weeks of
-                                Alpha, including talks, briefings,
-                                icebreakers, discussion questions, and
-                                tips
-
-  🏕️ **Weekend Away Materials** Specialized resources for the Alpha
-                                Weekend Away, including talks on the Holy
-                                Spirit and corresponding guides
-
-  📄 **Downloadable Guides**    Guest guides and team guides for each
-                                week, with direct download and copy link
-                                functionality
-
-  📝 **Feedback System**        Interactive form for hosts and helpers to
-                                contribute icebreakers, discussion
-                                questions, and tips
-
-  📱 **Mobile Responsive**      Fully optimized for both desktop and
-                                mobile devices with adaptive layouts
-
-  🔗 **Easy Link Sharing**      Copy-to-clipboard functionality for easy
-                                sharing of resources
-
-  🎨 **Modern UI/UX**           Clean, professional interface with
-                                animations, transitions, and intuitive
-                                navigation
-
-  📺 **Video Modal Player**     Integrated video player for seamless
-                                viewing of training content
-
-  🔍 **Organized Content        Accordion-style navigation for easy
-  Structure**                   access to specific resources
-  -----------------------------------------------------------------------
-
-------------------------------------------------------------------------
-
-## 🛠️ Technology Stack
+## Features
 
   -----------------------------------------------------------------------
-  Component                          Technology
-  ---------------------------------- ------------------------------------
-  💻 **Frontend Framework**          Bootstrap 5.3.0
+  Feature                     Description
+  --------------------------- -------------------------------------------
+  📚 Training Videos          Essential preparation videos for hosts and
+                              helpers
 
-  🎨 **Icons**                       Font Awesome 5.15.4
+  📅 Week‑by‑Week Guide       Complete materials for all 11 Alpha weeks
 
-  📊 **Form Processing**             Google Apps Script integration
+  🏕️ Weekend Away Resources   Specialized materials for the Alpha weekend
+                              experience
 
-  ⚙️ **Core Technologies**           HTML5, CSS3, JavaScript (ES6+)
+  ❓ FAQs                     Answers to common questions about running
+                              Alpha
 
-  ✨ **UI Components**               Custom CSS with animations and
-                                     responsive design
+  💡 Share What Works         Submit icebreakers, discussion questions,
+                              and tips
 
-  🔔 **Toast Notifications**         Custom notification system for user
-                                     feedback
-
-  📱 **Mobile Design**               Adaptive layouts with card-based
-                                     views
-
-  🎯 **Video Integration**           Vimeo embedded player with modal
-                                     interface
-
-  🗂️ **Content Organization**        Accordion components for organized
-                                     display
+  🔗 Additional Resources     Extra tools and helpful links
   -----------------------------------------------------------------------
 
-------------------------------------------------------------------------
+## Getting Started
 
-## 📋 User Guide
+### Prerequisites
 
-### 🏠 Getting Started
+-   A modern web browser (Chrome, Firefox, Safari, Edge)
+-   Internet connection for viewing videos
 
-#### 🌐 Access the Resource Hub
+### Installation
 
-Open the website in any modern web browser.
+1.  Clone this repository:
 
-#### 🧭 Navigate Sections
+        git clone https://github.com/your-username/alpha-resource-hub.git
 
-Use the navigation menu to explore: - **Get Ready** -- Training videos\
-- **Week-by-Week Guide** -- Weekly resources\
-- **Weekend Away** -- Weekend materials\
-- **FAQs** -- Coming soon\
-- **Make Alpha Better** -- Feedback form\
-- **Additional Resources** -- Extra materials
+2.  Open `index.html`:
 
-------------------------------------------------------------------------
+        open index.html
 
-### 🎥 Training Videos
+3.  Optional: run a local dev server
 
--   Go to **Get Ready** in the navigation menu.\
--   Browse available training videos:
-    -   *The Essentials*
-    -   *Onsite Small Group*
-    -   *Online Small Group*
--   Click **Watch Now** to open videos in the modal player.
+        python -m http.server 8000
 
-------------------------------------------------------------------------
+    or
 
-### 📅 Week-by-Week Guide
+        npx http-server
 
-Each week is an accordion section containing: - **Alpha Talk** - **Hosts
-and Helpers Briefing** - **Icebreaker** - **Discussion Questions** -
-**Tips** - **Guest Guide** - **Team Guide**
+## Weekly Resources
 
-#### 🖱️ Interaction
+Below is the structure for each Alpha week:
 
--   Click **Watch Now** to play videos.
--   Click **Download** to access PDFs.
--   Click **Copy Link** to copy URLs.
+### Week 1 --- *Is There More to Life Than This?*
 
-------------------------------------------------------------------------
+-   **Alpha Talk:** https://player.vimeo.com/video/184825483\
+-   **Host & Helper Briefing:**
+    https://player.vimeo.com/video/340385686\
+-   **Guest Guide:**
+    https://drive.google.com/drive/folders/1N2wuDY9YybXy1xsxgcjemgzaoGFzFOXj\
+-   **Team Guide:**
+    https://drive.google.com/file/d/14HDWNy1MJc2THSJF-AYqDse4pIOiRuM8/view\
+-   **Icebreaker:** Say your name with an adjective that starts with the
+    same letter.\
+-   **Discussion Questions:**
+    -   How and why did you come to Alpha?\
+    -   If it turned out there *was* a God...\
+-   **Tips:** Arrive early and welcome guests intentionally.
 
-### 🏕️ Weekend Away Resources
+### Week 2 --- *Who Is Jesus?*
 
-Includes: - Talks:\
-- *Who is the Holy Spirit?*\
-- *What does the Holy Spirit do?*\
-- *How can I be filled with the Holy Spirit?*\
-- *How can I make the most out of the rest of my life?* - Guides:\
-- *Holy Spirit Guest Guide*\
-- *Filled With Holy Spirit Guest Guide*\
-- *Making The Most Guest Guide*\
-- *Team Guides*
+-   **Alpha Talk:** https://player.vimeo.com/video/184825484\
+-   **Host & Helper Briefing:**
+    https://player.vimeo.com/video/340385692\
+-   **Guest Guide:**
+    https://drive.google.com/file/d/1jttEyvllS8ycR4CDC8f82mvUWGlTg16-/view\
+-   **Team Guide:**
+    https://drive.google.com/file/d/1wXpmbb3PxpBnIxcct-6WDR9HBVEZfsyt/view\
+-   **Icebreaker:** If you were stuck on a desert island and could take
+    *one thing*...\
+-   **Discussion Questions:** What makes you happy? What do you think
+    about Jesus?\
+-   **Tips:** Consistency matters --- arrive early.
 
-------------------------------------------------------------------------
+*(Weeks 3--11 follow the same structure and should be added with their
+respective links.)*
 
-### 📝 Make Alpha Better
+## Weekend Away Resources
 
-Use the feedback form to share: - Name (optional)\
-- Role (Host or Helper)\
-- Category (Icebreaker, Question, Tip)\
-- Week Number (1--11 or Weekend Away)\
-- Idea or suggestion
+### Main Talks
 
-Submissions are reviewed for inclusion in future updates.
+-   **Introduction:** https://player.vimeo.com/video/184825491\
+-   **Who is the Holy Spirit?:**
+    https://player.vimeo.com/video/184825492\
+-   **What does the Holy Spirit do?:**
+    https://player.vimeo.com/video/184825493\
+-   **How can I be filled?:** https://player.vimeo.com/video/184825495\
+-   **How can I make the most of my life?:**
+    https://player.vimeo.com/video/184825496
 
-------------------------------------------------------------------------
+### Training Videos
 
-### 📚 Additional Resources
+-   Prayer & The Weekend --- https://player.vimeo.com/video/214170194\
+-   Prayer Ministry --- https://player.vimeo.com/video/490974388
 
-Includes: - Alpha Toolbox\
-- Alpha Team Handbook\
-- Promotional Materials\
-- Small Group Leaders Guide
+### Guest Guides
 
-Each resource supports direct download and copy link options.
+-   Who Is The Holy Spirit? ---
+    https://drive.google.com/file/d/1fN1i5ql7BCbHKpk1iRxGlywYJWWnBcXN/view\
+-   What Does He Do? ---
+    https://drive.google.com/file/d/1yDghXCu0EBqrQcmjxQNx1nUv5PtTqw96/view\
+-   How Can I Be Filled? ---
+    https://drive.google.com/file/d/1S5wDQykDAsPliN8Tzy7xCA1bpgWgwdm3/view\
+-   How Can I Make the Most of Life? ---
+    https://drive.google.com/file/d/1Jn3Q8vFh2wENFUmHeLIg64-SMujpd-p-/view
 
-------------------------------------------------------------------------
+### Team Guides
 
-## 🚀 Quick Start
+-   Who Is The Holy Spirit? ---
+    https://drive.google.com/file/d/1_HwU497m5NO0N--v5669igJ2kRmjrcng/view\
+-   What Does He Do? ---
+    https://drive.google.com/file/d/1xb9JPEWRFUaAFWY_PufnrdqEDynA_0MW/view\
+-   How Can I Be Filled? ---
+    https://drive.google.com/file/d/1hIkGiM0ZcdWOb1VyZUpG9QvAa4jT2mE6/view\
+-   How Can I Make the Most of Life? ---
+    https://drive.google.com/file/d/108Cf2uiep7S0qe67IGTTNwRQVVvCJQMA/view
 
-This app runs entirely in your browser.
+## Additional Resources
 
-1.  📥 **Download all project files** (`HTML`, `CSS`, `JS`)
-2.  🖥️ **Host** on a web server or local environment
-3.  🔧 **Set up Google Apps Script** for form submissions
-4.  🌐 **Access** via browser
+  -------------------------------------------------------------------------------------------------------------------
+  Resource                                   Link
+  ------------------------------------------ ------------------------------------------------------------------------
+  Alpha Toolbox                              https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view
 
-------------------------------------------------------------------------
+  Small Group Training                       https://drive.google.com/file/d/1Hzpl5qqQlsQXpjelEF1_C1OVaynJkdlZ/view
 
-## ⚙️ Configuration
+  Bible in One Year                          https://bible.alpha.org/en/
 
-### 🔧 Google Apps Script Setup
+  YouVersion Bible App                       https://www.bible.com/app
+  -------------------------------------------------------------------------------------------------------------------
 
-1.  Go to [script.google.com](https://script.google.com)
+## Contributing
 
-2.  Create a new project
+You can contribute by:
 
-3.  Add your form-handling script
+1.  **Submitting Ideas** via the "Share What Works" form\
+2.  **Reporting Issues** on GitHub\
+3.  **Opening Pull Requests** for code improvements
 
-4.  Deploy as a web app
+## Google Sheets Integration
 
-5.  Copy your web app URL
-
-6.  Replace this line in `script.js`:
-
-    ``` javascript
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec';
-    ```
-
-------------------------------------------------------------------------
-
-## 🧩 Updating Content
-
-Modify data directly in the JavaScript configuration section:
+1.  Create a Google Sheet with columns:\
+    `timestamp`, `name`, `role`, `category`, `weekNumber`, `idea`
+2.  Open Extensions → Apps Script\
+3.  Paste this code:
 
 ``` javascript
-trainingVideos     // Add or edit training videos
-weeklyResources    // Update weekly Alpha content
-weekendResources   // Modify weekend materials
-additionalGuides   // Add extra guides
+function doPost(e) {
+  try {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    const data = JSON.parse(e.postData.contents);
+
+    if (!data.timestamp) {
+      data.timestamp = new Date().toISOString();
+    }
+
+    const row = [
+      data.timestamp,
+      data.name,
+      data.role,
+      data.category,
+      data.weekNumber,
+      data.idea
+    ];
+
+    sheet.appendRow(row);
+
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        status: 'success',
+        message: 'Form submitted successfully'
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        status: 'error',
+        message: error.toString()
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
 ```
 
-Save and refresh your browser.
+4.  Deploy as web app\
+5.  Replace `GOOGLE_SCRIPT_URL` in your `index.html` script
 
-------------------------------------------------------------------------
+## Contact
 
-## 📱 Mobile Experience
+For support: **michael.ting@htbb.org**
 
--   **Desktop:** Full-featured with side navigation\
--   **Tablet:** Optimized spacing and layout\
--   **Mobile:** Collapsible menus and touch-friendly cards
-
-------------------------------------------------------------------------
-
-## ⚠️ Limitations
-
--   Internet required for videos and form submissions\
--   Proper Google Apps Script setup needed\
--   FAQ section coming soon\
--   Copy-to-clipboard may not work on very old browsers\
--   Requires JavaScript enabled
-
-------------------------------------------------------------------------
-
-## 🤝 Contributing
-
-We welcome contributions from **Alpha hosts and helpers**!
-
--   Use *Make Alpha Better* to submit your ideas\
--   Share your best icebreakers, questions, and hosting tips\
--   Help improve the Resource Hub for others worldwide
-
-------------------------------------------------------------------------
-
-**© Alpha Resource Hub -- Empowering hosts and helpers everywhere**
+© 2024 Alpha Course Resources. All rights reserved.
