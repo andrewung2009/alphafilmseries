@@ -9,1470 +9,6 @@
       <link rel="icon" type="image/jpeg" href="assets/alphalogo.jpg">
       <!-- JavaScript -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-      <script>
-         // ============================================
-         // ⭐ CONFIGURATION SECTION - EASY EDITING HERE ⭐
-         // ============================================
-         // 
-         // 👋 WELCOME! This is the only section you need to edit.
-         // You don't need to know any coding to update this website.
-         // Just follow the instructions below.
-         //
-         // 📝 HOW TO EDIT:
-         // 1. Find the section you want to change
-         // 2. Update the text between the quotation marks "like this"
-         // 3. Save the file and refresh your browser
-         // 4. That's it! No coding knowledge required!
-         //
-         // 🚨 IMPORTANT: 
-         // - Always keep quotation marks around your text
-         // - Don't change words before the colon (like "title:" or "url:")
-         // - For links, make sure they start with http:// or https://
-         //
-         // ============================================
-         
-         // Google Apps Script URL for form submission
-         // Replace this with your own Google Apps Script URL after setting it up
-         // Instructions: https://github.com/marcus-ng/alpha-resource-hub#google-sheets-integration
-         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw9hnMZ06Hq18SIrP2OI-HjCAK-fjGTCT6qEukKqV00dSv_IZTwGF2dWf7ZJdyWUiEoOA/exec';
-         
-         // ============================================
-         // 📺 TRAINING VIDEOS CONFIGURATION
-         // ============================================
-         // Edit the training videos that appear in the "Get Ready" section
-         // To add a new video, copy and paste a new block inside the brackets []
-         // Make sure to add a comma after each block except the last one
-         const trainingVideos = [
-             {
-                 title: "The Essentials",
-                 url: "https://player.vimeo.com/video/273602720"
-             },
-             {
-                 title: "Onsite Small Group",
-                 url: "https://player.vimeo.com/video/214170130"
-             },
-             {
-                 title: "Online Small Group",
-                 url: "https://player.vimeo.com/video/490924040"
-             }
-         ];
-         
-         // ============================================
-         // 📄 TRAINING DOCUMENTS CONFIGURATION
-         // ============================================
-         // Edit the training documents that appear in the "Get Ready" section
-         // Currently empty as Alpha Toolbox moved
-         const trainingDocuments = [];
-         
-         // ============================================
-         // 📅 WEEKLY RESOURCES CONFIGURATION
-         // ============================================
-         // Edit the weekly resources that appear in the "Week-by-Week Guide" section
-         // Each week has its own configuration block
-         // To add a new week, copy and paste an existing week block and update the details
-         const weeklyResources = [
-             // ⭐ WEEK 1 TEMPLATE - COPY THIS TO ADD NEW WEEKS ⭐
-             {
-                 week: 1,
-                 title: "Is There More To Life Than This?",
-                 talk: {
-                     title: "Is There More To Life Than This?",
-                     url: "https://player.vimeo.com/video/184825483"
-                 },
-                 briefing: {
-                     title: "Host & Helper: Week 1",
-                     url: "https://player.vimeo.com/video/340385686"
-                 },
-                 guide: {
-                     title: "Guest Guide",
-                     url: "https://drive.google.com/drive/folders/1N2wuDY9YybXy1xsxgcjemgzaoGFzFOXj"
-                 },
-                 teamGuide: {
-                     title: "Team Guide",
-                     url: "https://drive.google.com/file/d/14HDWNy1MJc2THSJF-AYqDse4pIOiRuM8/view?usp=drive_link"
-                 },
-                 icebreaker: {
-                     title: "Icebreaker",
-                     content: [
-                         "Say your name with an adjective that starts with the same letter as your name.",
-                         "It can describe you or just be something fun.",
-                         "For example: 'Gentle George,' 'Brilliant Bella,' or 'Curious Chloe.'",
-                         "Each person has to repeat everyone's name and adjective who came before them—then add their own!"
-                     ]
-                 },
-                 discussion: {
-                     title: "Discussion Questions",
-                     content: [
-                         "How and why did you end up coming to Alpha?",
-                         "If it turned out there was a God after all, and you could ask one question, what would it be?",
-                         "What do you think about the idea of there being a spiritual side to life?",
-                         "What aspects of the evidence presented tonight did you find convincing/not convincing?"
-                     ]
-                 },
-                 tips: {
-                     title: "Tips",
-                     content: [
-                         "Arrive early. Make guests feel welcomed and cared for.",
-                         "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.",
-                         "Finish on time."
-                     ]
-                 }
-             },
-             // ⭐ WEEK 2 - EDIT THE DETAILS BELOW ⭐
-             {
-                 week: 2,
-                 title: "Who Is Jesus?",
-                 talk: {
-                     title: "Who Is Jesus?",
-                     url: "https://player.vimeo.com/video/184825484"
-                 },
-                 briefing: {
-                     title: "Host & Helper: Week 2",
-                     url: "https://player.vimeo.com/video/340385692"
-                 },
-                 guide: {
-                     title: "Guest Guide",
-                     url: "https://drive.google.com/file/d/1jttEyvllS8ycR4CDC8f82mvUWGlTg16-/view"
-                 },
-                 teamGuide: {
-                     title: "Team Guide",
-                     url: "https://drive.google.com/file/d/1wXpmbb3PxpBnIxcct-6WDR9HBVEZfsyt/view?usp=drive_link"
-                 },
-                 icebreaker: {
-                     title: "Icebreaker",
-                     content: [
-                         "If you were stuck on a desert island and you could take one thing (not a person) with you,",
-                         "You already have the Bible and the complete works of Shakespeare,",
-                         "What would you take and why?"
-                     ]
-                 },
-                 discussion: {
-                     title: "Discussion Questions",
-                     content: [
-                         "What makes you happy?",
-                         "What do you think about Jesus? / How do you feel about Jesus?",
-                         "If you had a chance to meet Jesus, how would you feel and what would you say to him?",
-                         "What aspects of the evidence presented tonight did you find convincing/not convincing?"
-                     ]
-                 },
-                 tips: {
-                     title: "Tips",
-                     content: [
-                         "Arrive early. Make guests feel welcomed and cared for.",
-                         "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.",
-                         "Finish on time."
-                     ]
-                 }
-             },
-             // ⭐ WEEK 3 - EDIT THE DETAILS BELOW ⭐
-             {
-                 week: 3,
-                 title: "Why Did Jesus Die?",
-                 talk: {
-                     title: "Why Did Jesus Die?",
-                     url: "https://player.vimeo.com/video/250767723"
-                 },
-                 briefing: {
-                     title: "Host & Helper: Week 3",
-                     url: "https://player.vimeo.com/video/340385698"
-                 },
-                 guide: {
-                     title: "Guest Guide",
-                     url: "https://drive.google.com/file/d/1LDm9PCstXIIU1gl78HX94eLXRIW2xi0Y/view"
-                 },
-                 teamGuide: {
-                     title: "Team Guide",
-                     url: "https://drive.google.com/file/d/11yQkx_Gt4lms2eGOiGi4D25TZxIOS34N/view?usp=drive_link"
-                 },
-                 icebreaker: {
-                     title: "Icebreaker",
-                     content: [
-                         "Share about a time when someone did something unexpectedly kind for you.",
-                         "How did it make you feel?",
-                         "Did it change your perspective in any way?"
-                     ]
-                 },
-                 discussion: {
-                     title: "Discussion Questions",
-                     content: [
-                         "What does the word 'forgiveness' mean to you?",
-                         "Have you ever had to forgive anyone?",
-                         "Has anyone had to forgive you?",
-                         "How do you feel about the idea of God forgiving you?"
-                     ]
-                 },
-                 tips: {
-                     title: "Tips",
-                     content: [
-                         "Arrive early. Make guests feel welcomed and cared for.",
-                         "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.",
-                         "Finish on time."
-                     ]
-                 }
-             },
-             // ⭐ WEEK 4 - EDIT THE DETAILS BELOW ⭐
-             {
-                 week: 4,
-                 title: "How Can I Have Faith?",
-                 talk: {
-                     title: "How Can I Have Faith?",
-                     url: "https://player.vimeo.com/video/250771916"
-                 },
-                 briefing: {
-                     title: "Host & Helper: Week 4",
-                     url: "https://player.vimeo.com/video/340385704"
-                 },
-                 guide: {
-                     title: "Guest Guide",
-                     url: "https://drive.google.com/file/d/1R9wtBc35n3DldO3DrnFMecvD9PtTU4wK/view"
-                 },
-                 teamGuide: {
-                     title: "Team Guide",
-                     url: "https://drive.google.com/file/d/1FkzS9fPHiflx4XMXlw780LYfA6AIUR5b/view?usp=drive_link"
-                 },
-                 icebreaker: {
-                     title: "Icebreaker",
-                     content: [
-                         "What's something you believe in that you can't see or prove scientifically?",
-                         "How did you come to believe in it?",
-                         "What gives you confidence in this belief?"
-                     ]
-                 },
-                 discussion: {
-                     title: "Discussion Questions",
-                     content: [
-                         "What does it mean to have faith?",
-                         "How can you have faith in someone you can't see?",
-                         "What do you think about the idea of faith being a step based on evidence rather than a blind leap?",
-                         "How do you feel about placing your trust in God?",
-                         "What do you think about the idea of having a relationship with Jesus?"
-                     ]
-                 },
-                 tips: {
-                     title: "Tips",
-                     content: [
-                         "Arrive early. Make guests feel welcomed and cared for.",
-                         "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.",
-                         "Finish on time."
-                     ]
-                 }
-             },
-             // ⭐ WEEK 5 - EDIT THE DETAILS BELOW ⭐
-             {
-                 week: 5,
-                 title: "Why and How Do I Pray?",
-                 talk: {
-                     title: "Why and How Do I Pray?",
-                     url: "https://player.vimeo.com/video/250771919"
-                 },
-                 briefing: {
-                     title: "Host & Helper: Week 5",
-                     url: "https://player.vimeo.com/video/340385710"
-                 },
-                 guide: {
-                     title: "Guest Guide",
-                     url: "https://drive.google.com/file/d/1J5F89h_vh1YINetIuC5pmMnuUYB6qSGe/view"
-                 },
-                 teamGuide: {
-                     title: "Team Guide",
-                     url: "https://drive.google.com/file/d/12tgHnavl2Lo8FHYQKLl-guAPFl4K-Q2_/view?usp=drive_link"
-                 },
-                 icebreaker: {
-                     title: "Icebreaker",
-                     content: [
-                         "Have you ever had a conversation that changed your life?",
-                         "What was it about?",
-                         "What made it so impactful?"
-                     ]
-                 },
-                 discussion: {
-                     title: "Discussion Questions",
-                     content: [
-                         "Has anyone ever tried praying? How did you get on? (Or, Do you know anyone who has tried praying?)",
-                         "What do you think about the idea of God answering prayer?"
-                     ]
-                 },
-                 tips: {
-                     title: "Tips",
-                     content: [
-                         "Arrive early. Make guests feel welcomed and cared for.",
-                         "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.",
-                         "Finish on time."
-                     ]
-                 }
-             },
-             // ⭐ WEEK 6 - EDIT THE DETAILS BELOW ⭐
-             {
-                 week: 6,
-                 title: "Why and How Should I Read the Bible?",
-                 talk: {
-                     title: "Why and How Should I Read the Bible?",
-                     url: "https://player.vimeo.com/video/184825488"
-                 },
-                 briefing: {
-                     title: "Host & Helper: Week 6",
-                     url: "https://player.vimeo.com/video/340385742"
-                 },
-                 guide: {
-                     title: "Guest Guide",
-                     url: "https://drive.google.com/file/d/1AIJLM9BV0z-EM5GQlGMrKk1OAbl0JefY/view"
-                 },
-                 teamGuide: {
-                     title: "Team Guide",
-                     url: "https://drive.google.com/file/d/1ZoDrXA1cnx-IbKEdXdN-8P5fZKYEP3xh/view?usp=drive_link"
-                 },
-                 icebreaker: {
-                     title: "Icebreaker",
-                     content: [
-                         "What's a book that has significantly influenced your life?",
-                         "What did you learn from it?",
-                         "Would you recommend it to others? Why or why not?"
-                     ]
-                 },
-                 discussion: {
-                     title: "Discussion Questions",
-                     content: [
-                         "Has anyone ever tried reading any of the Bible or heard it being read? How did you find it?",
-                         "How do you feel about the idea of God speaking through the Bible?",
-                         "Have you read anything in the Bible that has challenged an aspect of your beliefs or behaviour?"
-                     ]
-                 },
-                 tips: {
-                     title: "Tips",
-                     content: [
-                         "Arrive early. Make guests feel welcomed and cared for.",
-                         "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.",
-                         "Finish on time."
-                     ]
-                 }
-             },
-             // ⭐ WEEK 7 - EDIT THE DETAILS BELOW ⭐
-             {
-                 week: 7,
-                 title: "How Does God Guide Us?",
-                 talk: {
-                     title: "How Does God Guide Us?",
-                     url: "https://player.vimeo.com/video/250771931"
-                 },
-                 briefing: {
-                     title: "Host & Helper: Week 7",
-                     url: "https://player.vimeo.com/video/340385751"
-                 },
-                 guide: {
-                     title: "Guest Guide",
-                     url: "https://drive.google.com/file/d/1Gd8A8fB32sPo810aLz0Ydd7mj4v0tUJn/view"
-                 },
-                 teamGuide: {
-                     title: "Team Guide",
-                     url: "https://drive.google.com/file/d/1pMGHgeRqYT1gPMzyVB2oh6oN2X_FhoG1/view?usp=drive_link"
-                 },
-                 icebreaker: {
-                     title: "Icebreaker",
-                     content: [
-                         "Share about a time you received good advice that helped you make an important decision.",
-                         "Who gave you the advice?",
-                         "How did you know to trust it?"
-                     ]
-                 },
-                 discussion: {
-                     title: "Discussion Questions",
-                     content: [
-                         "What made you decide to do Alpha?",
-                         "If you could ask God a question, what would you ask?",
-                         "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"
-                     ]
-                 },
-                 tips: {
-                     title: "Tips",
-                     content: [
-                         "Arrive early. Make guests feel welcomed and cared for.",
-                         "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.",
-                         "Finish on time."
-                     ]
-                 }
-             },
-             // ⭐ WEEK 8 - EDIT THE DETAILS BELOW ⭐
-             {
-                 week: 8,
-                 title: "How Can I Resist Evil?",
-                 talk: {
-                     title: "How Can I Resist Evil?",
-                     url: "https://player.vimeo.com/video/250771966"
-                 },
-                 briefing: {
-                     title: "Host & Helper: Week 8",
-                     url: "https://player.vimeo.com/video/340385762"
-                 },
-                 guide: {
-                     title: "Guest Guide",
-                     url: "https://drive.google.com/file/d/1G_9lYiis0sOzIA3FM-q5BWP_FEonnNfV/view"
-                 },
-                 teamGuide: {
-                     title: "Team Guide",
-                     url: "https://drive.google.com/file/d/109ln5hjEEzbHfywA7mV_h0og6k4KqM-0/view?usp=drive_link"
-                 },
-                 icebreaker: {
-                     title: "Icebreaker",
-                     content: [
-                         "What's a temptation you find difficult to resist?",
-                         "What strategies have you tried to overcome it?",
-                         "What has worked and what hasn't?"
-                     ]
-                 },
-                 discussion: {
-                     title: "Discussion Questions",
-                     content: [
-                         "What made you decide to do Alpha?",
-                         "If you could ask God a question, what would you ask?",
-                         "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"
-                     ]
-                 },
-                 tips: {
-                     title: "Tips",
-                     content: [
-                         "Arrive early. Make guests feel welcomed and cared for.",
-                         "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.",
-                         "Finish on time."
-                     ]
-                 }
-             },
-             // ⭐ WEEK 9 - EDIT THE DETAILS BELOW ⭐
-             {
-                 week: 9,
-                 title: "Why and How Should I Tell Others?",
-                 talk: {
-                     title: "abc",
-                     url: "https://player.vimeo.com/video/184825498"
-                 },
-                 briefing: {
-                     title: "Host & Helper: Week 9",
-                     url: "https://player.vimeo.com/video/340385769"
-                 },
-                 guide: {
-                     title: "Guest Guide",
-                     url: "https://drive.google.com/file/d/1kTNr7UaThJlzqxeAMjxqjuBivOplQhex/view"
-                 },
-                 teamGuide: {
-                     title: "Team Guide",
-                     url: "https://drive.google.com/file/d/173-z4FifopthDqizeUc0bGp9ccIRY6pH/view?usp=drive_link"
-                 },
-                 icebreaker: {
-                     title: "Icebreaker",
-                     content: [
-                         "Share about something you're passionate about that others might not know about.",
-                         "What makes it so meaningful to you?",
-                         "How do you share it with others?"
-                     ]
-                 },
-                 discussion: {
-                     title: "Discussion Questions",
-                     content: [
-                         "What made you decide to do Alpha?",
-                         "If you could ask God a question, what would you ask?",
-                         "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"
-                     ]
-                 },
-                 tips: {
-                     title: "Tips",
-                     content: [
-                         "Arrive early. Make guests feel welcomed and cared for.",
-                         "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.",
-                         "Finish on time."
-                     ]
-                 }
-             },
-             // ⭐ WEEK 10 - EDIT THE DETAILS BELOW ⭐
-             {
-                 week: 10,
-                 title: "Does God Heal Today?",
-                 talk: {
-                     title: "Does God Heal Today?",
-                     url: "https://player.vimeo.com/video/184825500"
-                 },
-                 briefing: {
-                     title: "Host & Helper: Week 10",
-                     url: "https://player.vimeo.com/video/340385776"
-                 },
-                 guide: {
-                     title: "Guest Guide",
-                     url: "https://drive.google.com/file/d/1zxy6UX9O4hU0FkzbdKficsBck4PV1-tj/view"
-                 },
-                 teamGuide: {
-                     title: "Team Guide",
-                     url: "https://drive.google.com/file/d/14jv2vwoBnbmpTm_uwfFzeGSIwSv0XnOT/view?usp=drive_link"
-                 },
-                 icebreaker: {
-                     title: "Icebreaker",
-                     content: [
-                         "Have you or someone you know experienced an unexpected recovery from illness or injury?",
-                         "What was the situation?",
-                         "What role did faith play in the healing process?"
-                     ]
-                 },
-                 discussion: {
-                     title: "Discussion Questions",
-                     content: [
-                         "What made you decide to do Alpha?",
-                         "If you could ask God a question, what would you ask?",
-                         "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"
-                     ]
-                 },
-                 tips: {
-                     title: "Tips",
-                     content: [
-                         "Arrive early. Make guests feel welcomed and cared for.",
-                         "Avoid discussing religion over dinner. There's plenty of time for that in the weeks ahead.",
-                         "Finish on time."
-                     ]
-                 }
-             },
-             // ⭐ WEEK 11 - EDIT THE DETAILS BELOW ⭐
-             {
-                 week: 11,
-                 title: "What About The Church?",
-                 talk: {
-                     title: "What About The Church?",
-                     url: "https://player.vimeo.com/video/250771976"
-                 },
-                 briefing: {
-                     title: "Host & Helper: Week 11",
-                     url: "https://player.vimeo.com/video/340385788"
-                 },
-                 guide: {
-                     title: "Guest Guide",
-                     url: "https://drive.google.com/file/d/1v3UGl1PkaKO6RpelLj6gLplNo5X-kLg_/view"
-                 },
-                 teamGuide: {
-                     title: "Team Guide",
-                     url: "https://drive.google.com/file/d/1DxJputeyZUksuAN0C_P1M_OYibqjQaqc/view?usp=drive_link"
-                 },
-                 icebreaker: {
-                     title: "Icebreaker",
-                     content: [
-                         "Describe a community or group where you feel you truly belong.",
-                         "What makes you feel welcome there?",
-                         "What role do you play in that community?"
-                     ]
-                 },
-                 discussion: {
-                     title: "Discussion Questions",
-                     content: [
-                         "What made you decide to do Alpha?",
-                         "If you could ask God a question, what would you ask?",
-                         "Bonus question: Before you heard the talk tonight, what was your concept of Jesus? Has it changed? If so, why?"
-                     ]
-                 },
-                 tips: {
-                     title: "Tips",
-                     content: [
-                         "Invite your guest to join a   Connect Group. Share the link.",
-                         "Share HTBB service time. 9.30 am, 11.30 am, 5.00 pm",
-                         "Encourage guest to fill in the survey. Share QR code.",
-                         "Discipleship Basics"
-                     ]
-                 }
-             }
-         ];
-         
-         // ============================================
-         // 🏕️ WEEKEND RESOURCES CONFIGURATION
-         // ============================================
-         // Edit the weekend resources that appear in the "Weekend Away" section
-         const weekendResources = {
-         title: "Weekend Away",
-         mainTalks: [
-         {
-            title: "Introduction to the weekend",
-            url: "https://player.vimeo.com/video/184825491"
-         },
-         {
-            title: "Who is the Holy Spirit?",
-            url: "https://player.vimeo.com/video/184825492"
-         },
-         {
-            title: "What does the Holy Spirit do?",
-            url: "https://player.vimeo.com/video/184825493"
-         },
-         {
-            title: "How can I be filled with the Holy Spirit?",
-            url: "https://player.vimeo.com/video/184825495"
-         },
-         {
-            title: "How can I make the most out of the rest of my life?",
-            url: "https://player.vimeo.com/video/184825496"
-         }
-         ],
-         trainingVideos: [
-         {
-            title: "Prayer & The Weekend",
-            url: "https://player.vimeo.com/video/214170194"
-         },
-         {
-            title: "Prayer Ministry",
-            url: "https://player.vimeo.com/video/490974388"
-         }
-         ],
-         guides: [
-         {
-            title: "Who Is The Holy Spirit? Guest Guide",
-            url: "https://drive.google.com/file/d/1fN1i5ql7BCbHKpk1iRxGlywYJWWnBcXN/view"
-         },
-         {
-            title: "What Does The Holy Spirit Do? Guest Guide",
-            url: "https://drive.google.com/file/d/1yDghXCu0EBqrQcmjxQNx1nUv5PtTqw96/view"
-         },
-         {
-            title: "How Can I Be Filled With The Holy Spirit? Guest Guide",
-            url: "https://drive.google.com/file/d/1S5wDQykDAsPliN8Tzy7xCA1bpgWgwdm3/view"
-         },
-         {
-            title: "How Can I Make The Most Of The Rest Of My Life? Guest Guide",
-            url: "https://drive.google.com/file/d/1Jn3Q8vFh2wENFUmHeLIg64-SMujpd-p-/view"
-         }
-         ],
-         teamGuides: [
-         {
-            title: "Who Is The Holy Spirit? Team Guide",
-            url: "https://drive.google.com/file/d/1_HwU497m5NO0N--v5669igJ2kRmjrcng/view?usp=drive_link"
-         },
-         {
-            title: "What Does The Holy Spirit Do? Team Guide",
-            url: "https://drive.google.com/file/d/1xb9JPEWRFUaAFWY_PufnrdqEDynA_0MW/view?usp=drive_link"
-         },
-         {
-            title: "How Can I Be Filled With The Holy Spirit? Team Guide",
-            url: "https://drive.google.com/file/d/1hIkGiM0ZcdWOb1VyZUpG9QvAa4jT2mE6/view?usp=drive_link"
-         },
-         {
-            title: "How Can I Make The Most Of The Rest Of My Life? Team Guide",
-            url: "https://drive.google.com/file/d/108Cf2uiep7S0qe67IGTTNwRQVVvCJQMA/view?usp=drive_link"
-         }
-         ]
-         };
-         
-         // ============================================
-         // 📚 ADDITIONAL GUIDES CONFIGURATION
-         // ============================================
-         // Edit the additional guides that appear in the "Additional Resources" section
-         const additionalGuides = [
-         {
-         title: "Alpha Toolbox",
-         description: "Host notes and resources for running Alpha",
-         url: "https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view",
-         icon: "fas fa-toolbox"
-         },
-         {
-         title: "Small Group Training",
-         description: "Training materials for small group leaders",
-         url: "https://drive.google.com/file/d/1Hzpl5qqQlsQXpjelEF1_C1OVaynJkdlZ/view",
-         icon: "fas fa-chalkboard-teacher"
-         },
-         {
-         title: "The Bible with Nicky and Pippa Gumbel",
-         description: "Explore the Bible with Nicky and Pippa Gumbel",
-         url: "https://bible.alpha.org/en/",
-         icon: "fas fa-bible"
-         },
-         {
-         title: "YouVersion",
-         description: "The Bible App",
-         url: "https://www.bible.com/app",
-         icon: "fas fa-mobile-alt"
-         }
-         ];         
-         // ============================================
-         // 🚫 STOP EDITING HERE - NO CODING KNOWLEDGE NEEDED BELOW THIS LINE 🚫
-         // ============================================
-         
-         // Function to copy link to clipboard
-         function copyToClipboard(url, title) {
-             // Create a temporary textarea element
-             const textarea = document.createElement('textarea');
-             textarea.value = url;
-             textarea.style.position = 'fixed'; // Prevent scrolling to bottom
-             document.body.appendChild(textarea);
-             textarea.select();
-             
-             try {
-                 // Copy the text
-                 const successful = document.execCommand('copy');
-                 document.body.removeChild(textarea);
-                 
-                 if (successful) {
-                     // Show success toast
-                     showToast(`Link copied: ${title}`, 'success');
-                 } else {
-                     // Fallback for older browsers
-                     window.prompt('Copy this link (Ctrl+C, Enter):', url);
-                 }
-             } catch (err) {
-                 // Fallback for older browsers
-                 document.body.removeChild(textarea);
-                 window.prompt('Copy this link (Ctrl+C, Enter):', url);
-             }
-         }
-         
-         // Function to show toast notification
-         function showToast(message, type = 'success') {
-             // Create toast container if it doesn't exist
-             let toastContainer = document.getElementById('toastContainer');
-             if (!toastContainer) {
-                 toastContainer = document.createElement('div');
-                 toastContainer.id = 'toastContainer';
-                 toastContainer.style.cssText = `
-                     position: fixed;
-                     top: 80px;
-                     right: 20px;
-                     z-index: 9999;
-                 `;
-                 document.body.appendChild(toastContainer);
-             }
-             
-             // Create toast element
-             const toast = document.createElement('div');
-             toast.className = `toast align-items-center text-white bg-${type === 'success' ? 'success' : 'danger'} border-0`;
-             toast.setAttribute('role', 'alert');
-             toast.setAttribute('aria-live', 'assertive');
-             toast.setAttribute('aria-atomic', 'true');
-             toast.style.cssText = `
-                 min-width: 250px;
-                 margin-bottom: 10px;
-                 box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                 border-radius: 8px;
-                 animation: slideInRight 0.3s ease;
-             `;
-             
-             toast.innerHTML = `
-                 <div class="d-flex">
-                     <div class="toast-body">
-                         <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>
-                         ${message}
-                     </div>
-                     <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-                 </div>
-             `;
-             
-             // Add to container
-             toastContainer.appendChild(toast);
-             
-             // Initialize Bootstrap toast
-             const bsToast = new bootstrap.Toast(toast, {
-                 autohide: true,
-                 delay: 3000
-             });
-             
-             // Show toast
-             bsToast.show();
-             
-             // Remove from DOM after hidden
-             toast.addEventListener('hidden.bs.toast', () => {
-                 toast.remove();
-             });
-         }
-         
-         // Function to initialize everything after DOM is loaded
-         function initializeApp() {
-           // Add this at the end of your initializeApp function, right before the closing brace
-         function createQuickAccessButton() {
-         // Create the quick access button container
-         const quickAccessBtn = document.createElement('div');
-         quickAccessBtn.id = 'quickAccessBtn';
-         quickAccessBtn.style.cssText = `
-         position: fixed;
-         bottom: 30px;
-         right: 30px;
-         z-index: 1000;
-         opacity: 0;
-         transform: translateY(20px);
-         transition: all 0.3s ease;
-         pointer-events: none;
-         `;
-         
-         // Create the toggle button
-         const toggleBtn = document.createElement('button');
-         toggleBtn.className = 'quick-access-toggle';
-         toggleBtn.style.cssText = `
-         width: 60px;
-         height: 60px;
-         border-radius: 50%;
-         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-         border: none;
-         color: white;
-         font-size: 1.5rem;
-         cursor: pointer;
-         box-shadow: 0 4px 15px rgba(198, 40, 40, 0.3);
-         transition: all 0.3s ease;
-         `;
-         toggleBtn.innerHTML = '<i class="fas fa-compass"></i>';
-         
-         // Create the menu container
-         const menu = document.createElement('div');
-         menu.id = 'quickAccessMenu';
-         menu.style.cssText = `
-         position: absolute;
-         bottom: 70px;
-         right: 0;
-         background: white;
-         border-radius: 12px;
-         box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-         padding: 0.5rem;
-         opacity: 0;
-         transform: translateY(10px);
-         transition: all 0.3s ease;
-         pointer-events: none;
-         min-width: 180px;
-         `;
-         
-         // Add menu items
-         const menuItems = [
-         { href: '#getready', text: 'Get Ready' },
-         { href: '#weekly', text: 'Week-by-Week' },
-         { href: '#weekend', text: 'Weekend Away' },
-         { href: '#faqs', text: 'FAQs' },
-         { href: '#makebetter', text: 'Share What Works' },
-         { href: '#guides', text: 'Resources' }
-         ];
-         
-         menuItems.forEach(item => {
-         const link = document.createElement('a');
-         link.href = item.href;
-         link.className = 'quick-access-item';
-         link.textContent = item.text;
-         link.style.cssText = `
-            display: block;
-            padding: 0.75rem 1rem;
-            color: #333;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            font-size: 0.9rem;
-         `;
-         link.addEventListener('mouseenter', () => {
-            link.style.background = 'var(--light-bg)';
-            link.style.color = 'var(--primary-color)';
-            link.style.transform = 'translateX(5px)';
-         });
-         link.addEventListener('mouseleave', () => {
-            link.style.background = 'transparent';
-            link.style.color = '#333';
-            link.style.transform = 'translateX(0)';
-         });
-         menu.appendChild(link);
-         });
-         
-         // Add click event to toggle button
-         toggleBtn.addEventListener('click', () => {
-         if (menu.style.opacity === '1') {
-            menu.style.opacity = '0';
-            menu.style.transform = 'translateY(10px)';
-            menu.style.pointerEvents = 'none';
-         } else {
-            menu.style.opacity = '1';
-            menu.style.transform = 'translateY(0)';
-            menu.style.pointerEvents = 'all';
-         }
-         });
-         
-         // Add hover effect to toggle button
-         toggleBtn.addEventListener('mouseenter', () => {
-         toggleBtn.style.transform = 'scale(1.1)';
-         toggleBtn.style.boxShadow = '0 6px 20px rgba(198, 40, 40, 0.4)';
-         });
-         toggleBtn.addEventListener('mouseleave', () => {
-         toggleBtn.style.transform = 'scale(1)';
-         toggleBtn.style.boxShadow = '0 4px 15px rgba(198, 40, 40, 0.3)';
-         });
-         
-         // Append elements
-         quickAccessBtn.appendChild(toggleBtn);
-         quickAccessBtn.appendChild(menu);
-         document.body.appendChild(quickAccessBtn);
-         
-         // Show/hide button on scroll
-         window.addEventListener('scroll', () => {
-         if (window.scrollY > 300) {
-            quickAccessBtn.style.opacity = '1';
-            quickAccessBtn.style.transform = 'translateY(0)';
-            quickAccessBtn.style.pointerEvents = 'all';
-         } else {
-            quickAccessBtn.style.opacity = '0';
-            quickAccessBtn.style.transform = 'translateY(20px)';
-            quickAccessBtn.style.pointerEvents = 'none';
-            menu.style.opacity = '0';
-            menu.style.transform = 'translateY(10px)';
-            menu.style.pointerEvents = 'none';
-         }
-         });
-         
-         // Close menu when clicking outside
-         document.addEventListener('click', (e) => {
-         if (!quickAccessBtn.contains(e.target) && menu.style.opacity === '1') {
-            menu.style.opacity = '0';
-            menu.style.transform = 'translateY(10px)';
-            menu.style.pointerEvents = 'none';
-         }
-         });
-         }
-         
-         // Call the function
-         createQuickAccessButton();
-           // Add this to your initializeApp function
-         const quickAccessBtn = document.createElement('div');
-         quickAccessBtn.id = 'quickAccessBtn';
-         quickAccessBtn.innerHTML = `
-         <button class="quick-access-toggle" onclick="toggleQuickAccess()">
-         <i class="fas fa-compass"></i>
-         </button>
-         <div class="quick-access-menu" id="quickAccessMenu">
-         <a href="#getready" class="quick-access-item">Get Ready</a>
-         <a href="#weekly" class="quick-access-item">Week-by-Week</a>
-         <a href="#weekend" class="quick-access-item">Weekend Away</a>
-         <a href="#faqs" class="quick-access-item">FAQs</a>
-         <a href="#makebetter" class="quick-access-item">Share Ideas</a>
-         <a href="#guides" class="quick-access-item">Resources</a>
-         </div>
-         `;
-         document.body.appendChild(quickAccessBtn);
-         
-         // Toggle function
-         function toggleQuickAccess() {
-         const menu = document.getElementById('quickAccessMenu');
-         menu.classList.toggle('show');
-         }
-         
-         // Show/hide button on scroll
-         window.addEventListener('scroll', () => {
-         const btn = document.getElementById('quickAccessBtn');
-         if (window.scrollY > 300) {
-         btn.classList.add('visible');
-         } else {
-         btn.classList.remove('visible');
-         }
-         });
-           // Add this code inside the initializeApp function
-         // Auto-collapse navbar after clicking a link
-         document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-         link.addEventListener('click', () => {
-         // Check if the navbar is currently expanded (visible)
-         const navbarCollapse = document.querySelector('.navbar-collapse');
-         if (navbarCollapse.classList.contains('show')) {
-             // Collapse the navbar
-             const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-                 toggle: false
-             });
-             bsCollapse.hide();
-         }
-         });
-         });
-         // Find this section in your initializeApp function
-         // Smooth scrolling for navigation links
-         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-         anchor.addEventListener('click', function (e) {
-         e.preventDefault();
-         const target = document.querySelector(this.getAttribute('href'));
-         if (target) {
-             target.scrollIntoView({
-                 behavior: 'smooth',
-                 block: 'start'
-             });
-         }
-         });
-         });
-         
-         // ADD THIS CODE RIGHT AFTER THE ABOVE SECTION
-         // Auto-collapse navbar after clicking a link
-         // Auto-collapse navbar after clicking a link (for mobile)
-         document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-         link.addEventListener('click', () => {
-         const navbarCollapse = document.querySelector('.navbar-collapse');
-         if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-            const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-                toggle: false
-            });
-            bsCollapse.hide();
-         }
-         });
-         });             // Generate Training Videos HTML
-         // Generate Training Videos HTML (as a single dropdown containing all videos)
-         function generateTrainingVideos() {
-         const container = document.getElementById('trainingVideosAccordion');
-         let html = '';
-         
-         // Create a single accordion item containing all videos
-         html += `
-         <div class="accordion-item weekly-accordion">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#trainingVideos">
-                    <i class="fas fa-play-circle me-2"></i> Training Videos
-                </button>
-            </h2>
-            <div id="trainingVideos" class="accordion-collapse collapse" data-bs-parent="#trainingVideosAccordion">
-                <div class="accordion-body">
-                    <div class="row justify-content-center">
-         `;
-         
-         // Add all videos inside the accordion body
-         trainingVideos.forEach((video, index) => {
-         html += `
-            <div class="col-lg-4 col-md-6 mb-3">
-                <div class="training-video-item">
-                    <h5 class="training-video-title">${video.title}</h5>
-                    <a href="#" class="week-resource-action" onclick="openVideoModal('${video.url}', 'Training: ${video.title}'); return false;">
-                        <i class="fas fa-play"></i> Watch Now
-                    </a>
-                </div>
-            </div>
-         `;
-         });
-         
-         html += `
-                    </div>
-                </div>
-            </div>
-         </div>
-         `;
-         
-         container.innerHTML = html;
-         }             // Generate Weekly Resources HTML (with dropdowns for icebreaker, discussion, and tips)
-             function generateWeeklyResources() {
-                 const container = document.getElementById('weeklyAccordion');
-                 let html = '';
-                 
-                 // Add weekly resources only
-                 weeklyResources.forEach((week, index) => {
-                     // Always keep accordions collapsed on page load
-                     const isExpanded = '';
-                     const isCollapsed = 'collapsed';
-                     
-                     html += `
-                         <div class="accordion-item weekly-accordion">
-                             <h2 class="accordion-header">
-                                 <button class="accordion-button ${isCollapsed}" type="button" data-bs-toggle="collapse" data-bs-target="#week${week.week}">
-                                     <i class="fas fa-calendar-week me-2"></i> Week ${week.week}: ${week.title}
-                                 </button>
-                             </h2>
-                             <div id="week${week.week}" class="accordion-collapse collapse ${isExpanded}" data-bs-parent="#weeklyAccordion">
-                                 <div class="accordion-body">
-                                     <div class="week-resources">
-                                         <div class="week-resource-card">
-                                             <div class="week-resource-type">
-                                                 <i class="fas fa-play-circle me-1"></i> Alpha Talk
-                                             </div>
-                                             <h5 class="week-resource-title">${week.talk.title}</h5>
-                                             <a href="#" class="week-resource-action" onclick="openVideoModal('${week.talk.url}', '${week.talk.title}'); return false;">
-                                                 <i class="fas fa-play"></i> Watch Now
-                                             </a>
-                                         </div>
-                                         <div class="week-resource-card">
-                                             <div class="week-resource-type">
-                                                 <i class="fas fa-users me-1"></i> Hosts and Helpers Briefing
-                                             </div>
-                                             <h5 class="week-resource-title">${week.briefing.title}</h5>
-                                             <a href="#" class="week-resource-action" onclick="openVideoModal('${week.briefing.url}', '${week.briefing.title}'); return false;">
-                                                 <i class="fas fa-play"></i> Watch Now
-                                             </a>
-                                         </div>
-                                         <div class="week-resource-card">
-                                             <div class="accordion week-accordion" id="icebreakerAccordion${week.week}">
-                                                 <div class="accordion-item">
-                                                     <h2 class="accordion-header">
-                                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#icebreaker${week.week}">
-                                                             <i class="fas fa-snowflake me-1"></i> ${week.icebreaker.title}
-                                                         </button>
-                                                     </h2>
-                                                     <div id="icebreaker${week.week}" class="accordion-collapse collapse" data-bs-parent="#icebreakerAccordion${week.week}">
-                                                         <div class="accordion-body">
-                                                             <ul>
-                                                                 ${week.icebreaker.content.map(point => `<li>${point}</li>`).join('')}
-                                                             </ul>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                         <div class="week-resource-card">
-                                             <div class="accordion week-accordion" id="discussionAccordion${week.week}">
-                                                 <div class="accordion-item">
-                                                     <h2 class="accordion-header">
-                                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#discussion${week.week}">
-                                                             <i class="fas fa-comments me-1"></i> ${week.discussion.title}
-                                                         </button>
-                                                     </h2>
-                                                     <div id="discussion${week.week}" class="accordion-collapse collapse" data-bs-parent="#discussionAccordion${week.week}">
-                                                         <div class="accordion-body">
-                                                             <ul>
-                                                                 ${week.discussion.content.map(question => `<li>${question}</li>`).join('')}
-                                                             </ul>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                         <div class="week-resource-card">
-                                             <div class="accordion week-accordion" id="tipsAccordion${week.week}">
-                                                 <div class="accordion-item">
-                                                     <h2 class="accordion-header">
-                                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tips${week.week}">
-                                                             <i class="fas fa-lightbulb me-1"></i> ${week.tips.title}
-                                                         </button>
-                                                     </h2>
-                                                     <div id="tips${week.week}" class="accordion-collapse collapse" data-bs-parent="#tipsAccordion${week.week}">
-                                                         <div class="accordion-body">
-                                                             <ul>
-                                                                 ${week.tips.content.map(tip => `<li>${tip}</li>`).join('')}
-                                                             </ul>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                         <div class="week-resource-card">
-                                             <div class="week-resource-type">
-                                                 <i class="fas fa-file-alt me-1"></i> Guest Guide
-                                             </div>
-                                             <h5 class="week-resource-title">${week.guide.title}</h5>
-                                             <div class="resource-actions">
-                                                 <a href="${week.guide.url}" class="week-resource-action" target="_blank">
-                                                     <i class="fas fa-download"></i> Download
-                                                 </a>
-                                                 <button class="week-resource-action copy-btn" onclick="copyToClipboard('${week.guide.url}', '${week.guide.title}')" title="Copy link">
-                                                     <i class="fas fa-link"></i> Copy Link
-                                                 </button>
-                                             </div>
-                                         </div>
-                                         <div class="week-resource-card">
-                                             <div class="week-resource-type">
-                                                 <i class="fas fa-users-cog me-1"></i> Team Guide
-                                             </div>
-                                             <h5 class="week-resource-title">${week.teamGuide.title}</h5>
-                                             <div class="resource-actions">
-                                                 <a href="${week.teamGuide.url}" class="week-resource-action" target="_blank">
-                                                     <i class="fas fa-download"></i> Download
-                                                 </a>
-                                                 <button class="week-resource-action copy-btn" onclick="copyToClipboard('${week.teamGuide.url}', '${week.teamGuide.title}')" title="Copy link">
-                                                     <i class="fas fa-link"></i> Copy Link
-                                                 </button>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     `;
-                 });
-                 
-                 container.innerHTML = html;
-             }
-             
-         // Generate Weekend Resources HTML
-         function generateWeekendResources() {
-         const container = document.getElementById('weekendAccordion');
-         let html = '';
-         
-         // Training Videos dropdown - MOVED TO FIRST POSITION
-         html += `
-         <div class="accordion-item weekly-accordion">
-         <h2 class="accordion-header">
-           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#weekendTrainingVideos">
-               <i class="fas fa-graduation-cap me-2"></i> Training Videos
-           </button>
-         </h2>
-         <div id="weekendTrainingVideos" class="accordion-collapse collapse" data-bs-parent="#weekendAccordion">
-           <div class="accordion-body">
-               <div class="week-resources">
-         `;
-         
-         // Add training videos
-         weekendResources.trainingVideos.forEach(video => {
-         html += `
-         <div class="week-resource-card">
-           <h5 class="week-resource-title">${video.title}</h5>
-           <a href="#" class="week-resource-action" onclick="openVideoModal('${video.url}', '${video.title}'); return false;">
-               <i class="fas fa-play"></i> Watch Now
-           </a>
-         </div>
-         `;
-         });
-         
-         html += `
-               </div>
-           </div>
-         </div>
-         </div>
-         
-         <!-- Alpha Talk dropdown - NOW SECOND -->
-         <div class="accordion-item weekly-accordion">
-         <h2 class="accordion-header">
-           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#weekendTalks">
-               <i class="fas fa-play-circle me-2"></i> Alpha Talk
-           </button>
-         </h2>
-         <div id="weekendTalks" class="accordion-collapse collapse" data-bs-parent="#weekendAccordion">
-           <div class="accordion-body">
-               <div class="week-resources">
-         `;
-         
-         // Add main talks
-         weekendResources.mainTalks.forEach(talk => {
-         html += `
-         <div class="week-resource-card">
-           <h5 class="week-resource-title">${talk.title}</h5>
-           <a href="#" class="week-resource-action" onclick="openVideoModal('${talk.url}', '${talk.title}'); return false;">
-               <i class="fas fa-play"></i> Watch Now
-           </a>
-         </div>
-         `;
-         });
-         
-         html += `
-               </div>
-           </div>
-         </div>
-         </div>
-         `;
-         
-         // Guest Guide dropdown
-         html += `
-         <div class="accordion-item weekly-accordion">
-         <h2 class="accordion-header">
-           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#weekendGuestGuides">
-               <i class="fas fa-file-alt me-2"></i> Guest Guide
-           </button>
-         </h2>
-         <div id="weekendGuestGuides" class="accordion-collapse collapse" data-bs-parent="#weekendAccordion">
-           <div class="accordion-body">
-               <div class="week-resources">
-         `;
-         
-         // Add all guest guides
-         weekendResources.guides.forEach(guide => {
-         html += `
-         <div class="week-resource-card">
-           <h5 class="week-resource-title">${guide.title}</h5>
-           <div class="resource-actions">
-               <a href="${guide.url}" class="week-resource-action" target="_blank">
-                   <i class="fas fa-download"></i> Download
-               </a>
-               <button class="week-resource-action copy-btn" onclick="copyToClipboard('${guide.url}', '${guide.title}')" title="Copy link">
-                   <i class="fas fa-link"></i> Copy Link
-               </button>
-           </div>
-         </div>
-         `;
-         });
-         
-         html += `
-               </div>
-           </div>
-         </div>
-         </div>
-         `;
-         
-         // Team Guide dropdown
-         html += `
-         <div class="accordion-item weekly-accordion">
-         <h2 class="accordion-header">
-           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#weekendTeamGuides">
-               <i class="fas fa-users-cog me-2"></i> Team Guide
-           </button>
-         </h2>
-         <div id="weekendTeamGuides" class="accordion-collapse collapse" data-bs-parent="#weekendAccordion">
-           <div class="accordion-body">
-               <div class="week-resources">
-         `;
-         
-         // Add all team guides
-         weekendResources.teamGuides.forEach(guide => {
-         html += `
-         <div class="week-resource-card">
-           <h5 class="week-resource-title">${guide.title}</h5>
-           <div class="resource-actions">
-               <a href="${guide.url}" class="week-resource-action" target="_blank">
-                   <i class="fas fa-download"></i> Download
-               </a>
-               <button class="week-resource-action copy-btn" onclick="copyToClipboard('${guide.url}', '${guide.title}')" title="Copy link">
-                   <i class="fas fa-link"></i> Copy Link
-               </button>
-           </div>
-         </div>
-         `;
-         });
-         
-         html += `
-               </div>
-           </div>
-         </div>
-         </div>
-         `;
-         
-         container.innerHTML = html;
-         }
-             
-             // Generate Additional Guides HTML
-             function generateAdditionalGuides() {
-                 const container = document.getElementById('guidesGrid');
-                 let html = '';
-                 
-                 additionalGuides.forEach(guide => {
-                     html += `
-                         <div class="col-lg-4 col-md-6 mb-4 guide-item stagger-item">
-                             <div class="guide-card">
-                                 <div class="guide-header">
-                                     <div class="guide-icon">
-                                         <i class="${guide.icon}"></i>
-                                     </div>
-                                     <h5 class="guide-title">${guide.title}</h5>
-                                 </div>
-                                 <p class="guide-description">${guide.description}</p>
-                                 <div class="guide-actions">
-                                     <a href="${guide.url}" class="guide-link" target="_blank">
-                                         <i class="fas fa-download"></i> Download
-                                     </a>
-                                     <button class="guide-link copy-btn" onclick="copyToClipboard('${guide.url}', '${guide.title}')" title="Copy link">
-                                         <i class="fas fa-link"></i> Copy Link
-                                     </button>
-                                 </div>
-                             </div>
-                         </div>
-                     `;
-                 });
-                 
-                 container.innerHTML = html;
-             }
-             
-             // Initialize all dynamic content
-             generateTrainingVideos();
-             generateWeeklyResources();
-             generateWeekendResources();
-             generateAdditionalGuides();
-             
-             // Enhanced smooth scrolling for navigation links
-         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-         anchor.addEventListener('click', function (e) {
-         e.preventDefault();
-         const targetId = this.getAttribute('href');
-         const target = document.querySelector(targetId);
-         
-         if (target) {
-            // Get the navbar height dynamically
-            const navbar = document.getElementById('mainNav');
-            const navbarHeight = navbar.offsetHeight;
-            
-            // Calculate position to align with color change
-            // We want the color boundary to be just below the navbar
-            const targetPosition = target.offsetTop - navbarHeight;
-            
-            // Smooth scroll to the calculated position
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-         }
-         });
-         });         
-             // Video Modal Function
-             window.openVideoModal = function(videoUrl, title) {
-                 const modal = new bootstrap.Modal(document.getElementById('videoModal'));
-                 document.getElementById('videoModalTitle').textContent = title;
-                 document.getElementById('videoFrame').src = videoUrl;
-                 modal.show();
-             }
-         
-             // Close modal and stop video
-             document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
-                 document.getElementById('videoFrame').src = '';
-             });
-         
-             // Scroll Progress Bar
-             window.addEventListener('scroll', function() {
-                 const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-                 const scrollPosition = window.scrollY;
-                 const scrollPercentage = (scrollPosition / scrollHeight) * 100;
-                 document.getElementById('scrollProgress').style.width = scrollPercentage + '%';
-             });
-         
-             // Navbar scroll effect
-             window.addEventListener('scroll', function() {
-                 const navbar = document.getElementById('mainNav');
-                 if (window.scrollY > 50) {
-                     navbar.classList.add('scrolled');
-                 } else {
-                     navbar.classList.remove('scrolled');
-                 }
-             });
-         
-             // Enhanced Intersection Observer for scroll animations
-             const observerOptions = {
-                 threshold: 0.1,
-                 rootMargin: '0px 0px -50px 0px'
-             };
-         
-             const observer = new IntersectionObserver(function(entries) {
-                 entries.forEach(entry => {
-                     if (entry.isIntersecting) {
-                         entry.target.classList.add('animated');
-                         
-                         // Trigger staggered animations for items within the section
-                         if (entry.target.classList.contains('section')) {
-                             const staggerItems = entry.target.querySelectorAll('.stagger-item');
-                             staggerItems.forEach((item, index) => {
-                                 setTimeout(() => {
-                                     item.style.transition = `all 0.6s ease ${index * 0.1}s`;
-                                     item.style.opacity = '1';
-                                     item.style.transform = 'translateY(0)';
-                                 }, 100);
-                             });
-                         }
-                     }
-                 });
-             }, observerOptions);
-         
-             // Observe all sections and hero
-             document.querySelectorAll('.section, .hero-section').forEach(el => {
-                 observer.observe(el);
-             });
-         
-             // Parallax effect for background elements
-             window.addEventListener('scroll', function() {
-                 const scrolled = window.scrollY;
-                 
-                 document.querySelectorAll('.parallax-element').forEach(element => {
-                     const speed = element.dataset.speed || 0.5;
-                     const yPos = -(scrolled * speed);
-                     element.style.transform = `translateY(${yPos}px)`;
-                 });
-             });
-         
-             // Add active state to navigation based on scroll position
-             window.addEventListener('scroll', function() {
-                 const sections = document.querySelectorAll('section[id]');
-                 const scrollY = window.pageYOffset;
-         
-                 sections.forEach(section => {
-                     const sectionHeight = section.offsetHeight;
-                     const sectionTop = section.offsetTop - 100;
-                     const sectionId = section.getAttribute('id');
-                     
-                     if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                         document.querySelectorAll('.navbar-nav a').forEach(navLink => {
-                             navLink.classList.remove('active');
-                             if (navLink.getAttribute('href') === '#' + sectionId) {
-                                 navLink.classList.add('active');
-                             }
-                         });
-                     }
-                 });
-             });
-         
-             // Initialize hero animation on page load
-             setTimeout(() => {
-                 document.querySelector('.hero-section').classList.add('animated');
-             }, 300);
-         }
-         
-         // Wait for DOM to be fully loaded before initializing
-         document.addEventListener('DOMContentLoaded', initializeApp);
-      </script>
       <!-- CSS Styles -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -2886,73 +1422,742 @@
          </div>
       </div>
       <script>
-         // Form submission handler with Google Sheets integration
-         document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-             e.preventDefault();
-             
-             // Get form data
-             const formData = {
-                 name: document.getElementById('name').value,
-                 role: document.getElementById('role').value,
-                 category: document.getElementById('category').value,
-                 weekNumber: document.getElementById('weekNumber').value,
-                 idea: document.getElementById('idea').value,
-                 timestamp: new Date().toISOString()
-             };
-             
-             // Show loading state
-             const submitBtn = document.getElementById('submitBtn');
-             const originalBtnText = submitBtn.innerHTML;
-             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Submitting...';
-             submitBtn.disabled = true;
-             
-             // Check if Google Script URL is configured
-             if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec') {
-                 // Show error if script URL is not configured
-                 showFormStatus('error', 'Google Sheets integration is not configured. Please set up your Google Apps Script and update the GOOGLE_SCRIPT_URL variable.');
-                 submitBtn.innerHTML = originalBtnText;
-                 submitBtn.disabled = false;
-                 return;
-             }
-             
-             // Send data to Google Sheets via Google Apps Script
-             fetch(GOOGLE_SCRIPT_URL, {
-                 method: 'POST',
-                 mode: 'no-cors', // Required for Google Apps Script
-                 headers: {
-                     'Content-Type': 'application/json',
-                 },
-                 body: JSON.stringify(formData)
-             })
-             .then(response => {
-                 // Since we're using no-cors mode, we won't get a proper response
-                 // We'll assume it was successful if no error was thrown
-                 showFormStatus('success', 'Thank you for sharing! Your ideas will help others create welcoming spaces where faith can grow.');
-                 this.reset();
-             })
-             .catch(error => {
-                 console.error('Error submitting form:', error);
-                 showFormStatus('error', 'There was an error submitting your form. Please try again later.');
-             })
-             .finally(() => {
-                 // Restore button state
-                 submitBtn.innerHTML = originalBtnText;
-                 submitBtn.disabled = false;
-             });
-         });
-         
-         // Function to show form status message
-         function showFormStatus(type, message) {
-             const statusElement = document.getElementById('formStatus');
-             statusElement.textContent = message;
-             statusElement.className = 'form-status ' + type;
-             statusElement.style.display = 'block';
-             
-             // Hide the message after 5 seconds
-             setTimeout(() => {
-                 statusElement.style.display = 'none';
-             }, 5000);
-         }
-      </script>
+   // ============================================
+   // ⭐ CONFIGURATION SECTION ⭐
+   // ============================================
+   
+   // Google Apps Script URL for form submission
+   const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw9hnMZ06Hq18SIrP2OI-HjCAK-fjGTCT6qEukKqV00dSv_IZTwGF2dWf7ZJdyWUiEoOA/exec';
+   
+   // Data Variables (Populated from data.json)
+   let trainingVideos = [];
+   let weeklyResources = [];
+   let weekendResources = {};
+   let additionalGuides = [];
+   
+   // ============================================
+   // 🚫 STOP EDITING HERE - LOGIC BELOW 🚫
+   // ============================================
+   
+   // Function to copy link to clipboard
+   function copyToClipboard(url, title) {
+       const textarea = document.createElement('textarea');
+       textarea.value = url;
+       textarea.style.position = 'fixed';
+       document.body.appendChild(textarea);
+       textarea.select();
+       
+       try {
+           const successful = document.execCommand('copy');
+           document.body.removeChild(textarea);
+           
+           if (successful) {
+               showToast(`Link copied: ${title}`, 'success');
+           } else {
+               window.prompt('Copy this link (Ctrl+C, Enter):', url);
+           }
+       } catch (err) {
+           document.body.removeChild(textarea);
+           window.prompt('Copy this link (Ctrl+C, Enter):', url);
+       }
+   }
+   
+   // Function to show toast notification
+   function showToast(message, type = 'success') {
+       let toastContainer = document.getElementById('toastContainer');
+       if (!toastContainer) {
+           toastContainer = document.createElement('div');
+           toastContainer.id = 'toastContainer';
+           toastContainer.style.cssText = `
+               position: fixed;
+               top: 80px;
+               right: 20px;
+               z-index: 9999;
+           `;
+           document.body.appendChild(toastContainer);
+       }
+       
+       const toast = document.createElement('div');
+       toast.className = `toast align-items-center text-white bg-${type === 'success' ? 'success' : 'danger'} border-0`;
+       toast.setAttribute('role', 'alert');
+       toast.setAttribute('aria-live', 'assertive');
+       toast.setAttribute('aria-atomic', 'true');
+       toast.style.cssText = `
+           min-width: 250px;
+           margin-bottom: 10px;
+           box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+           border-radius: 8px;
+           animation: slideInRight 0.3s ease;
+       `;
+       
+       toast.innerHTML = `
+           <div class="d-flex">
+               <div class="toast-body">
+                   <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>
+                   ${message}
+               </div>
+               <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+           </div>
+       `;
+       
+       toastContainer.appendChild(toast);
+       
+       const bsToast = new bootstrap.Toast(toast, {
+           autohide: true,
+           delay: 3000
+       });
+       
+       bsToast.show();
+       
+       toast.addEventListener('hidden.bs.toast', () => {
+           toast.remove();
+       });
+   }
+   
+   // Function to initialize everything after DOM is loaded
+   async function initializeApp() {
+       
+       // ============================================
+       // 1. FETCH DATA FROM JSON
+       // ============================================
+       try {
+           const response = await fetch('data.json');
+           if (!response.ok) {
+               throw new Error(`HTTP error! status: ${response.status}`);
+           }
+           const data = await response.json();
+           
+           // Assign fetched data to global variables
+           trainingVideos = data.trainingVideos || [];
+           weeklyResources = data.weeklyResources || [];
+           weekendResources = data.weekendResources || {};
+           additionalGuides = data.additionalGuides || [];
+           
+       } catch (error) {
+           console.error("Could not load data.json:", error);
+           // Optional: Display error to user on page
+           const container = document.querySelector('.container');
+           if(container) {
+               container.innerHTML = '<div class="alert alert-danger mt-5">Error loading resources. Please ensure data.json exists and you are running this on a web server.</div>';
+           }
+           return; // Stop execution if data fails
+       }
+
+       // ============================================
+       // 2. DYNAMIC CONTENT GENERATION
+       // ============================================
+       
+       // Quick Access Button
+       createQuickAccessButton();
+       
+       // Smooth scrolling & Navbar logic
+       setupNavigation();
+       
+       // Generate HTML Content
+       generateTrainingVideos();
+       generateWeeklyResources();
+       generateWeekendResources();
+       generateAdditionalGuides();
+       
+       // Setup Video Modal & Observers
+       setupInteractions();
+   }
+   
+   // Helper function for Quick Access Button creation
+   function createQuickAccessButton() {
+       const quickAccessBtn = document.createElement('div');
+       quickAccessBtn.id = 'quickAccessBtn';
+       quickAccessBtn.style.cssText = `
+           position: fixed;
+           bottom: 30px;
+           right: 30px;
+           z-index: 1000;
+           opacity: 0;
+           transform: translateY(20px);
+           transition: all 0.3s ease;
+           pointer-events: none;
+       `;
+       
+       const toggleBtn = document.createElement('button');
+       toggleBtn.className = 'quick-access-toggle';
+       toggleBtn.style.cssText = `
+           width: 60px;
+           height: 60px;
+           border-radius: 50%;
+           background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+           border: none;
+           color: white;
+           font-size: 1.5rem;
+           cursor: pointer;
+           box-shadow: 0 4px 15px rgba(198, 40, 40, 0.3);
+           transition: all 0.3s ease;
+       `;
+       toggleBtn.innerHTML = '<i class="fas fa-compass"></i>';
+       
+       const menu = document.createElement('div');
+       menu.id = 'quickAccessMenu';
+       menu.style.cssText = `
+           position: absolute;
+           bottom: 70px;
+           right: 0;
+           background: white;
+           border-radius: 12px;
+           box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+           padding: 0.5rem;
+           opacity: 0;
+           transform: translateY(10px);
+           transition: all 0.3s ease;
+           pointer-events: none;
+           min-width: 180px;
+       `;
+       
+       const menuItems = [
+           { href: '#getready', text: 'Get Ready' },
+           { href: '#weekly', text: 'Week-by-Week' },
+           { href: '#weekend', text: 'Weekend Away' },
+           { href: '#faqs', text: 'FAQs' },
+           { href: '#makebetter', text: 'Share What Works' },
+           { href: '#guides', text: 'Resources' }
+       ];
+       
+       menuItems.forEach(item => {
+           const link = document.createElement('a');
+           link.href = item.href;
+           link.className = 'quick-access-item';
+           link.textContent = item.text;
+           link.style.cssText = `
+               display: block;
+               padding: 0.75rem 1rem;
+               color: #333;
+               text-decoration: none;
+               border-radius: 8px;
+               transition: all 0.2s ease;
+               font-size: 0.9rem;
+           `;
+           link.addEventListener('mouseenter', () => {
+               link.style.background = 'var(--light-bg)';
+               link.style.color = 'var(--primary-color)';
+               link.style.transform = 'translateX(5px)';
+           });
+           link.addEventListener('mouseleave', () => {
+               link.style.background = 'transparent';
+               link.style.color = '#333';
+               link.style.transform = 'translateX(0)';
+           });
+           menu.appendChild(link);
+       });
+       
+       toggleBtn.addEventListener('click', () => {
+           if (menu.style.opacity === '1') {
+               menu.style.opacity = '0';
+               menu.style.transform = 'translateY(10px)';
+               menu.style.pointerEvents = 'none';
+           } else {
+               menu.style.opacity = '1';
+               menu.style.transform = 'translateY(0)';
+               menu.style.pointerEvents = 'all';
+           }
+       });
+       
+       toggleBtn.addEventListener('mouseenter', () => {
+           toggleBtn.style.transform = 'scale(1.1)';
+           toggleBtn.style.boxShadow = '0 6px 20px rgba(198, 40, 40, 0.4)';
+       });
+       toggleBtn.addEventListener('mouseleave', () => {
+           toggleBtn.style.transform = 'scale(1)';
+           toggleBtn.style.boxShadow = '0 4px 15px rgba(198, 40, 40, 0.3)';
+       });
+       
+       quickAccessBtn.appendChild(toggleBtn);
+       quickAccessBtn.appendChild(menu);
+       document.body.appendChild(quickAccessBtn);
+       
+       window.addEventListener('scroll', () => {
+           if (window.scrollY > 300) {
+               quickAccessBtn.style.opacity = '1';
+               quickAccessBtn.style.transform = 'translateY(0)';
+               quickAccessBtn.style.pointerEvents = 'all';
+           } else {
+               quickAccessBtn.style.opacity = '0';
+               quickAccessBtn.style.transform = 'translateY(20px)';
+               quickAccessBtn.style.pointerEvents = 'none';
+               menu.style.opacity = '0';
+               menu.style.transform = 'translateY(10px)';
+               menu.style.pointerEvents = 'none';
+           }
+       });
+       
+       document.addEventListener('click', (e) => {
+           if (!quickAccessBtn.contains(e.target) && menu.style.opacity === '1') {
+               menu.style.opacity = '0';
+               menu.style.transform = 'translateY(10px)';
+               menu.style.pointerEvents = 'none';
+           }
+       });
+   }
+
+   // Helper for Navigation setup
+   function setupNavigation() {
+       // Smooth scrolling
+       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+           anchor.addEventListener('click', function (e) {
+               e.preventDefault();
+               const targetId = this.getAttribute('href');
+               const target = document.querySelector(targetId);
+               
+               if (target) {
+                   const navbar = document.getElementById('mainNav');
+                   const navbarHeight = navbar.offsetHeight;
+                   const targetPosition = target.offsetTop - navbarHeight;
+                   
+                   window.scrollTo({
+                       top: targetPosition,
+                       behavior: 'smooth'
+                   });
+                   
+                   // Auto-collapse navbar on mobile
+                   const navbarCollapse = document.querySelector('.navbar-collapse');
+                   if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                       const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+                       bsCollapse.hide();
+                   }
+               }
+           });
+       });
+       
+       // Navbar scroll effect
+       window.addEventListener('scroll', function() {
+           const navbar = document.getElementById('mainNav');
+           if (window.scrollY > 50) {
+               navbar.classList.add('scrolled');
+           } else {
+               navbar.classList.remove('scrolled');
+           }
+       });
+   }
+
+   // Helper for Interactions (Modals, Observers)
+   function setupInteractions() {
+       // Video Modal Function
+       window.openVideoModal = function(videoUrl, title) {
+           const modal = new bootstrap.Modal(document.getElementById('videoModal'));
+           document.getElementById('videoModalTitle').textContent = title;
+           document.getElementById('videoFrame').src = videoUrl;
+           modal.show();
+       };
+   
+       // Close modal and stop video
+       document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+           document.getElementById('videoFrame').src = '';
+       });
+   
+       // Scroll Progress Bar
+       window.addEventListener('scroll', function() {
+           const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+           const scrollPosition = window.scrollY;
+           const scrollPercentage = (scrollPosition / scrollHeight) * 100;
+           document.getElementById('scrollProgress').style.width = scrollPercentage + '%';
+       });
+   
+       // Intersection Observer for scroll animations
+       const observerOptions = {
+           threshold: 0.1,
+           rootMargin: '0px 0px -50px 0px'
+       };
+   
+       const observer = new IntersectionObserver(function(entries) {
+           entries.forEach(entry => {
+               if (entry.isIntersecting) {
+                   entry.target.classList.add('animated');
+                   
+                   if (entry.target.classList.contains('section')) {
+                       const staggerItems = entry.target.querySelectorAll('.stagger-item');
+                       staggerItems.forEach((item, index) => {
+                           setTimeout(() => {
+                               item.style.transition = `all 0.6s ease ${index * 0.1}s`;
+                               item.style.opacity = '1';
+                               item.style.transform = 'translateY(0)';
+                           }, 100);
+                       });
+                   }
+               }
+           });
+       }, observerOptions);
+   
+       document.querySelectorAll('.section, .hero-section').forEach(el => {
+           observer.observe(el);
+       });
+   
+       // Add active state to navigation based on scroll position
+       window.addEventListener('scroll', function() {
+           const sections = document.querySelectorAll('section[id]');
+           const scrollY = window.pageYOffset;
+   
+           sections.forEach(section => {
+               const sectionHeight = section.offsetHeight;
+               const sectionTop = section.offsetTop - 100;
+               const sectionId = section.getAttribute('id');
+               
+               if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                   document.querySelectorAll('.navbar-nav a').forEach(navLink => {
+                       navLink.classList.remove('active');
+                       if (navLink.getAttribute('href') === '#' + sectionId) {
+                           navLink.classList.add('active');
+                       }
+                   });
+               }
+           });
+       });
+   
+       // Initialize hero animation on page load
+       setTimeout(() => {
+           document.querySelector('.hero-section').classList.add('animated');
+       }, 300);
+   }
+
+   // ============================================
+   // 3. HTML GENERATION FUNCTIONS
+   // ============================================
+
+   function generateTrainingVideos() {
+       const container = document.getElementById('trainingVideosAccordion');
+       let html = '';
+       
+       html += `
+       <div class="accordion-item weekly-accordion">
+          <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#trainingVideos">
+                  <i class="fas fa-play-circle me-2"></i> Training Videos
+              </button>
+          </h2>
+          <div id="trainingVideos" class="accordion-collapse collapse" data-bs-parent="#trainingVideosAccordion">
+              <div class="accordion-body">
+                  <div class="row justify-content-center">
+       `;
+       
+       trainingVideos.forEach((video, index) => {
+       html += `
+          <div class="col-lg-4 col-md-6 mb-3">
+              <div class="training-video-item">
+                  <h5 class="training-video-title">${video.title}</h5>
+                  <a href="#" class="week-resource-action" onclick="openVideoModal('${video.url}', 'Training: ${video.title}'); return false;">
+                      <i class="fas fa-play"></i> Watch Now
+                  </a>
+              </div>
+          </div>
+       `;
+       });
+       
+       html += `
+                  </div>
+              </div>
+          </div>
+       </div>
+       `;
+       
+       container.innerHTML = html;
+   }
+
+   function generateWeeklyResources() {
+       const container = document.getElementById('weeklyAccordion');
+       let html = '';
+       
+       weeklyResources.forEach((week, index) => {
+           const isExpanded = '';
+           const isCollapsed = 'collapsed';
+           
+           html += `
+               <div class="accordion-item weekly-accordion">
+                   <h2 class="accordion-header">
+                       <button class="accordion-button ${isCollapsed}" type="button" data-bs-toggle="collapse" data-bs-target="#week${week.week}">
+                           <i class="fas fa-calendar-week me-2"></i> Week ${week.week}: ${week.title}
+                       </button>
+                   </h2>
+                   <div id="week${week.week}" class="accordion-collapse collapse ${isExpanded}" data-bs-parent="#weeklyAccordion">
+                       <div class="accordion-body">
+                           <div class="week-resources">
+                               <div class="week-resource-card">
+                                   <div class="week-resource-type">
+                                       <i class="fas fa-play-circle me-1"></i> Alpha Talk
+                                   </div>
+                                   <h5 class="week-resource-title">${week.talk.title}</h5>
+                                   <a href="#" class="week-resource-action" onclick="openVideoModal('${week.talk.url}', '${week.talk.title}'); return false;">
+                                       <i class="fas fa-play"></i> Watch Now
+                                   </a>
+                               </div>
+                               <div class="week-resource-card">
+                                   <div class="week-resource-type">
+                                       <i class="fas fa-users me-1"></i> Hosts and Helpers Briefing
+                                   </div>
+                                   <h5 class="week-resource-title">${week.briefing.title}</h5>
+                                   <a href="#" class="week-resource-action" onclick="openVideoModal('${week.briefing.url}', '${week.briefing.title}'); return false;">
+                                       <i class="fas fa-play"></i> Watch Now
+                                   </a>
+                               </div>
+                               <div class="week-resource-card">
+                                   <div class="accordion week-accordion" id="icebreakerAccordion${week.week}">
+                                       <div class="accordion-item">
+                                           <h2 class="accordion-header">
+                                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#icebreaker${week.week}">
+                                                   <i class="fas fa-snowflake me-1"></i> ${week.icebreaker.title}
+                                               </button>
+                                           </h2>
+                                           <div id="icebreaker${week.week}" class="accordion-collapse collapse" data-bs-parent="#icebreakerAccordion${week.week}">
+                                               <div class="accordion-body">
+                                                   <ul>
+                                                       ${week.icebreaker.content.map(point => `<li>${point}</li>`).join('')}
+                                                   </ul>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="week-resource-card">
+                                   <div class="accordion week-accordion" id="discussionAccordion${week.week}">
+                                       <div class="accordion-item">
+                                           <h2 class="accordion-header">
+                                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#discussion${week.week}">
+                                                   <i class="fas fa-comments me-1"></i> ${week.discussion.title}
+                                               </button>
+                                           </h2>
+                                           <div id="discussion${week.week}" class="accordion-collapse collapse" data-bs-parent="#discussionAccordion${week.week}">
+                                               <div class="accordion-body">
+                                                   <ul>
+                                                       ${week.discussion.content.map(question => `<li>${question}</li>`).join('')}
+                                                   </ul>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="week-resource-card">
+                                   <div class="accordion week-accordion" id="tipsAccordion${week.week}">
+                                       <div class="accordion-item">
+                                           <h2 class="accordion-header">
+                                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tips${week.week}">
+                                                   <i class="fas fa-lightbulb me-1"></i> ${week.tips.title}
+                                               </button>
+                                           </h2>
+                                           <div id="tips${week.week}" class="accordion-collapse collapse" data-bs-parent="#tipsAccordion${week.week}">
+                                               <div class="accordion-body">
+                                                   <ul>
+                                                       ${week.tips.content.map(tip => `<li>${tip}</li>`).join('')}
+                                                   </ul>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="week-resource-card">
+                                   <div class="week-resource-type">
+                                       <i class="fas fa-file-alt me-1"></i> Guest Guide
+                                   </div>
+                                   <h5 class="week-resource-title">${week.guide.title}</h5>
+                                   <div class="resource-actions">
+                                       <a href="${week.guide.url}" class="week-resource-action" target="_blank">
+                                           <i class="fas fa-download"></i> Download
+                                       </a>
+                                       <button class="week-resource-action copy-btn" onclick="copyToClipboard('${week.guide.url}', '${week.guide.title}')" title="Copy link">
+                                           <i class="fas fa-link"></i> Copy Link
+                                       </button>
+                                   </div>
+                               </div>
+                               <div class="week-resource-card">
+                                   <div class="week-resource-type">
+                                       <i class="fas fa-users-cog me-1"></i> Team Guide
+                                   </div>
+                                   <h5 class="week-resource-title">${week.teamGuide.title}</h5>
+                                   <div class="resource-actions">
+                                       <a href="${week.teamGuide.url}" class="week-resource-action" target="_blank">
+                                           <i class="fas fa-download"></i> Download
+                                       </a>
+                                       <button class="week-resource-action copy-btn" onclick="copyToClipboard('${week.teamGuide.url}', '${week.teamGuide.title}')" title="Copy link">
+                                           <i class="fas fa-link"></i> Copy Link
+                                       </button>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           `;
+       });
+       
+       container.innerHTML = html;
+   }
+   
+   function generateWeekendResources() {
+       const container = document.getElementById('weekendAccordion');
+       let html = '';
+       
+       // Training Videos dropdown
+       html += `
+       <div class="accordion-item weekly-accordion">
+       <h2 class="accordion-header">
+         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#weekendTrainingVideos">
+             <i class="fas fa-graduation-cap me-2"></i> Training Videos
+         </button>
+       </h2>
+       <div id="weekendTrainingVideos" class="accordion-collapse collapse" data-bs-parent="#weekendAccordion">
+         <div class="accordion-body">
+             <div class="week-resources">
+       `;
+       
+       weekendResources.trainingVideos.forEach(video => {
+       html += `
+       <div class="week-resource-card">
+         <h5 class="week-resource-title">${video.title}</h5>
+         <a href="#" class="week-resource-action" onclick="openVideoModal('${video.url}', '${video.title}'); return false;">
+             <i class="fas fa-play"></i> Watch Now
+         </a>
+       </div>
+       `;
+       });
+       
+       html += `
+             </div>
+         </div>
+       </div>
+       </div>
+       
+       <!-- Alpha Talk dropdown -->
+       <div class="accordion-item weekly-accordion">
+       <h2 class="accordion-header">
+         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#weekendTalks">
+             <i class="fas fa-play-circle me-2"></i> Alpha Talk
+         </button>
+       </h2>
+       <div id="weekendTalks" class="accordion-collapse collapse" data-bs-parent="#weekendAccordion">
+         <div class="accordion-body">
+             <div class="week-resources">
+       `;
+       
+       weekendResources.mainTalks.forEach(talk => {
+       html += `
+       <div class="week-resource-card">
+         <h5 class="week-resource-title">${talk.title}</h5>
+         <a href="#" class="week-resource-action" onclick="openVideoModal('${talk.url}', '${talk.title}'); return false;">
+             <i class="fas fa-play"></i> Watch Now
+         </a>
+       </div>
+       `;
+       });
+       
+       html += `
+             </div>
+         </div>
+       </div>
+       </div>
+       `;
+       
+       // Guest Guide dropdown
+       html += `
+       <div class="accordion-item weekly-accordion">
+       <h2 class="accordion-header">
+         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#weekendGuestGuides">
+             <i class="fas fa-file-alt me-2"></i> Guest Guide
+         </button>
+       </h2>
+       <div id="weekendGuestGuides" class="accordion-collapse collapse" data-bs-parent="#weekendAccordion">
+         <div class="accordion-body">
+             <div class="week-resources">
+       `;
+       
+       weekendResources.guides.forEach(guide => {
+       html += `
+       <div class="week-resource-card">
+         <h5 class="week-resource-title">${guide.title}</h5>
+         <div class="resource-actions">
+             <a href="${guide.url}" class="week-resource-action" target="_blank">
+                 <i class="fas fa-download"></i> Download
+             </a>
+             <button class="week-resource-action copy-btn" onclick="copyToClipboard('${guide.url}', '${guide.title}')" title="Copy link">
+                 <i class="fas fa-link"></i> Copy Link
+             </button>
+         </div>
+       </div>
+       `;
+       });
+       
+       html += `
+             </div>
+         </div>
+       </div>
+       </div>
+       `;
+       
+       // Team Guide dropdown
+       html += `
+       <div class="accordion-item weekly-accordion">
+       <h2 class="accordion-header">
+         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#weekendTeamGuides">
+             <i class="fas fa-users-cog me-2"></i> Team Guide
+         </button>
+       </h2>
+       <div id="weekendTeamGuides" class="accordion-collapse collapse" data-bs-parent="#weekendAccordion">
+         <div class="accordion-body">
+             <div class="week-resources">
+       `;
+       
+       weekendResources.teamGuides.forEach(guide => {
+       html += `
+       <div class="week-resource-card">
+         <h5 class="week-resource-title">${guide.title}</h5>
+         <div class="resource-actions">
+             <a href="${guide.url}" class="week-resource-action" target="_blank">
+                 <i class="fas fa-download"></i> Download
+             </a>
+             <button class="week-resource-action copy-btn" onclick="copyToClipboard('${guide.url}', '${guide.title}')" title="Copy link">
+                 <i class="fas fa-link"></i> Copy Link
+             </button>
+         </div>
+       </div>
+       `;
+       });
+       
+       html += `
+             </div>
+         </div>
+       </div>
+       </div>
+       `;
+       
+       container.innerHTML = html;
+   }
+   
+   function generateAdditionalGuides() {
+       const container = document.getElementById('guidesGrid');
+       let html = '';
+       
+       additionalGuides.forEach(guide => {
+           html += `
+               <div class="col-lg-4 col-md-6 mb-4 guide-item stagger-item">
+                   <div class="guide-card">
+                       <div class="guide-header">
+                           <div class="guide-icon">
+                               <i class="${guide.icon}"></i>
+                           </div>
+                           <h5 class="guide-title">${guide.title}</h5>
+                       </div>
+                       <p class="guide-description">${guide.description}</p>
+                       <div class="guide-actions">
+                           <a href="${guide.url}" class="guide-link" target="_blank">
+                               <i class="fas fa-download"></i> Download
+                           </a>
+                           <button class="guide-link copy-btn" onclick="copyToClipboard('${guide.url}', '${guide.title}')" title="Copy link">
+                               <i class="fas fa-link"></i> Copy Link
+                           </button>
+                       </div>
+                   </div>
+               </div>
+           `;
+       });
+       
+       container.innerHTML = html;
+   }
+
+   // Wait for DOM to be fully loaded before initializing
+   document.addEventListener('DOMContentLoaded', initializeApp);
+</script>
    </body>
 </html>
