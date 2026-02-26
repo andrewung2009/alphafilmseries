@@ -1,4 +1,16 @@
 {
+  "_instructions": {
+    "title": "👋 WELCOME! READ THIS FIRST",
+    "note": "You can edit the content below to update the website. Please follow these simple rules:",
+    "rules": [
+      "1. Do not delete the quotation marks ( \" ) around text.",
+      "2. Do not delete the colons ( : ) between the names and values.",
+      "3. Do not delete the curly brackets { } or square brackets [ ].",
+      "4. Be careful with commas ( , ). Every item in a list needs a comma after it, EXCEPT the last one.",
+      "5. If you break the file, the website will show an error. Double-check your changes against a backup."
+    ]
+  },
+
   "trainingVideos": [
     {
       "title": "The Essentials",
@@ -13,10 +25,12 @@
       "url": "https://player.vimeo.com/video/490924040"
     }
   ],
+
   "weeklyResources": [
     {
       "week": 1,
       "title": "Is There More To Life Than This?",
+      "_note": "👇 This is the template for a week. Copy this block if you want to add a new week!",
       "talk": {
         "title": "Is There More To Life Than This?",
         "url": "https://player.vimeo.com/video/184825483"
@@ -375,7 +389,7 @@
       "week": 9,
       "title": "Why and How Should I Tell Others?",
       "talk": {
-        "title": "abc",
+        "title": "Why and How Should I Tell Others?",
         "url": "https://player.vimeo.com/video/184825498"
       },
       "briefing": {
@@ -505,6 +519,7 @@
       }
     }
   ],
+
   "weekendResources": {
     "title": "Weekend Away",
     "mainTalks": [
@@ -576,6 +591,7 @@
       }
     ]
   },
+
   "additionalGuides": [
     {
       "title": "Alpha Toolbox",
