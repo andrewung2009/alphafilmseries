@@ -2,8 +2,7 @@
 <html lang="en">
    <head>
       <meta charset="UTF-8">
-      <!-- UX Fix: Removed user-scalable=no to allow zooming for accessibility -->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
       <title>Alpha Resource Hub for Hosts and Helpers</title>
       <link rel="icon" type="image/jpeg" href="alphalogo.jpg">
       <!-- JavaScript -->
@@ -41,23 +40,9 @@
          color: #000000;
          background-color: #f8f9fa;
          overflow-x: hidden;
-         padding-top: 76px; 
-         font-size: 16px;
+         padding-top: 76px; /* Default for desktop */
+         font-size: 16px; /* Base font size */
          }
-         
-         /* UX Fix: Added visible focus states for accessibility */
-         *:focus {
-            outline: 2px solid var(--accent-color);
-            outline-offset: 2px;
-         }
-         *:focus:not(:focus-visible) {
-            outline: none;
-         }
-         *:focus-visible {
-            outline: 2px solid var(--accent-color);
-            outline-offset: 2px;
-         }
-
          /* Scroll Progress Bar */
          .scroll-progress {
          position: fixed;
@@ -170,7 +155,6 @@
          background-image: url('alphahtbb.jpg');
          background-size: cover;
          background-position: center;
-         background-attachment: fixed;
          color: #ffffff;
          padding: 120px 0;
          text-align: center;
@@ -225,26 +209,6 @@
          .hero-section.animated .hero-buttons {
          transition: all 0.8s ease 0.4s;
          }
-         
-         /* UX Fix: Added distinct hero CTA styling */
-         .hero-cta {
-            background-color: #ffffff;
-            color: var(--primary-color);
-            font-weight: 700;
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-         }
-         .hero-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            background-color: var(--accent-color);
-            color: #fff;
-         }
-
          /* Section Styles - Desktop First */
          .section {
          padding: 60px 0;
@@ -295,13 +259,13 @@
          background-color: var(--grey-color);
          }
          #weekend {
-         background-color: var(--grey-color); 
+         background-color: var(--grey-color); /* Changed to darker grey */
          }
          #faqs {
          background-color: var(--blue-color);
          }
          #makebetter {
-         background-color: #FDEDED; 
+         background-color: #FDEDED; /* Changed to light pink */
          }
          section#guides {
          background-color: #D0DFFE !important;
@@ -363,9 +327,11 @@
          color: var(--primary-color);
          transform: translateX(5px);
          }
+         /* Add subtle border at section boundaries for better visual alignment */
          .section {
          border-top: 1px solid rgba(0,0,0,0.05);
          }
+         /* Ensure smooth color transitions */
          .section {
          transition: background-color 0.3s ease;
          }
@@ -652,7 +618,7 @@
          }
          .week-resource-type {
          font-size: 0.85rem;
-         color: var(--primary-color); /* UX Fix: Darkened for contrast */
+         color: var(--secondary-color);
          font-weight: 600;
          text-transform: uppercase;
          letter-spacing: 0.5px;
@@ -665,29 +631,26 @@
          margin-bottom: 0.5rem;
          line-height: 1.3;
          }
-         
-         /* UX Fix: Improved Action Button Contrast and Visibility */
          .week-resource-action {
          display: inline-flex;
          align-items: center;
          gap: 0.5rem;
-         color: #b71c1c; /* Darker red for better readability */
+         color: var(--secondary-color);
          text-decoration: none;
          font-size: 0.9rem;
          font-weight: 500;
          transition: all 0.3s ease;
          padding: 0.4rem 0.8rem;
          border-radius: 6px;
-         background: rgba(239, 83, 80, 0.15); 
+         background: rgba(239, 83, 80, 0.1);
          border: 1px solid rgba(239, 83, 80, 0.2);
          margin-top: 0.5rem;
          }
          .week-resource-action:hover {
-         color: #fff;
-         background: var(--primary-color);
+         color: var(--primary-color);
+         background: rgba(239, 83, 80, 0.15);
          transform: translateY(-2px);
          }
-         
          .copy-btn {
          background: none !important;
          border: 1px solid rgba(239, 83, 80, 0.2) !important;
@@ -721,39 +684,30 @@
          .week-resource-content li {
          margin-bottom: 0.3rem;
          }
-         
-         /* UX Fix: Flattened Nested Accordion Styles to simple toggle cards */
-         .inner-toggle-card {
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 0.5rem;
+         /* Nested Accordion Styles - Desktop First */
+         .week-accordion {
+         margin-top: 0.5rem;
          }
-         .inner-toggle-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 600;
-            color: #333;
+         .week-accordion .accordion-button {
+         background: #f8f9fa;
+         color: var(--secondary-color);
+         font-size: 0.85rem;
+         font-weight: 600;
+         text-transform: uppercase;
+         letter-spacing: 0.5px;
+         padding: 0.75rem 1rem;
          }
-         .inner-toggle-header i {
-            transition: transform 0.3s ease;
+         .week-accordion .accordion-button:not(.collapsed) {
+         background: #e9ecef;
+         color: #333;
          }
-         .inner-toggle-content {
-            display: none; /* Hidden by default */
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
+         .week-accordion .accordion-button::after {
+         filter: none;
          }
-         .inner-toggle-card.active .inner-toggle-header i {
-            transform: rotate(180deg);
+         .week-accordion .accordion-body {
+         padding: 1rem;
+         background: white;
          }
-         .inner-toggle-card.active .inner-toggle-content {
-            display: block;
-         }
-
          /* Weekend Resource Card Styles - Desktop First */
          .weekend-resource-card {
          background: white;
@@ -877,6 +831,7 @@
          bottom: 10%;
          left: -150px;
          }
+         /* The fixed version */
          footer {
          background-color: #2D2D2D;
          }
@@ -961,7 +916,7 @@
          /* Mobile Styles */
          @media (max-width: 767.98px) {
          body {
-         padding-top: 60px; 
+         padding-top: 60px; /* Reduced for mobile */
          }
          .navbar {
          min-height: 60px !important;
@@ -1027,16 +982,19 @@
          padding: 2rem 0 1rem;
          margin-top: 40px;
          }
+         /* Ensure all interactive elements have proper touch targets */
          .week-resource-action, .guide-link, .copy-btn {
          min-height: 44px;
          display: flex;
          align-items: center;
          justify-content: center;
          }
+         /* Adjust video modal for mobile */
          .modal-dialog {
          margin: 0.5rem;
          max-width: calc(100% - 1rem);
          }
+         /* Make form fields full width on mobile */
          .row > div {
          margin-bottom: 1rem;
          }
@@ -1128,6 +1086,7 @@
          background: rgba(239, 83, 80, 0.15);
          transform: translateY(-2px);
          }
+         /* Mobile responsiveness */
          @media (max-width: 767.98px) {
          .weekend-resources-grid {
          grid-template-columns: 1fr;
@@ -1198,8 +1157,19 @@
          color: var(--primary-color);
          transform: translateX(5px);
          }
+         /* Close menu when clicking outside */
+         document.addEventListener('click', (e) => {
+         const btn = document.getElementById('quickAccessBtn');
+         const menu = document.getElementById('quickAccessMenu');
+         if (!btn.contains(e.target) && menu.classList.contains('show')) {
+         menu.classList.remove('show');
+         }
+         });
+         /* Accessibility: Large Text Mode */
+         body.large-text {
+         font-size: 19px !important;
+         }
       </style>
-      <!-- UX Fix: Removed contextmenu blocker script -->
    </head>
    <body>
       <!-- Scroll Progress Bar -->
@@ -1246,26 +1216,29 @@
                <h1 class="hero-title">Alpha Resource Hub for Hosts and Helpers</h1>
                <p class="hero-subtitle">Equipping you to create welcoming spaces for conversations about life, faith and God.</p>
                <div class="hero-buttons">
-                  <!-- UX Fix: Added clear Call to Action -->
-                  <a href="#getready" class="hero-cta">Get Started</a>
                </div>
             </div>
          </div>
       </section>
       <!-- Get Ready Section -->
       <section id="getready" class="section">
+         <!-- Parallax Elements -->
          <div class="parallax-element parallax-circle parallax-circle-1"></div>
          <div class="container">
+            <!-- Title and subtitle in the same container like Week-by-Week Guide -->
             <div class="text-center mb-5">
                <h2 class="section-title">Get Ready to Run Alpha</h2>
                <p class="section-subtitle">Videos to help you prepare for your Alpha journey, onsite or online.</p>
             </div>
+            <!-- Training videos accordion - full width like other sections -->
             <div class="accordion" id="trainingVideosAccordion">
+               <!-- Training videos will be dynamically inserted here -->
             </div>
          </div>
       </section>
       <!-- Week-by-Week Guide Section -->
       <section id="weekly" class="section bg-light">
+         <!-- Parallax Elements -->
          <div class="parallax-element parallax-circle parallax-circle-2"></div>
          <div class="container">
             <div class="text-center mb-5">
@@ -1273,11 +1246,13 @@
                <p class="section-subtitle">Everything you need for each week — talks, briefings, icebreakers, discussion questions and tips.</p>
             </div>
             <div class="accordion" id="weeklyAccordion">
+               <!-- Weekly resources will be dynamically inserted here -->
             </div>
          </div>
       </section>
       <!-- Weekend Away Section -->
       <section id="weekend" class="section">
+         <!-- Parallax Elements -->
          <div class="parallax-element parallax-circle parallax-circle-1"></div>
          <div class="container">
             <div class="text-center mb-5">
@@ -1285,11 +1260,13 @@
                <p class="section-subtitle">Talks, material and guides to help host your Alpha Weekend, onsite or online.</p>
             </div>
             <div class="accordion" id="weekendAccordion">
+               <!-- Weekend resources will be dynamically inserted here -->
             </div>
          </div>
       </section>
       <!-- FAQs Section -->
       <section id="faqs" class="section bg-light">
+         <!-- Parallax Elements -->
          <div class="parallax-element parallax-circle parallax-circle-2"></div>
          <div class="container">
             <div class="text-center mb-5">
@@ -1298,12 +1275,11 @@
             </div>
             <div class="row">
                <div class="col-lg-8 mx-auto">
-                  <!-- UX Fix: Improved "Coming Soon" placeholder -->
-                  <div class="text-center p-5 bg-white rounded shadow-sm">
-                     <i class="fas fa-question-circle fa-4x mb-4 text-muted"></i>
-                     <p class="lead mb-4">We are compiling helpful FAQs. In the meantime, please reach out directly.</p>
-                     <a href="mailto:michael.ting@htbb.org" class="hero-cta" style="font-size: 0.9rem; padding: 0.5rem 1.5rem;">
-                        Ask a Question
+                  <div class="text-center">
+                     <i class="fas fa-clock fa-4x mb-4 text-muted"></i>
+                     <p class="lead">We are compiling a list of FAQs. In the meantime, if you have a specific question, please reach out to us directly.</p>
+                     <a href="mailto:michael.ting@htbb.org" class="btn btn-submit mt-3">
+                     <i class="fas fa-envelope me-2"></i>Ask a Question
                      </a>
                   </div>
                </div>
@@ -1312,11 +1288,12 @@
       </section>
       <!-- Make Alpha Better Section -->
       <section id="makebetter" class="section">
+         <!-- Parallax Elements -->
          <div class="parallax-element parallax-circle parallax-circle-1"></div>
          <div class="container">
             <div class="text-center mb-5">
                <h2 class="section-title">Share What Works</h2>
-               <p class="section-subtitle">Got a great idea? Contribute icebreakers, discussion questions or tips that worked for your group.</p>
+               <p class="section-subtitle">Got a great idea? Contribute icebreakers, discussion questions or tips that worked for your group. We'll review and include selected submissions.</p>
             </div>
             <div class="row">
                <div class="col-lg-8 mx-auto">
@@ -1381,6 +1358,7 @@
       </section>
       <!-- Additional Resources Section -->
       <section id="guides" class="section bg-light">
+         <!-- Parallax Elements -->
          <div class="parallax-element parallax-circle parallax-circle-2"></div>
          <div class="container">
             <div class="text-center mb-5">
@@ -1388,6 +1366,7 @@
                <p class="section-subtitle">Extra tools and materials to support your Alpha journey.</p>
             </div>
             <div class="row" id="guidesGrid">
+               <!-- Guest guides will be dynamically inserted here -->
             </div>
          </div>
       </section>
@@ -1401,6 +1380,11 @@
                      <a href="https://www.htbb.org/" target="_blank" class="text-black-50 text-decoration-none">HTBB</a><br>
                      <a href="https://malaysia.alpha.org/" target="_blank" class="text-black-50 text-decoration-none">Alpha Malaysia</a>
                   </p>
+                  <div class="mt-3">
+                     <a href="https://www.htbb.org/" target="_blank" class="text-black-50 text-decoration-none me-3">
+                     </a>
+                     <a href="https://malaysia.alpha.org/" target="_blank" class="text-black-50 text-decoration-none">                        </a>
+                  </div>
                </div>
                <div class="col-md-4 mb-4">
                   <h5 class="mb-3">Quick Links</h5>
@@ -1427,12 +1411,12 @@
          </div>
       </footer>
       <!-- Video Modal -->
-      <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalTitle" aria-hidden="true">
+      <div class="modal fade" id="videoModal" tabindex="-1">
          <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                <div class="modal-header">
                   <h5 class="modal-title" id="videoModalTitle">Video Title</h5>
-                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                </div>
                <div class="modal-body p-0">
                   <div style="padding:56.25% 0 0 0;position:relative;">
@@ -1447,8 +1431,10 @@
          // ⭐ CONFIGURATION SECTION ⭐
          // ============================================
          
+         // Google Apps Script URL for form submission
          const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw9hnMZ06Hq18SIrP2OI-HjCAK-fjGTCT6qEukKqV00dSv_IZTwGF2dWf7ZJdyWUiEoOA/exec';
          
+         // Data Variables (Populated from data.json)
          let trainingVideos = [];
          let weeklyResources = [];
          let weekendResources = {};
@@ -1458,6 +1444,7 @@
          // 🚫 STOP EDITING HERE - LOGIC BELOW 🚫
          // ============================================
          
+         // Function to copy link to clipboard
          function copyToClipboard(url, title) {
              const textarea = document.createElement('textarea');
              textarea.value = url;
@@ -1480,6 +1467,7 @@
              }
          }
          
+         // Function to show toast notification
          function showToast(message, type = 'success') {
              let toastContainer = document.getElementById('toastContainer');
              if (!toastContainer) {
@@ -1531,8 +1519,12 @@
              });
          }
          
+         // Function to initialize everything after DOM is loaded
          async function initializeApp() {
              
+             // ============================================
+             // 1. FETCH DATA FROM JSON
+             // ============================================
              try {
                  const response = await fetch('data.json');
                  if (!response.ok) {
@@ -1540,6 +1532,7 @@
                  }
                  const data = await response.json();
                  
+                 // Assign fetched data to global variables
                  trainingVideos = data.trainingVideos || [];
                  weeklyResources = data.weeklyResources || [];
                  weekendResources = data.weekendResources || {};
@@ -1547,22 +1540,35 @@
                  
              } catch (error) {
                  console.error("Could not load data.json:", error);
+                 // Optional: Display error to user on page
                  const container = document.querySelector('.container');
                  if(container) {
-                     container.innerHTML = '<div class="alert alert-danger mt-5">Error loading resources. Please check data.json.</div>';
+                     container.innerHTML = '<div class="alert alert-danger mt-5">Error loading resources. Please ensure data.json exists and you are running this on a web server.</div>';
                  }
-                 return;
+                 return; // Stop execution if data fails
              }
          
+             // ============================================
+             // 2. DYNAMIC CONTENT GENERATION
+             // ============================================
+             
+             // Quick Access Button
              createQuickAccessButton();
+             
+             // Smooth scrolling & Navbar logic
              setupNavigation();
+             
+             // Generate HTML Content
              generateTrainingVideos();
              generateWeeklyResources();
              generateWeekendResources();
              generateAdditionalGuides();
+             
+             // Setup Video Modal & Observers
              setupInteractions();
          }
          
+         // Helper function for Quick Access Button creation
          function createQuickAccessButton() {
              const quickAccessBtn = document.createElement('div');
              quickAccessBtn.id = 'quickAccessBtn';
@@ -1579,7 +1585,6 @@
              
              const toggleBtn = document.createElement('button');
              toggleBtn.className = 'quick-access-toggle';
-             toggleBtn.setAttribute('aria-label', 'Quick Navigation');
              toggleBtn.style.cssText = `
                  width: 60px;
                  height: 60px;
@@ -1646,7 +1651,16 @@
                  });
                  menu.appendChild(link);
              });
-             
+                          // Add Text Resize Toggle
+             const resizeBtn = document.createElement('a');
+             resizeBtn.href = '#';
+             resizeBtn.className = 'quick-access-item';
+             resizeBtn.innerHTML = '<i class="fas fa-text-height"></i> Larger Text';
+             resizeBtn.onclick = (e) => {
+                 e.preventDefault();
+                 document.body.classList.toggle('large-text');
+             };
+             menu.appendChild(resizeBtn);
              toggleBtn.addEventListener('click', () => {
                  if (menu.style.opacity === '1') {
                      menu.style.opacity = '0';
@@ -1696,7 +1710,9 @@
              });
          }
          
+         // Helper for Navigation setup
          function setupNavigation() {
+             // Smooth scrolling
              document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                  anchor.addEventListener('click', function (e) {
                      e.preventDefault();
@@ -1706,13 +1722,14 @@
                      if (target) {
                          const navbar = document.getElementById('mainNav');
                          const navbarHeight = navbar.offsetHeight;
-                         const targetPosition = target.offsetTop - navbarHeight;
+                         const targetPosition = target.offsetTop - navbarHeight - 20;
                          
                          window.scrollTo({
                              top: targetPosition,
                              behavior: 'smooth'
                          });
                          
+                         // Auto-collapse navbar on mobile
                          const navbarCollapse = document.querySelector('.navbar-collapse');
                          if (navbarCollapse && navbarCollapse.classList.contains('show')) {
                              const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
@@ -1722,6 +1739,7 @@
                  });
              });
              
+             // Navbar scroll effect
              window.addEventListener('scroll', function() {
                  const navbar = document.getElementById('mainNav');
                  if (window.scrollY > 50) {
@@ -1732,7 +1750,9 @@
              });
          }
          
+         // Helper for Interactions (Modals, Observers)
          function setupInteractions() {
+             // Video Modal Function
              window.openVideoModal = function(videoUrl, title) {
                  const modal = new bootstrap.Modal(document.getElementById('videoModal'));
                  document.getElementById('videoModalTitle').textContent = title;
@@ -1740,10 +1760,12 @@
                  modal.show();
              };
          
+             // Close modal and stop video
              document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
                  document.getElementById('videoFrame').src = '';
              });
          
+             // Scroll Progress Bar
              window.addEventListener('scroll', function() {
                  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
                  const scrollPosition = window.scrollY;
@@ -1751,6 +1773,7 @@
                  document.getElementById('scrollProgress').style.width = scrollPercentage + '%';
              });
          
+             // Intersection Observer for scroll animations
              const observerOptions = {
                  threshold: 0.1,
                  rootMargin: '0px 0px -50px 0px'
@@ -1779,6 +1802,7 @@
                  observer.observe(el);
              });
          
+             // Add active state to navigation based on scroll position
              window.addEventListener('scroll', function() {
                  const sections = document.querySelectorAll('section[id]');
                  const scrollY = window.pageYOffset;
@@ -1799,6 +1823,7 @@
                  });
              });
          
+             // Initialize hero animation on page load
              setTimeout(() => {
                  document.querySelector('.hero-section').classList.add('animated');
              }, 300);
@@ -1883,48 +1908,52 @@
                                              <i class="fas fa-play"></i> Watch Now
                                          </a>
                                      </div>
-                                     
-                                     <!-- UX Fix: Converted Nested Accordions to simple toggles for better scanning -->
+                                                                          <div class="week-resource-card">
+                                         <div class="week-resource-type">
+                                             <i class="fas fa-snowflake me-1"></i> ${week.icebreaker.title}
+                                         </div>
+                                         <div class="week-resource-content">
+                                             <ul>
+                                                 ${week.icebreaker.content.map(point => `<li>${point}</li>`).join('')}
+                                             </ul>
+                                         </div>
+                                     </div>
                                      <div class="week-resource-card">
-                                         <div class="inner-toggle-card">
-                                             <div class="inner-toggle-header" onclick="this.parentElement.classList.toggle('active')">
-                                                 <span><i class="fas fa-snowflake me-2"></i> ${week.icebreaker.title}</span>
-                                                 <i class="fas fa-chevron-down"></i>
-                                             </div>
-                                             <div class="inner-toggle-content">
-                                                 <ul>
-                                                     ${week.icebreaker.content.map(point => `<li>${point}</li>`).join('')}
-                                                 </ul>
+                                         <div class="accordion week-accordion" id="discussionAccordion${week.week}">
+                                             <div class="accordion-item">
+                                                 <h2 class="accordion-header">
+                                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#discussion${week.week}">
+                                                         <i class="fas fa-comments me-1"></i> ${week.discussion.title}
+                                                     </button>
+                                                 </h2>
+                                                 <div id="discussion${week.week}" class="accordion-collapse collapse" data-bs-parent="#discussionAccordion${week.week}">
+                                                     <div class="accordion-body">
+                                                         <ul>
+                                                             ${week.discussion.content.map(question => `<li>${question}</li>`).join('')}
+                                                         </ul>
+                                                     </div>
+                                                 </div>
                                              </div>
                                          </div>
                                      </div>
                                      <div class="week-resource-card">
-                                         <div class="inner-toggle-card">
-                                             <div class="inner-toggle-header" onclick="this.parentElement.classList.toggle('active')">
-                                                 <span><i class="fas fa-comments me-2"></i> ${week.discussion.title}</span>
-                                                 <i class="fas fa-chevron-down"></i>
-                                             </div>
-                                             <div class="inner-toggle-content">
-                                                 <ul>
-                                                     ${week.discussion.content.map(question => `<li>${question}</li>`).join('')}
-                                                 </ul>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <div class="week-resource-card">
-                                         <div class="inner-toggle-card">
-                                             <div class="inner-toggle-header" onclick="this.parentElement.classList.toggle('active')">
-                                                 <span><i class="fas fa-lightbulb me-2"></i> ${week.tips.title}</span>
-                                                 <i class="fas fa-chevron-down"></i>
-                                             </div>
-                                             <div class="inner-toggle-content">
-                                                 <ul>
-                                                     ${week.tips.content.map(tip => `<li>${tip}</li>`).join('')}
-                                                 </ul>
+                                         <div class="accordion week-accordion" id="tipsAccordion${week.week}">
+                                             <div class="accordion-item">
+                                                 <h2 class="accordion-header">
+                                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tips${week.week}">
+                                                         <i class="fas fa-lightbulb me-1"></i> ${week.tips.title}
+                                                     </button>
+                                                 </h2>
+                                                 <div id="tips${week.week}" class="accordion-collapse collapse" data-bs-parent="#tipsAccordion${week.week}">
+                                                     <div class="accordion-body">
+                                                         <ul>
+                                                             ${week.tips.content.map(tip => `<li>${tip}</li>`).join('')}
+                                                         </ul>
+                                                     </div>
+                                                 </div>
                                              </div>
                                          </div>
                                      </div>
-                                     
                                      <div class="week-resource-card">
                                          <div class="week-resource-type">
                                              <i class="fas fa-file-alt me-1"></i> Guest Guide
@@ -1967,6 +1996,7 @@
              const container = document.getElementById('weekendAccordion');
              let html = '';
              
+             // Training Videos dropdown
              html += `
              <div class="accordion-item weekly-accordion">
              <h2 class="accordion-header">
@@ -1996,6 +2026,7 @@
              </div>
              </div>
              
+             <!-- Alpha Talk dropdown -->
              <div class="accordion-item weekly-accordion">
              <h2 class="accordion-header">
                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#weekendTalks">
@@ -2025,6 +2056,7 @@
              </div>
              `;
              
+             // Guest Guide dropdown
              html += `
              <div class="accordion-item weekly-accordion">
              <h2 class="accordion-header">
@@ -2060,6 +2092,7 @@
              </div>
              `;
              
+             // Team Guide dropdown
              html += `
              <div class="accordion-item weekly-accordion">
              <h2 class="accordion-header">
@@ -2129,22 +2162,26 @@
              container.innerHTML = html;
          }
          
+         // Wait for DOM to be fully loaded before initializing
          document.addEventListener('DOMContentLoaded', initializeApp);
-         
+         // Function to show form status message
          function showFormStatus(type, message) {
           const statusElement = document.getElementById('formStatus');
           statusElement.textContent = message;
           statusElement.className = 'form-status ' + type;
           statusElement.style.display = 'block';
           
+          // Hide the message after 5 seconds
           setTimeout(() => {
               statusElement.style.display = 'none';
           }, 5000);
          }
          
+         // Form submission handler with Google Sheets integration
          document.getElementById('feedbackForm').addEventListener('submit', function(e) {
           e.preventDefault();
           
+          // Get form data
           const formData = {
               name: document.getElementById('name').value,
               role: document.getElementById('role').value,
@@ -2154,36 +2191,43 @@
               timestamp: new Date().toISOString()
           };
           
+          // Show loading state
           const submitBtn = document.getElementById('submitBtn');
           const originalBtnText = submitBtn.innerHTML;
           submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Submitting...';
           submitBtn.disabled = true;
           
+          // Check if Google Script URL is configured
+          // Note: We check against a placeholder just in case it wasn't updated, 
+          // but your current code has the URL filled in.
           if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec') {
-              showFormStatus('error', 'Google Sheets integration is not configured.');
+              showFormStatus('error', 'Google Sheets integration is not configured. Please set up your Google Apps Script and update the GOOGLE_SCRIPT_URL variable.');
               submitBtn.innerHTML = originalBtnText;
               submitBtn.disabled = false;
               return;
           }
           
+          // Send data to Google Sheets via Google Apps Script
           fetch(GOOGLE_SCRIPT_URL, {
               method: 'POST',
-              mode: 'no-cors',
+              mode: 'no-cors', // Required for Google Apps Script
               headers: {
                   'Content-Type': 'application/json',
               },
               body: JSON.stringify(formData)
           })
           .then(response => {
-              // UX Fix: Clearer success message acknowledging the "no-cors" limitation
-              showFormStatus('success', 'Thank you! Your submission has been sent successfully.');
+              // Since we're using no-cors mode, we won't get a proper response
+              // We'll assume it was successful if no error was thrown
+              showFormStatus('success', 'Thank you for sharing! Your ideas will help others create welcoming spaces where faith can grow.');
               this.reset();
           })
           .catch(error => {
               console.error('Error submitting form:', error);
-              showFormStatus('error', 'There was an error submitting your form. Please try again.');
+              showFormStatus('error', 'There was an error submitting your form. Please try again later.');
           })
           .finally(() => {
+              // Restore button state
               submitBtn.innerHTML = originalBtnText;
               submitBtn.disabled = false;
           });
