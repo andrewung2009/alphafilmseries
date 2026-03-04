@@ -1167,7 +1167,7 @@
          });
          /* Accessibility: Large Text Mode */
          body.large-text {
-         font-size: 19px !important;
+         font-size: 120% !important; /* Increases all text by 20% */
          }
       </style>
    </head>
@@ -2232,6 +2232,35 @@
               submitBtn.disabled = false;
           });
          });
+         // --- Fix for Text Resizing Button ---
+         function addResizeButton() {
+         const menu = document.getElementById('quickAccessMenu');
+         
+         // If menu doesn't exist yet, wait 100ms and try again
+         if (!menu) {
+         setTimeout(addResizeButton, 100);
+         return;
+         }
+         
+         // Check if button already exists to prevent duplicates
+         if (document.getElementById('resizeToggleBtn')) return;
+         
+         const resizeBtn = document.createElement('a');
+         resizeBtn.id = 'resizeToggleBtn';
+         resizeBtn.href = '#';
+         resizeBtn.className = 'quick-access-item';
+         resizeBtn.innerHTML = '<i class="fas fa-text-height"></i> Larger Text';
+         
+         resizeBtn.onclick = (e) => {
+         e.preventDefault();
+         document.body.classList.toggle('large-text');
+         };
+         
+         menu.appendChild(resizeBtn);
+         }
+         
+         // Run the function
+         addResizeButton();
       </script>
    </body>
 </html>
