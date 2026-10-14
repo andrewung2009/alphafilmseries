@@ -621,7 +621,10 @@ function handleSaveError(err) {
       return;
    }
    if (err.status === 403) {
-      showAlert($('#validationBox'), 'Your token does not have permission to save. Edit the token on GitHub and give it "Contents: Read and write" permission for this repository.');
+      let msg = 'GitHub refused the save (403)';
+      if (err.message) msg += ': ' + err.message;
+      msg += '. Check github.com/settings/tokens: this token must list this repository under "Repository access", and Permissions \u2192 Contents must be "Read and write". If you recently fixed the token on GitHub, press "Change token" in the top bar and paste it again (or wait a few minutes and retry).';
+      showAlert($('#validationBox'), msg);
       return;
    }
    if (err.status === 404) {
@@ -690,6 +693,13 @@ function bindEditor() {
 
    $('#saveBtn').addEventListener('click', save);
    $('#downloadBtn').addEventListener('click', downloadBackup);
+   $('#changeTokenBtn').addEventListener('click', () => {
+      try { localStorage.removeItem('adminToken'); } catch (e) { /* ignore */ }
+      token = '';
+      dataState = null;
+      $('#editorScreen').classList.add('d-none');
+      showTokenStep('Paste your GitHub token again to continue.');
+   });
    $('#signOutBtn').addEventListener('click', () => signOut(false));
 
    // Delegated row controls
