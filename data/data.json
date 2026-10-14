@@ -10,7 +10,6 @@
             "5. If you break the file, the website will show an error. Double-check your changes against a backup."
         ]
     },
-
     "trainingVideos": [
         {
             "title": "The Essentials",
@@ -25,7 +24,6 @@
             "url": "https://player.vimeo.com/video/490924040"
         }
     ],
-
     "weeklyResources": [
         {
             "week": 1,
@@ -479,7 +477,6 @@
             }
         }
     ],
-
     "weekendResources": {
         "title": "Weekend Away",
         "mainTalks": [
@@ -551,7 +548,6 @@
             }
         ]
     },
-
     "additionalGuides": [
         {
             "title": "Alpha Toolbox",
@@ -578,6 +574,10 @@
             "icon": "fas fa-mobile-alt"
         }
     ],
-
-    "faqs": []
+    "faqs": [
+        {
+            "question": "This is a test question",
+            "answer": "This is a test answer."
+        }
+    ]
 }
