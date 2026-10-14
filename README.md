@@ -1,215 +1,261 @@
-# Alpha Resource Hub for Hosts and Helpers
+<p align="center">
+  <img src="assets/images/alphahtbb.jpg" alt="Alpha Resource Hub banner" width="760">
+</p>
 
-A comprehensive, GitHub‑friendly resource platform designed to equip
-Alpha course hosts and helpers with everything needed to create warm and
-welcoming environments for conversations about life, faith, and God.
+<h1 align="center">Alpha Resource Hub for Hosts and Helpers</h1>
+
+<p align="center">
+  Equipping Alpha hosts and helpers with everything they need to create warm, welcoming spaces for conversations about life, faith and God.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=fff" alt="HTML5">
+  <img src="https://img.shields.io/badge/Bootstrap-5-7952B3?style=flat&logo=bootstrap&logoColor=fff" alt="Bootstrap 5">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/content-data.json-ff69b4?style=flat" alt="Content driven by data.json">
+</p>
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Weekly Resources](#weekly-resources)
+- [Weekend Away Resources](#weekend-away-resources)
+- [Additional Resources](#additional-resources)
+- [Editing Your Content](#editing-your-content)
+- [Google Sheets Integration](#google-sheets-integration)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [Contact](#contact)
 
 ## Overview
 
-The **Alpha Resource Hub** provides organized access to training
-materials, weekly resources, weekend-away content, and additional guides
-to support those running Alpha courses.\
-This responsive web application makes it easy to find, view, and share
-resources for both in‑person and online Alpha sessions.
+The **Alpha Resource Hub** provides organised access to training materials, week-by-week resources, weekend-away content and additional guides for people running Alpha courses.
+
+It is a responsive, data-driven static site: all content lives in a single JSON file, so updates go live with no build step — edit, save, refresh.
 
 ## Features
 
-  -----------------------------------------------------------------------
-  Feature                     Description
-  --------------------------- -------------------------------------------
-  📚 Training Videos          Essential preparation videos for hosts and
-                              helpers
-
-  📅 Week‑by‑Week Guide       Complete materials for all 11 Alpha weeks
-
-  🏕️ Weekend Away Resources   Specialized materials for the Alpha weekend
-                              experience
-
-  ❓ FAQs                     Answers to common questions about running
-                              Alpha
-
-  💡 Share What Works         Submit icebreakers, discussion questions,
-                              and tips
-
-  🔗 Additional Resources     Extra tools and helpful links
-  -----------------------------------------------------------------------
+| Feature | Description |
+| --- | --- |
+| 📚 Training Videos | Essential preparation videos for hosts and helpers |
+| 📅 Week-by-Week Guide | Complete materials for every Alpha week |
+| 🏕️ Weekend Away Resources | Talks, guides and materials for the Alpha weekend |
+| ❓ FAQs | Answers to common questions about running Alpha |
+| 💡 Share What Works | Submit icebreakers, discussion questions and tips |
+| 🔗 Additional Resources | Extra tools and helpful links |
 
 ## Getting Started
 
 ### Prerequisites
 
--   A modern web browser (Chrome, Firefox, Safari, Edge)
--   Internet connection for viewing videos
+- A modern web browser (Chrome, Firefox, Safari, Edge)
+- An internet connection for streaming videos
+- [Python](https://www.python.org/) or [Node.js](https://nodejs.org/) for running a local server (optional but recommended)
 
 ### Installation
 
-1.  Clone this repository:
+1. Clone the repository:
 
-        git clone https://github.com/your-username/alpha-resource-hub.git
+   ```bash
+   git clone https://github.com/michaeltingkc/Alpha-HTBB.git
+   cd Alpha-HTBB
+   ```
 
-2.  Open `index.html`:
+2. Start a local server — this step is required, because browsers block loading `data/data.json` over the `file://` protocol:
 
-        open index.html
+   ```bash
+   python -m http.server 8000
+   ```
 
-3.  Optional: run a local dev server
+   or
 
-        python -m http.server 8000
+   ```bash
+   npx http-server
+   ```
 
-    or
+3. Open [http://localhost:8000](http://localhost:8000) in your browser.
 
-        npx http-server
+## Project Structure
+
+```text
+Alpha-HTBB/
+├── index.html          # Page markup and app entry point
+├── css/
+│   └── style.css       # All styling
+├── js/
+│   └── main.js         # App logic — renders content from data.json
+├── assets/
+│   └── images/         # Logos and hero image
+├── data/
+│   └── data.json       # ⭐ All site content — edit this file
+└── README.md
+```
 
 ## Weekly Resources
 
-Below is the structure for each Alpha week:
+Every week follows the same structure: an Alpha talk, a host & helper briefing, a guest guide, a team guide, an icebreaker, discussion questions and tips.
 
-### Week 1 --- *Is There More to Life Than This?*
+| # | Title | Talk |
+| --- | --- | --- |
+| 1 | Is There More to Life Than This? | [Watch](https://player.vimeo.com/video/184825483) |
+| 2 | Who Is Jesus? | [Watch](https://player.vimeo.com/video/184825484) |
+| 3 | Why Did Jesus Die? | [Watch](https://player.vimeo.com/video/250767723) |
+| 4 | How Can I Have Faith? | [Watch](https://player.vimeo.com/video/250771916) |
+| 5 | Why and How Do I Pray? | [Watch](https://player.vimeo.com/video/250771919) |
+| 6 | Why and How Should I Read the Bible? | [Watch](https://player.vimeo.com/video/184825488) |
+| 7 | How Does God Guide Us? | [Watch](https://player.vimeo.com/video/250771931) |
+| 8 | How Can I Resist Evil? | [Watch](https://player.vimeo.com/video/250771966) |
+| 9 | Does God Heal Today? | [Watch](https://player.vimeo.com/video/184825500) |
+| 10 | What About The Church? | [Watch](https://player.vimeo.com/video/250771976) |
 
--   **Alpha Talk:** https://player.vimeo.com/video/184825483\
--   **Host & Helper Briefing:**
-    https://player.vimeo.com/video/340385686\
--   **Guest Guide:**
-    https://drive.google.com/drive/folders/1N2wuDY9YybXy1xsxgcjemgzaoGFzFOXj\
--   **Team Guide:**
-    https://drive.google.com/file/d/14HDWNy1MJc2THSJF-AYqDse4pIOiRuM8/view\
--   **Icebreaker:** Say your name with an adjective that starts with the
-    same letter.\
--   **Discussion Questions:**
-    -   How and why did you come to Alpha?\
-    -   If it turned out there *was* a God...\
--   **Tips:** Arrive early and welcome guests intentionally.
+All briefings, guides, icebreakers, discussion questions and tips are maintained in [`data/data.json`](data/data.json).
 
-### Week 2 --- *Who Is Jesus?*
+### Week 1 — *Is There More to Life Than This?*
 
--   **Alpha Talk:** https://player.vimeo.com/video/184825484\
--   **Host & Helper Briefing:**
-    https://player.vimeo.com/video/340385692\
--   **Guest Guide:**
-    https://drive.google.com/file/d/1jttEyvllS8ycR4CDC8f82mvUWGlTg16-/view\
--   **Team Guide:**
-    https://drive.google.com/file/d/1wXpmbb3PxpBnIxcct-6WDR9HBVEZfsyt/view\
--   **Icebreaker:** If you were stuck on a desert island and could take
-    *one thing*...\
--   **Discussion Questions:** What makes you happy? What do you think
-    about Jesus?\
--   **Tips:** Consistency matters --- arrive early.
+- **Alpha Talk:** [Vimeo](https://player.vimeo.com/video/184825483)
+- **Host & Helper Briefing:** [Vimeo](https://player.vimeo.com/video/340385686)
+- **Guest Guide:** [Google Drive](https://drive.google.com/drive/folders/1N2wuDY9YybXy1xsxgcjemgzaoGFzFOXj)
+- **Team Guide:** [Google Drive](https://drive.google.com/file/d/14HDWNy1MJc2THSJF-AYqDse4pIOiRuM8/view)
+- **Icebreaker:** Say your name with an adjective that starts with the same letter.
+- **Discussion Questions:**
+  - How and why did you come to Alpha?
+  - If it turned out there *was* a God...
+- **Tips:** Arrive early and welcome guests intentionally.
 
-*(Weeks 3--11 follow the same structure and should be added with their
-respective links.)*
+### Week 2 — *Who Is Jesus?*
+
+- **Alpha Talk:** [Vimeo](https://player.vimeo.com/video/184825484)
+- **Host & Helper Briefing:** [Vimeo](https://player.vimeo.com/video/340385692)
+- **Guest Guide:** [Google Drive](https://drive.google.com/file/d/1jttEyvllS8ycR4CDC8f82mvUWGlTg16-/view)
+- **Team Guide:** [Google Drive](https://drive.google.com/file/d/1wXpmbb3PxpBnIxcct-6WDR9HBVEZfsyt/view)
+- **Icebreaker:** If you were stuck on a desert island and could take *one thing*...
+- **Discussion Questions:** What makes you happy? What do you think about Jesus?
+- **Tips:** Consistency matters — arrive early.
 
 ## Weekend Away Resources
 
 ### Main Talks
 
--   **Introduction:** https://player.vimeo.com/video/184825491\
--   **Who is the Holy Spirit?:**
-    https://player.vimeo.com/video/184825492\
--   **What does the Holy Spirit do?:**
-    https://player.vimeo.com/video/184825493\
--   **How can I be filled?:** https://player.vimeo.com/video/184825495\
--   **How can I make the most of my life?:**
-    https://player.vimeo.com/video/184825496
+- **Introduction:** [Vimeo](https://player.vimeo.com/video/184825491)
+- **Who Is the Holy Spirit?:** [Vimeo](https://player.vimeo.com/video/184825492)
+- **What Does the Holy Spirit Do?:** [Vimeo](https://player.vimeo.com/video/184825493)
+- **How Can I Be Filled?:** [Vimeo](https://player.vimeo.com/video/184825495)
+- **How Can I Make the Most of My Life?:** [Vimeo](https://player.vimeo.com/video/184825496)
 
 ### Training Videos
 
--   Prayer & The Weekend --- https://player.vimeo.com/video/214170194\
--   Prayer Ministry --- https://player.vimeo.com/video/490974388
+- Prayer & The Weekend — [Vimeo](https://player.vimeo.com/video/214170194)
+- Prayer Ministry — [Vimeo](https://player.vimeo.com/video/490974388)
 
 ### Guest Guides
 
--   Who Is The Holy Spirit? ---
-    https://drive.google.com/file/d/1fN1i5ql7BCbHKpk1iRxGlywYJWWnBcXN/view\
--   What Does He Do? ---
-    https://drive.google.com/file/d/1yDghXCu0EBqrQcmjxQNx1nUv5PtTqw96/view\
--   How Can I Be Filled? ---
-    https://drive.google.com/file/d/1S5wDQykDAsPliN8Tzy7xCA1bpgWgwdm3/view\
--   How Can I Make the Most of Life? ---
-    https://drive.google.com/file/d/1Jn3Q8vFh2wENFUmHeLIg64-SMujpd-p-/view
+- Who Is The Holy Spirit? — [Google Drive](https://drive.google.com/file/d/1fN1i5ql7BCbHKpk1iRxGlywYJWWnBcXN/view)
+- What Does He Do? — [Google Drive](https://drive.google.com/file/d/1yDghXCu0EBqrQcmjxQNx1nUv5PtTqw96/view)
+- How Can I Be Filled? — [Google Drive](https://drive.google.com/file/d/1S5wDQykDAsPliN8Tzy7xCA1bpgWgwdm3/view)
+- How Can I Make the Most of Life? — [Google Drive](https://drive.google.com/file/d/1Jn3Q8vFh2wENFUmHeLIg64-SMujpd-p-/view)
 
 ### Team Guides
 
--   Who Is The Holy Spirit? ---
-    https://drive.google.com/file/d/1_HwU497m5NO0N--v5669igJ2kRmjrcng/view\
--   What Does He Do? ---
-    https://drive.google.com/file/d/1xb9JPEWRFUaAFWY_PufnrdqEDynA_0MW/view\
--   How Can I Be Filled? ---
-    https://drive.google.com/file/d/1hIkGiM0ZcdWOb1VyZUpG9QvAa4jT2mE6/view\
--   How Can I Make the Most of Life? ---
-    https://drive.google.com/file/d/108Cf2uiep7S0qe67IGTTNwRQVVvCJQMA/view
+- Who Is The Holy Spirit? — [Google Drive](https://drive.google.com/file/d/1TMxEOrH6lpGAz4UL_q7xMyP6h-qBGa0s/view?usp=sharing)
+- What Does He Do? — [Google Drive](https://drive.google.com/file/d/1wDqgHpSqTl5ptGQm8XvDgnYAA2h2Xqja/view?usp=sharing)
+- How Can I Be Filled? — [Google Drive](https://drive.google.com/file/d/1tG6icY40KUnisieiv_0cJMflYR1ORyST/view?usp=sharing)
+- How Can I Make the Most of Life? — [Google Drive](https://drive.google.com/file/d/1u0H8pK5sFM3hQKu-F46oEQ5Szej1BS3_/view?usp=sharing)
 
 ## Additional Resources
 
-  -------------------------------------------------------------------------------------------------------------------
-  Resource                                   Link
-  ------------------------------------------ ------------------------------------------------------------------------
-  Alpha Toolbox                              https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view
+| Resource | Link |
+| --- | --- |
+| Alpha Toolbox | [Google Drive](https://drive.google.com/file/d/1MaTKJIATzN0DxHm4wtDJBHevWiuLTreC/view) |
+| Small Group Training | [Google Drive](https://drive.google.com/file/d/1Hzpl5qqQlsQXpjelEF1_C1OVaynJkdlZ/view) |
+| The Bible with Nicky and Pippa Gumbel | [bible.alpha.org](https://bible.alpha.org/en/) |
+| YouVersion Bible App | [bible.com](https://www.bible.com/app) |
 
-  Small Group Training                       https://drive.google.com/file/d/1Hzpl5qqQlsQXpjelEF1_C1OVaynJkdlZ/view
+## Editing Your Content
 
-  Bible in One Year                          https://bible.alpha.org/en/
+All site content lives in [`data/data.json`](data/data.json) — no HTML or CSS knowledge required:
 
-  YouVersion Bible App                       https://www.bible.com/app
-  -------------------------------------------------------------------------------------------------------------------
+- **`trainingVideos`** — preparation videos in the Get Ready section
+- **`weeklyResources`** — talks, briefings, guides, icebreakers, discussion questions and tips for each week
+- **`weekendResources`** — weekend talks, training videos, guest and team guides
+- **`additionalGuides`** — extra resource cards
+
+The file begins with a 👋 `_instructions` block containing simple editing rules (keep the quotes, colons and commas intact). A malformed JSON file will break the site, so double-check your edits against a backup.
+
+## Google Sheets Integration
+
+The "Share What Works" form submits to a Google Sheet:
+
+1. Create a Google Sheet with columns: `timestamp`, `name`, `role`, `category`, `weekNumber`, `idea`
+2. Open **Extensions → Apps Script**
+3. Paste this code:
+
+   ```javascript
+   function doPost(e) {
+     try {
+       const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+       const data = JSON.parse(e.postData.contents);
+
+       if (!data.timestamp) {
+         data.timestamp = new Date().toISOString();
+       }
+
+       const row = [
+         data.timestamp,
+         data.name,
+         data.role,
+         data.category,
+         data.weekNumber,
+         data.idea
+       ];
+
+       sheet.appendRow(row);
+
+       return ContentService
+         .createTextOutput(JSON.stringify({
+           status: 'success',
+           message: 'Form submitted successfully'
+         }))
+         .setMimeType(ContentService.MimeType.JSON);
+
+     } catch (error) {
+       return ContentService
+         .createTextOutput(JSON.stringify({
+           status: 'error',
+           message: error.toString()
+         }))
+         .setMimeType(ContentService.MimeType.JSON);
+     }
+   }
+   ```
+
+4. Deploy as a web app
+5. Replace `GOOGLE_SCRIPT_URL` in `js/main.js` with your deployment URL
+
+## Deployment
+
+The site is fully static — any static host works. For GitHub Pages:
+
+1. Open **Settings → Pages** in this repository
+2. Under **Build and deployment**, select **Deploy from a branch**
+3. Choose `main` / `(root)` and save
+
+The site will be live at `https://michaeltingkc.github.io/Alpha-HTBB/`.
 
 ## Contributing
 
 You can contribute by:
 
-1.  **Submitting Ideas** via the "Share What Works" form\
-2.  **Reporting Issues** on GitHub\
-3.  **Opening Pull Requests** for code improvements
-
-## Google Sheets Integration
-
-1.  Create a Google Sheet with columns:\
-    `timestamp`, `name`, `role`, `category`, `weekNumber`, `idea`
-2.  Open Extensions → Apps Script\
-3.  Paste this code:
-
-``` javascript
-function doPost(e) {
-  try {
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    const data = JSON.parse(e.postData.contents);
-
-    if (!data.timestamp) {
-      data.timestamp = new Date().toISOString();
-    }
-
-    const row = [
-      data.timestamp,
-      data.name,
-      data.role,
-      data.category,
-      data.weekNumber,
-      data.idea
-    ];
-
-    sheet.appendRow(row);
-
-    return ContentService
-      .createTextOutput(JSON.stringify({
-        status: 'success',
-        message: 'Form submitted successfully'
-      }))
-      .setMimeType(ContentService.MimeType.JSON);
-
-  } catch (error) {
-    return ContentService
-      .createTextOutput(JSON.stringify({
-        status: 'error',
-        message: error.toString()
-      }))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}
-```
-
-4.  Deploy as web app\
-5.  Replace `GOOGLE_SCRIPT_URL` in your `index.html` script
+1. **Submitting ideas** via the "Share What Works" form on the site
+2. **Reporting issues** on GitHub
+3. **Opening pull requests** for improvements
 
 ## Contact
 
-For support: **michael.ting@htbb.org**
+For support: **[michael.ting@htbb.org](mailto:michael.ting@htbb.org)**
 
-© 2024 Alpha Course Resources. All rights reserved.
+© 2026 Alpha Course Resources. All rights reserved.
