@@ -206,9 +206,11 @@ Only people holding a valid token for this repository can save changes — GitHu
 
 ### Making a change
 
-1. Pick a tab: **Training Videos**, **Week-by-Week**, **Weekend Away** or **Extra Resources**
+1. Pick a tab: **Training Videos**, **Week-by-Week**, **Weekend Away**, **FAQs** or **Extra Resources**
 2. Edit fields directly — for lists (icebreakers, questions, tips) write **one item per line**
 3. Press **Save to website** — the panel commits `data/data.json` for you, and GitHub Pages redeploys within about a minute
+
+The **FAQs** tab feeds a section on the site between Weekend Away and Share What Works; that section (and its menu links) stays hidden while no FAQs are filled in.
 
 Every save is a git commit, so the repository history is a full undo/restore log. The **Download backup** button saves a copy of the content file to your computer.
 

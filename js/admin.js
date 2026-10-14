@@ -258,6 +258,21 @@ function makeGuideRow(obj) {
    return div;
 }
 
+function makeFaqRow(obj) {
+   const div = document.createElement('div');
+   div.className = 'edit-row';
+   div.innerHTML =
+      '<div class="row g-2 align-items-end">' +
+      '<div class="col-md-5"><label class="form-label">Question</label>' +
+      '<input class="form-control" data-field="question" placeholder="e.g. Do I need to be a Christian to help?"></div>' +
+      '<div class="col-md-6"><label class="form-label">Answer</label>' +
+      '<textarea class="form-control" rows="2" data-field="answer" placeholder="Type the answer here..."></textarea></div>' +
+      '<div class="col-md-1 text-end"><button type="button" class="btn btn-outline-danger btn-sm btn-remove" title="Remove">&times;</button></div>' +
+      '</div>';
+   setFields(div, obj || {});
+   return div;
+}
+
 function linkBlock(label, path) {
    return '<div class="row g-3 mt-1">' +
       '<div class="col-md-5"><label class="form-label">' + label + ' - title</label>' +
@@ -370,6 +385,11 @@ function renderAll() {
    const guides = $('#guidesList');
    guides.innerHTML = '';
    (dataState.additionalGuides || []).forEach(g => guides.appendChild(makeGuideRow(g)));
+
+   const faqs = $('#faqsList');
+   faqs.innerHTML = '';
+   (dataState.faqs || []).forEach(f => faqs.appendChild(makeFaqRow(f)));
+   $('#faqsEmpty').classList.toggle('d-none', faqs.children.length > 0);
 }
 
 function fillList(selector, arr) {
@@ -426,6 +446,8 @@ function buildData() {
    generated.weekendResources = weekend;
 
    generated.additionalGuides = collectRows($('#guidesList'));
+
+   generated.faqs = collectRows($('#faqsList'));
 
    // Keep the original key order and any extra keys (_instructions etc.)
    const out = {};
@@ -484,7 +506,8 @@ function validate() {
       ['#wkTraining', 'Weekend Away - training videos'],
       ['#wkGuides', 'Weekend Away - guest guides'],
       ['#wkTeamGuides', 'Weekend Away - team guides'],
-      ['#guidesList', 'Extra resources']
+      ['#guidesList', 'Extra resources'],
+      ['#faqsList', 'FAQs']
    ];
    emptyRowSections.forEach(function (entry) {
       $$(entry[0] + ' .edit-row').forEach((row, i) => {
@@ -494,6 +517,18 @@ function validate() {
             errors.push(entry[1] + ' row ' + (i + 1) + ' is empty - fill it in or remove it.');
          }
       });
+   });
+   $$('#faqsList .edit-row').forEach((row, i) => {
+      const q = row.querySelector('[data-field="question"]');
+      const a = row.querySelector('[data-field="answer"]');
+      if (q.value.trim() && !a.value.trim()) {
+         a.classList.add('is-invalid');
+         errors.push('FAQs row ' + (i + 1) + ' needs an answer.');
+      }
+      if (a.value.trim() && !q.value.trim()) {
+         q.classList.add('is-invalid');
+         errors.push('FAQs row ' + (i + 1) + ' needs a question.');
+      }
    });
    return errors;
 }
@@ -639,6 +674,10 @@ function bindEditor() {
 
    $('#addVideoBtn').addEventListener('click', () => $('#videosList').appendChild(makeRow({})));
    $('#addGuideBtn').addEventListener('click', () => $('#guidesList').appendChild(makeGuideRow({})));
+   $('#addFaqBtn').addEventListener('click', () => {
+      $('#faqsList').appendChild(makeFaqRow({}));
+      $('#faqsEmpty').classList.add('d-none');
+   });
    $('#addWeekBtn').addEventListener('click', () => {
       const card = makeWeekCard({ week: nextWeekNumber(), title: '' }, null);
       $('#weekList').appendChild(card);

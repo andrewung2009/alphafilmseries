@@ -577,5 +577,7 @@
             "url": "https://www.bible.com/app",
             "icon": "fas fa-mobile-alt"
         }
-    ]
+    ],
+
+    "faqs": []
 }

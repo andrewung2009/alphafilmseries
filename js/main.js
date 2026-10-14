@@ -10,6 +10,7 @@
          let weeklyResources = [];
          let weekendResources = {};
          let additionalGuides = [];
+         let faqs = [];
                   // Fix mobile menu scroll offset
          let mobileScrollTarget = null;
          const navbarCollapse = document.getElementById('navbarNav');
@@ -139,6 +140,7 @@
 weeklyResources = data.weeklyResources;
 weekendResources = data.weekendResources;
 additionalGuides = data.additionalGuides;
+faqs = data.faqs || [];
 
 // Populate week dropdown
 const weekSelect = document.getElementById('weekNumber');
@@ -186,6 +188,7 @@ weekSelect.appendChild(weekendOpt);
              generateWeeklyResources();
              generateWeekendResources();
              generateAdditionalGuides();
+             generateFaqs();
              
              // Setup Video Modal & Observers
              setupInteractions();
@@ -781,6 +784,77 @@ weekSelect.appendChild(weekendOpt);
              });
              
              container.innerHTML = html;
+         }
+         
+         function generateFaqs() {
+             const list = (Array.isArray(faqs) ? faqs : [])
+                 .filter(f => f && f.question && String(f.question).trim() && f.answer && String(f.answer).trim());
+             if (!list.length) {
+                 return; // Section, nav link and footer link stay hidden while empty
+             }
+             
+             const accordion = document.getElementById('faqsAccordion');
+             list.forEach((f, i) => {
+                 const item = document.createElement('div');
+                 item.className = 'accordion-item';
+                 const header = document.createElement('h2');
+                 header.className = 'accordion-header';
+                 const button = document.createElement('button');
+                 button.className = 'accordion-button collapsed';
+                 button.type = 'button';
+                 button.setAttribute('data-bs-toggle', 'collapse');
+                 button.setAttribute('data-bs-target', '#faqCollapse' + i);
+                 button.setAttribute('aria-expanded', 'false');
+                 button.textContent = String(f.question).trim();
+                 header.appendChild(button);
+                 const panel = document.createElement('div');
+                 panel.id = 'faqCollapse' + i;
+                 panel.className = 'accordion-collapse collapse';
+                 panel.setAttribute('data-bs-parent', '#faqsAccordion');
+                 const body = document.createElement('div');
+                 body.className = 'accordion-body faq-answer';
+                 body.textContent = String(f.answer).trim();
+                 panel.appendChild(body);
+                 item.appendChild(header);
+                 item.appendChild(panel);
+                 accordion.appendChild(item);
+             });
+             
+             document.getElementById('faqs').classList.remove('d-none');
+             document.getElementById('faqsNavLink').classList.remove('d-none');
+             document.getElementById('faqsFooterLink').classList.remove('d-none');
+             
+             // Add FAQs to the quick access menu, between Weekend Away and Share What Works
+             const menu = document.getElementById('quickAccessMenu');
+             if (menu) {
+                 const weekendLink = menu.querySelector('a[href="#weekend"]');
+                 if (weekendLink) {
+                     const link = document.createElement('a');
+                     link.href = '#faqs';
+                     link.className = 'quick-access-item';
+                     link.textContent = 'FAQs';
+                     link.style.cssText = `
+                         display: block;
+                         padding: 0.75rem 1rem;
+                         color: #333;
+                         text-decoration: none;
+                         border-radius: 8px;
+                         transition: all 0.2s ease;
+                         font-size: 0.9rem;
+                     `;
+                     link.addEventListener('mouseenter', () => {
+                         link.style.background = 'var(--light-bg)';
+                         link.style.color = 'var(--primary-color)';
+                         link.style.transform = 'translateX(5px)';
+                     });
+                     link.addEventListener('mouseleave', () => {
+                         link.style.background = 'transparent';
+                         link.style.color = '#333';
+                         link.style.transform = 'translateX(0)';
+                     });
+                     weekendLink.insertAdjacentElement('afterend', link);
+                 }
+             }
          }
          
          // Wait for DOM to be fully loaded before initializing

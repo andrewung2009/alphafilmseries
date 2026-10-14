@@ -1158,6 +1158,10 @@
          .skip-link:focus {
          top: 0;
          }
+         /* FAQs */
+         .faq-answer {
+         white-space: pre-line;
+         }
          /* Close menu when clicking outside */
          document.addEventListener('click', (e) => {
          const btn = document.getElementById('quickAccessBtn');
