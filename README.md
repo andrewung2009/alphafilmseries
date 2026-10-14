@@ -62,8 +62,8 @@ It is a responsive, data-driven static site: all content lives in a single JSON 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/michaeltingkc/Alpha-HTBB.git
-   cd Alpha-HTBB
+   git clone https://github.com/andrewung2009/alphafilmseries.git
+   cd alphafilmseries
    ```
 
 2. **Windows — easiest:** double-click `start.bat`. The server starts and the site opens in your browser automatically.
@@ -85,7 +85,7 @@ It is a responsive, data-driven static site: all content lives in a single JSON 
 ## Project Structure
 
 ```text
-Alpha-HTBB/
+alphafilmseries/
 ├── index.html            # Page markup and app entry point
 ├── admin.html            # Admin panel — edit content without touching code
 ├── start.bat             # Double-click to run the site locally (Windows)
@@ -189,7 +189,7 @@ All briefings, guides, icebreakers, discussion questions and tips are maintained
 ### Opening the panel
 
 1. Open `admin.html`:
-   - **Online:** `https://michaeltingkc.github.io/Alpha-HTBB/admin.html`
+   - **Online:** `https://andrewung2009.github.io/alphafilmseries/admin.html`
    - **Locally:** double-click `start.bat`, then visit `http://localhost:8080/admin.html`
 2. Enter the admin password (set in [`js/admin-config.js`](js/admin-config.js) — change it there)
 3. Enter your GitHub access token once — the browser remembers it for next time
@@ -198,7 +198,7 @@ All briefings, guides, icebreakers, discussion questions and tips are maintained
 
 1. Go to [github.com/settings/personal-access-tokens/new](https://github.com/settings/personal-access-tokens/new) (sign in to GitHub first)
 2. **Token name:** anything, e.g. `Alpha Hub Admin`
-3. **Repository access:** Only select repositories → `Alpha-HTBB`
+3. **Repository access:** Only select repositories → `alphafilmseries`
 4. **Permissions → Repository permissions → Contents:** Read and write
 5. Click **Generate token**, copy it, and paste it into the panel
 
@@ -278,7 +278,7 @@ The site is fully static — any static host works. For GitHub Pages:
 2. Under **Build and deployment**, select **Deploy from a branch**
 3. Choose `main` / `(root)` and save
 
-The site will be live at `https://michaeltingkc.github.io/Alpha-HTBB/`.
+The site will be live at `https://andrewung2009.github.io/alphafilmseries/`.
 
 ## Contributing
 

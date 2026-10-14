@@ -14,7 +14,7 @@ const ADMIN_CONFIG = {
 
     // Which GitHub repository the website lives in.
     // Only change this if the repository moves.
-    repo: 'michaeltingkc/Alpha-HTBB',
+    repo: 'andrewung2009/alphafilmseries',
 
     // The branch the website is published from.
     branch: 'main',
@@ -23,5 +23,5 @@ const ADMIN_CONFIG = {
     contentPath: 'data/data.json',
 
     // Link shown after a successful save.
-    siteUrl: 'https://michaeltingkc.github.io/Alpha-HTBB/'
+    siteUrl: 'https://andrewung2009.github.io/alphafilmseries/'
 };
