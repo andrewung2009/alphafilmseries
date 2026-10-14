@@ -623,7 +623,7 @@ function handleSaveError(err) {
    if (err.status === 403) {
       let msg = 'GitHub refused the save (403)';
       if (err.message) msg += ': ' + err.message;
-      msg += '. Check github.com/settings/tokens: this token must list this repository under "Repository access", and Permissions \u2192 Contents must be "Read and write". If you recently fixed the token on GitHub, press "Change token" in the top bar and paste it again (or wait a few minutes and retry).';
+      msg += '. Check github.com/settings/tokens: this token must list this repository under "Repository access", and Permissions \u2192 Contents must be "Read and write". If the repository is owned by someone else, your GitHub account also needs the Write role on it (a token can never exceed your own access) - the owner sets this under Settings \u2192 Collaborators. If you recently changed any of this, press "Change token" and paste the token again, or wait a few minutes and retry.';
       showAlert($('#validationBox'), msg);
       return;
    }

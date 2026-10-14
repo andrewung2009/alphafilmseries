@@ -204,6 +204,8 @@ All briefings, guides, icebreakers, discussion questions and tips are maintained
 
 Only people holding a valid token for this repository can save changes — GitHub itself enforces that. The password simply keeps visitors out of the editor screen. Revoke a token at any time from the same GitHub settings page.
 
+> **Repository owned by someone else?** A token can never grant more access than your own GitHub account has. If the repository belongs to another person or organisation, ask the owner to set your account to the **Write** role under **Settings → Collaborators** — only then will a correctly configured token be able to save.
+
 ### Making a change
 
 1. Pick a tab: **Training Videos**, **Week-by-Week**, **Weekend Away**, **FAQs** or **Extra Resources**
