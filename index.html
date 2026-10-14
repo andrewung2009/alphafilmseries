@@ -5,7 +5,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
       <title>Alpha Resource Hub for Hosts and Helpers</title>
-      <link rel="icon" type="image/jpeg" href="alphalogo.jpg">
+      <link rel="icon" type="image/jpeg" href="assets/images/alphalogo.jpg">
       <!-- JavaScript -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
       <!-- CSS Styles -->
@@ -153,7 +153,7 @@
          }
          /* Hero Section - Desktop First */
          .hero-section {
-         background-image: url('alphahtbb.jpg');
+         background-image: url('assets/images/alphahtbb.jpg');
          background-size: cover;
          background-position: center;
          background-attachment: fixed;
@@ -1181,7 +1181,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
          <div class="container">
             <a class="navbar-brand" href="#home">
-            <img src="htbblogo.jpg" alt="HTBB Logo">
+            <img src="assets/images/htbblogo.jpg" alt="HTBB Logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -1533,7 +1533,7 @@
              // 1. FETCH DATA FROM JSON
              // ============================================
              try {
-                 const response = await fetch('data.json');
+                 const response = await fetch('data/data.json');
                  if (!response.ok) {
                      throw new Error(`HTTP error! status: ${response.status}`);
                  }
