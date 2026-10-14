@@ -66,7 +66,9 @@ It is a responsive, data-driven static site: all content lives in a single JSON 
    cd Alpha-HTBB
    ```
 
-2. Start a local server — this step is required, because browsers block loading `data/data.json` over the `file://` protocol:
+2. **Windows — easiest:** double-click `start.bat`. The server starts and the site opens in your browser automatically.
+
+   **Or start a server manually** — this step is required because browsers block loading `data/data.json` over the `file://` protocol:
 
    ```bash
    python -m http.server 8000
@@ -84,15 +86,20 @@ It is a responsive, data-driven static site: all content lives in a single JSON 
 
 ```text
 Alpha-HTBB/
-├── index.html          # Page markup and app entry point
+├── index.html            # Page markup and app entry point
+├── admin.html            # Admin panel — edit content without touching code
+├── start.bat             # Double-click to run the site locally (Windows)
 ├── css/
-│   └── style.css       # All styling
+│   ├── style.css         # Site styling
+│   └── admin.css         # Admin panel styling
 ├── js/
-│   └── main.js         # App logic — renders content from data.json
+│   ├── main.js           # App logic — renders content from data.json
+│   ├── admin.js          # Admin panel logic (saves via GitHub)
+│   └── admin-config.js   # Admin settings — password, repository
 ├── assets/
-│   └── images/         # Logos and hero image
+│   └── images/           # Logos and hero image
 ├── data/
-│   └── data.json       # ⭐ All site content — edit this file
+│   └── data.json         # ⭐ All site content
 └── README.md
 ```
 
@@ -177,14 +184,37 @@ All briefings, guides, icebreakers, discussion questions and tips are maintained
 
 ## Editing Your Content
 
-All site content lives in [`data/data.json`](data/data.json) — no HTML or CSS knowledge required:
+**No coding needed.** The site includes an admin panel that edits all content through simple forms — no JSON, no terminal, no pull requests.
 
-- **`trainingVideos`** — preparation videos in the Get Ready section
-- **`weeklyResources`** — talks, briefings, guides, icebreakers, discussion questions and tips for each week
-- **`weekendResources`** — weekend talks, training videos, guest and team guides
-- **`additionalGuides`** — extra resource cards
+### Opening the panel
 
-The file begins with a 👋 `_instructions` block containing simple editing rules (keep the quotes, colons and commas intact). A malformed JSON file will break the site, so double-check your edits against a backup.
+1. Open `admin.html`:
+   - **Online:** `https://michaeltingkc.github.io/Alpha-HTBB/admin.html`
+   - **Locally:** double-click `start.bat`, then visit `http://localhost:8080/admin.html`
+2. Enter the admin password (set in [`js/admin-config.js`](js/admin-config.js) — change it there)
+3. Enter your GitHub access token once — the browser remembers it for next time
+
+### One-time token setup
+
+1. Go to [github.com/settings/personal-access-tokens/new](https://github.com/settings/personal-access-tokens/new) (sign in to GitHub first)
+2. **Token name:** anything, e.g. `Alpha Hub Admin`
+3. **Repository access:** Only select repositories → `Alpha-HTBB`
+4. **Permissions → Repository permissions → Contents:** Read and write
+5. Click **Generate token**, copy it, and paste it into the panel
+
+Only people holding a valid token for this repository can save changes — GitHub itself enforces that. The password simply keeps visitors out of the editor screen. Revoke a token at any time from the same GitHub settings page.
+
+### Making a change
+
+1. Pick a tab: **Training Videos**, **Week-by-Week**, **Weekend Away** or **Extra Resources**
+2. Edit fields directly — for lists (icebreakers, questions, tips) write **one item per line**
+3. Press **Save to website** — the panel commits `data/data.json` for you, and GitHub Pages redeploys within about a minute
+
+Every save is a git commit, so the repository history is a full undo/restore log. The **Download backup** button saves a copy of the content file to your computer.
+
+### Editing `data.json` by hand (optional)
+
+Advanced users can still edit [`data/data.json`](data/data.json) directly. It begins with a 👋 `_instructions` block of rules (keep the quotes, colons and commas intact) — a malformed JSON file will break the site, which is why the admin panel is the recommended path.
 
 ## Google Sheets Integration
 

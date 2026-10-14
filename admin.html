@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="robots" content="noindex, nofollow">
+      <title>Admin — Alpha Resource Hub</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+      <link rel="stylesheet" href="css/admin.css">
+   </head>
+   <body>
+      <!-- ============ LOGIN ============ -->
+      <div id="loginScreen" class="login-wrap">
+         <div class="login-card">
+            <img src="assets/images/alphalogo.jpg" alt="" class="login-logo">
+            <h1>Alpha Hub <span>Admin</span></h1>
+            <p class="text-muted mb-4">Sign in to edit the website content.</p>
+
+            <div id="stepPassword">
+               <label class="form-label" for="passwordInput">Admin password</label>
+               <div class="input-group mb-2">
+                  <input type="password" id="passwordInput" class="form-control" placeholder="Password" autocomplete="current-password">
+                  <button class="btn btn-primary" id="passwordBtn" type="button">Unlock</button>
+               </div>
+               <div id="passwordError" class="alert alert-danger py-2 d-none"></div>
+            </div>
+
+            <div id="stepToken" class="d-none">
+               <label class="form-label" for="tokenInput">GitHub access token</label>
+               <div class="input-group mb-2">
+                  <input type="password" id="tokenInput" class="form-control" placeholder="ghp_... or github_pat_..." autocomplete="off">
+                  <button class="btn btn-primary" id="tokenBtn" type="button">Sign in</button>
+               </div>
+               <div id="tokenError" class="alert alert-danger py-2 d-none"></div>
+               <p class="small mb-0">
+                  <a href="#tokenHelp" data-bs-toggle="collapse" role="button" class="text-primary">How do I get a token? (one-time setup)</a>
+               </p>
+               <div class="collapse mt-2" id="tokenHelp">
+                  <div class="card card-body small text-muted">
+                     <ol class="mb-2">
+                        <li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a> (sign in to GitHub first).</li>
+                        <li><strong>Token name:</strong> anything, e.g. <em>Alpha Hub Admin</em>.</li>
+                        <li><strong>Repository access:</strong> Only select repositories &rarr; <em>Alpha-HTBB</em>.</li>
+                        <li><strong>Permissions &rarr; Repository permissions &rarr; Contents:</strong> Read and write.</li>
+                        <li>Click <strong>Generate token</strong> and copy it (starts with <code>github_pat_</code>).</li>
+                        <li>Paste it on the left and press <strong>Sign in</strong>.</li>
+                     </ol>
+                     <span>The token is stored only in this browser. You can revoke it any time on GitHub.</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- ============ EDITOR ============ -->
+      <div id="editorScreen" class="d-none">
+         <nav class="admin-topbar">
+            <div class="d-flex align-items-center gap-2">
+               <img src="assets/images/htbblogo.jpg" alt="" class="topbar-logo">
+               <strong>Alpha Hub Admin</strong>
+               <span class="badge bg-success" id="whoBadge">connected</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+               <a id="viewSiteLink" class="btn btn-sm btn-outline-dark" href="#" target="_blank" rel="noopener">View site</a>
+               <button class="btn btn-sm btn-outline-danger" id="signOutBtn" type="button">Sign out</button>
+            </div>
+         </nav>
+
+         <div class="container-fluid py-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+               <ul class="nav nav-pills" id="tabButtons" role="tablist">
+                  <li class="nav-item"><button class="nav-link active" data-tab="tab-videos" type="button">Training Videos</button></li>
+                  <li class="nav-item"><button class="nav-link" data-tab="tab-weeks" type="button">Week-by-Week</button></li>
+                  <li class="nav-item"><button class="nav-link" data-tab="tab-weekend" type="button">Weekend Away</button></li>
+                  <li class="nav-item"><button class="nav-link" data-tab="tab-guides" type="button">Extra Resources</button></li>
+               </ul>
+               <div class="d-flex gap-2">
+                  <button class="btn btn-outline-secondary btn-sm" id="downloadBtn" type="button">Download backup</button>
+                  <button class="btn btn-success" id="saveBtn" type="button"><i class="fas fa-cloud-upload-alt me-1"></i> Save to website</button>
+               </div>
+            </div>
+
+            <div id="saveStatus" class="mb-3"></div>
+            <div id="validationBox" class="alert alert-danger py-2 d-none"></div>
+
+            <!-- Training videos -->
+            <div class="tab-pane fade show active" id="tab-videos">
+               <p class="text-muted small mb-2">Videos shown in the "Get Ready to Run Alpha" section.</p>
+               <div id="videosList"></div>
+               <button class="btn btn-outline-primary btn-sm mt-2" id="addVideoBtn" type="button"><i class="fas fa-plus me-1"></i> Add video</button>
+            </div>
+
+            <!-- Weeks -->
+            <div class="tab-pane fade" id="tab-weeks">
+               <p class="text-muted small mb-2">Click a week to open it. One idea per line in the list boxes.</p>
+               <div class="accordion" id="weekList"></div>
+               <button class="btn btn-outline-primary btn-sm mt-2" id="addWeekBtn" type="button"><i class="fas fa-plus me-1"></i> Add week</button>
+            </div>
+
+            <!-- Weekend -->
+            <div class="tab-pane fade" id="tab-weekend">
+               <div class="mb-3">
+                  <label class="form-label">Section heading</label>
+                  <input id="weekendTitle" class="form-control">
+               </div>
+               <div class="row g-4">
+                  <div class="col-lg-6">
+                     <h6>Main talks</h6>
+                     <div id="wkMainTalks"></div>
+                     <button class="btn btn-outline-primary btn-sm mt-2" data-add="wkMainTalks" type="button"><i class="fas fa-plus me-1"></i> Add talk</button>
+                  </div>
+                  <div class="col-lg-6">
+                     <h6>Training videos</h6>
+                     <div id="wkTraining"></div>
+                     <button class="btn btn-outline-primary btn-sm mt-2" data-add="wkTraining" type="button"><i class="fas fa-plus me-1"></i> Add video</button>
+                  </div>
+                  <div class="col-lg-6">
+                     <h6>Guest guides</h6>
+                     <div id="wkGuides"></div>
+                     <button class="btn btn-outline-primary btn-sm mt-2" data-add="wkGuides" type="button"><i class="fas fa-plus me-1"></i> Add guide</button>
+                  </div>
+                  <div class="col-lg-6">
+                     <h6>Team guides</h6>
+                     <div id="wkTeamGuides"></div>
+                     <button class="btn btn-outline-primary btn-sm mt-2" data-add="wkTeamGuides" type="button"><i class="fas fa-plus me-1"></i> Add guide</button>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Extra resources -->
+            <div class="tab-pane fade" id="tab-guides">
+               <p class="text-muted small mb-2">Cards in the "Additional Resources" section.</p>
+               <div id="guidesList"></div>
+               <button class="btn btn-outline-primary btn-sm mt-2" id="addGuideBtn" type="button"><i class="fas fa-plus me-1"></i> Add resource</button>
+            </div>
+         </div>
+      </div>
+
+      <div id="toastBox" class="toast-box"></div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="js/admin-config.js"></script>
+      <script src="js/admin.js"></script>
+   </body>
+</html>
