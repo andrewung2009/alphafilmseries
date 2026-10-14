@@ -247,9 +247,6 @@
          #weekend {
          background-color: var(--grey-color); /* Changed to darker grey */
          }
-         #faqs {
-         background-color: var(--blue-color);
-         }
          #makebetter {
          background-color: #FDEDED; /* Changed to light pink */
          }
@@ -1142,6 +1139,24 @@
          background: var(--light-bg);
          color: var(--primary-color);
          transform: translateX(5px);
+         }
+         /* Skip to main content link (accessibility) */
+         .skip-link {
+         position: fixed;
+         top: -100px;
+         left: 1rem;
+         z-index: 10001;
+         background: #ffffff;
+         color: #000000;
+         padding: 0.75rem 1.25rem;
+         border-radius: 0 0 8px 8px;
+         font-weight: 600;
+         text-decoration: none;
+         box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+         transition: top 0.2s ease;
+         }
+         .skip-link:focus {
+         top: 0;
          }
          /* Close menu when clicking outside */
          document.addEventListener('click', (e) => {

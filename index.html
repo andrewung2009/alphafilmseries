@@ -5,20 +5,32 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
       <title>Alpha Resource Hub for Hosts and Helpers</title>
+      <meta name="description" content="Equipping Alpha course hosts and helpers with training videos, week-by-week guides, weekend-away resources and more — for warm, welcoming conversations about life, faith and God.">
+      <link rel="canonical" href="https://michaeltingkc.github.io/Alpha-HTBB/">
+      <meta name="theme-color" content="#c62828">
+      <!-- Open Graph -->
+      <meta property="og:type" content="website">
+      <meta property="og:site_name" content="Alpha Resource Hub">
+      <meta property="og:title" content="Alpha Resource Hub for Hosts and Helpers">
+      <meta property="og:description" content="Training videos, week-by-week guides, weekend-away resources and more for Alpha hosts and helpers.">
+      <meta property="og:image" content="https://michaeltingkc.github.io/Alpha-HTBB/assets/images/alphahtbb.jpg">
+      <meta property="og:url" content="https://michaeltingkc.github.io/Alpha-HTBB/">
+      <!-- Twitter -->
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="Alpha Resource Hub for Hosts and Helpers">
+      <meta name="twitter:description" content="Training videos, week-by-week guides, weekend-away resources and more for Alpha hosts and helpers.">
+      <meta name="twitter:image" content="https://michaeltingkc.github.io/Alpha-HTBB/assets/images/alphahtbb.jpg">
       <link rel="icon" type="image/jpeg" href="assets/images/alphalogo.jpg">
       <!-- JavaScript -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
       <!-- CSS Styles -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css" integrity="sha384-Vq76wejb3QJM4nDatBa5rUOve+9gkegsjCebvV/9fvXlGWo4HCMR4cJZjjcF6Viv" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans%3Aital%2Cwght%400%2C100..900%3B1%2C100..900&#038;ver=6.7.2" media="all">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap">
       <link rel="stylesheet" href="css/style.css">
-      <script>
-         document.addEventListener('contextmenu', event => event.preventDefault());
-      </script>
    </head>
    <body>
+      <a class="skip-link" href="#home">Skip to main content</a>
       <!-- Scroll Progress Bar -->
       <div class="scroll-progress" id="scrollProgress"></div>
       <!-- Animated Background -->
@@ -44,9 +56,6 @@
                      <a class="nav-link" href="#weekend">Weekend Away</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#faqs">FAQs</a>
-                  </li>
-                  <li class="nav-item">
                      <a class="nav-link" href="#makebetter">Share What Works</a>
                   </li>
                   <li class="nav-item">
@@ -63,6 +72,8 @@
                <h1 class="hero-title">Alpha Resource Hub for Hosts and Helpers</h1>
                <p class="hero-subtitle">Equipping you to create welcoming spaces for conversations about life, faith and God.</p>
                <div class="hero-buttons">
+                  <a href="#getready" class="btn btn-light me-3 mb-2">Get Ready</a>
+                  <a href="#weekly" class="btn btn-outline-light mb-2">Week-by-Week Guide</a>
                </div>
             </div>
          </div>
@@ -108,25 +119,6 @@
             </div>
             <div class="accordion" id="weekendAccordion">
                <!-- Weekend resources will be dynamically inserted here -->
-            </div>
-         </div>
-      </section>
-      <!-- FAQs Section -->
-      <section id="faqs" class="section bg-light">
-         <!-- Parallax Elements -->
-         <div class="parallax-element parallax-circle parallax-circle-2"></div>
-         <div class="container">
-            <div class="text-center mb-5">
-               <h2 class="section-title">Frequently Asked Questions</h2>
-               <p class="section-subtitle">Answers to common questions about running Alpha and supporting your group.</p>
-            </div>
-            <div class="row">
-               <div class="col-lg-8 mx-auto">
-                  <div class="text-center">
-                     <i class="fas fa-clock fa-4x mb-4 text-muted"></i>
-                     <p class="lead">Coming soon: A curated list of FAQs and answers to support you as you run Alpha.</p>
-                  </div>
-               </div>
             </div>
          </div>
       </section>
@@ -225,7 +217,6 @@
                      <li><a href="#getready" class="text-black-50 text-decoration-none">Get Ready</a></li>
                      <li><a href="#weekly" class="text-black-50 text-decoration-none">Week-by-Week Guide</a></li>
                      <li><a href="#weekend" class="text-black-50 text-decoration-none">Weekend Away</a></li>
-                     <li><a href="#faqs" class="text-black-50 text-decoration-none">FAQs</a></li>
                      <li><a href="#makebetter" class="text-black-50 text-decoration-none">Share What Works</a></li>
                      <li><a href="#guides" class="text-black-50 text-decoration-none">Additional Resources</a></li>
                   </ul>
@@ -253,7 +244,7 @@
                </div>
                <div class="modal-body p-0">
                   <div style="padding:56.25% 0 0 0;position:relative;">
-                     <iframe id="videoFrame" src="" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                     <iframe id="videoFrame" src="" title="Video player" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                   </div>
                </div>
             </div>

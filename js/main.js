@@ -37,6 +37,17 @@
          // ============================================         
          // Function to copy link to clipboard
          function copyToClipboard(url, title) {
+             if (navigator.clipboard && navigator.clipboard.writeText) {
+                 navigator.clipboard.writeText(url)
+                     .then(() => showToast(`Link copied: ${title}`, 'success'))
+                     .catch(() => fallbackCopyToClipboard(url, title));
+             } else {
+                 fallbackCopyToClipboard(url, title);
+             }
+         }
+         
+         // Fallback for browsers without the Clipboard API
+         function fallbackCopyToClipboard(url, title) {
              const textarea = document.createElement('textarea');
              textarea.value = url;
              textarea.style.position = 'fixed';
@@ -144,10 +155,18 @@ weekSelect.appendChild(weekendOpt);
                  
              } catch (error) {
                  console.error("Could not load data.json:", error);
-                 // Optional: Display error to user on page
-                 const container = document.querySelector('.container');
-                 if(container) {
-                     container.innerHTML = '<div class="alert alert-danger mt-5">Error loading resources. Please ensure data.json exists and you are running this on a web server.</div>';
+                 const message = location.protocol === 'file:'
+                     ? 'This page was opened directly as a file, and browsers block loading <strong>data/data.json</strong> that way. Run a local server instead: open a terminal in this folder, run <code>python -m http.server 8000</code>, then visit <code>http://localhost:8000</code>.'
+                     : `Could not load <strong>data/data.json</strong> (${error.message}). Check that the file exists on the server, then reload the page.`;
+                 const alertBox = document.createElement('div');
+                 alertBox.className = 'alert alert-danger mt-4';
+                 alertBox.setAttribute('role', 'alert');
+                 alertBox.innerHTML = message;
+                 const heroContent = document.querySelector('.hero-content');
+                 if (heroContent) {
+                     heroContent.prepend(alertBox);
+                 } else {
+                     document.body.prepend(alertBox);
                  }
                  return; // Stop execution if data fails
              }
@@ -224,7 +243,6 @@ weekSelect.appendChild(weekendOpt);
                  { href: '#getready', text: 'Get Ready' },
                  { href: '#weekly', text: 'Week-by-Week' },
                  { href: '#weekend', text: 'Weekend Away' },
-                 { href: '#faqs', text: 'FAQs' },
                  { href: '#makebetter', text: 'Share What Works' },
                  { href: '#guides', text: 'Resources' }
              ];
@@ -811,19 +829,24 @@ weekSelect.appendChild(weekendOpt);
           }
           
           // Send data to Google Sheets via Google Apps Script
+          // text/plain avoids a CORS preflight, so the real response can be read
           fetch(GOOGLE_SCRIPT_URL, {
               method: 'POST',
-              mode: 'no-cors', // Required for Google Apps Script
+              mode: 'cors',
               headers: {
-                  'Content-Type': 'application/json',
+                  'Content-Type': 'text/plain;charset=utf-8',
               },
               body: JSON.stringify(formData)
           })
           .then(response => {
-              // Since we're using no-cors mode, we won't get a proper response
-              // We'll assume it was successful if no error was thrown
+              if (!response.ok) {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              return response.json().catch(() => ({}));
+          })
+          .then(() => {
               showFormStatus('success', 'Thank you for sharing! Your ideas will help others create welcoming spaces where faith can grow.');
-              this.reset();
+              document.getElementById('feedbackForm').reset();
           })
           .catch(error => {
               console.error('Error submitting form:', error);
