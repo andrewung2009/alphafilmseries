@@ -70,10 +70,10 @@
          <div class="container-fluid py-3">
             <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
                <ul class="nav nav-pills" id="tabButtons" role="tablist">
-                  <li class="nav-item"><button class="nav-link active" data-tab="tab-videos" type="button">Training Videos</button></li>
-                  <li class="nav-item"><button class="nav-link" data-tab="tab-weeks" type="button">Week-by-Week</button></li>
-                  <li class="nav-item"><button class="nav-link" data-tab="tab-weekend" type="button">Weekend Away</button></li>
-                  <li class="nav-item"><button class="nav-link" data-tab="tab-guides" type="button">Extra Resources</button></li>
+                  <li class="nav-item"><button class="nav-link active" data-tab="tab-videos" type="button" role="tab" aria-controls="tab-videos" aria-selected="true">Training Videos</button></li>
+                  <li class="nav-item"><button class="nav-link" data-tab="tab-weeks" type="button" role="tab" aria-controls="tab-weeks" aria-selected="false">Week-by-Week</button></li>
+                  <li class="nav-item"><button class="nav-link" data-tab="tab-weekend" type="button" role="tab" aria-controls="tab-weekend" aria-selected="false">Weekend Away</button></li>
+                  <li class="nav-item"><button class="nav-link" data-tab="tab-guides" type="button" role="tab" aria-controls="tab-guides" aria-selected="false">Extra Resources</button></li>
                </ul>
                <div class="d-flex gap-2">
                   <button class="btn btn-outline-secondary btn-sm" id="downloadBtn" type="button">Download backup</button>
@@ -84,55 +84,59 @@
             <div id="saveStatus" class="mb-3"></div>
             <div id="validationBox" class="alert alert-danger py-2 d-none"></div>
 
-            <!-- Training videos -->
-            <div class="tab-pane fade show active" id="tab-videos">
-               <p class="text-muted small mb-2">Videos shown in the "Get Ready to Run Alpha" section.</p>
-               <div id="videosList"></div>
-               <button class="btn btn-outline-primary btn-sm mt-2" id="addVideoBtn" type="button"><i class="fas fa-plus me-1"></i> Add video</button>
-            </div>
+            <div class="tab-content">
 
-            <!-- Weeks -->
-            <div class="tab-pane fade" id="tab-weeks">
-               <p class="text-muted small mb-2">Click a week to open it. One idea per line in the list boxes.</p>
-               <div class="accordion" id="weekList"></div>
-               <button class="btn btn-outline-primary btn-sm mt-2" id="addWeekBtn" type="button"><i class="fas fa-plus me-1"></i> Add week</button>
-            </div>
-
-            <!-- Weekend -->
-            <div class="tab-pane fade" id="tab-weekend">
-               <div class="mb-3">
-                  <label class="form-label">Section heading</label>
-                  <input id="weekendTitle" class="form-control">
+               <!-- Training videos -->
+               <div class="tab-pane fade show active" id="tab-videos" role="tabpanel">
+                  <p class="text-muted small mb-2">Videos shown in the "Get Ready to Run Alpha" section.</p>
+                  <div id="videosList"></div>
+                  <button class="btn btn-outline-primary btn-sm mt-2" id="addVideoBtn" type="button"><i class="fas fa-plus me-1"></i> Add video</button>
                </div>
-               <div class="row g-4">
-                  <div class="col-lg-6">
-                     <h6>Main talks</h6>
-                     <div id="wkMainTalks"></div>
-                     <button class="btn btn-outline-primary btn-sm mt-2" data-add="wkMainTalks" type="button"><i class="fas fa-plus me-1"></i> Add talk</button>
+
+               <!-- Weeks -->
+               <div class="tab-pane fade" id="tab-weeks" role="tabpanel">
+                  <p class="text-muted small mb-2">Click a week to open it. One idea per line in the list boxes.</p>
+                  <div class="accordion" id="weekList"></div>
+                  <button class="btn btn-outline-primary btn-sm mt-2" id="addWeekBtn" type="button"><i class="fas fa-plus me-1"></i> Add week</button>
+               </div>
+
+               <!-- Weekend -->
+               <div class="tab-pane fade" id="tab-weekend" role="tabpanel">
+                  <div class="mb-3">
+                     <label class="form-label" for="weekendTitle">Section heading</label>
+                     <input id="weekendTitle" class="form-control">
                   </div>
-                  <div class="col-lg-6">
-                     <h6>Training videos</h6>
-                     <div id="wkTraining"></div>
-                     <button class="btn btn-outline-primary btn-sm mt-2" data-add="wkTraining" type="button"><i class="fas fa-plus me-1"></i> Add video</button>
-                  </div>
-                  <div class="col-lg-6">
-                     <h6>Guest guides</h6>
-                     <div id="wkGuides"></div>
-                     <button class="btn btn-outline-primary btn-sm mt-2" data-add="wkGuides" type="button"><i class="fas fa-plus me-1"></i> Add guide</button>
-                  </div>
-                  <div class="col-lg-6">
-                     <h6>Team guides</h6>
-                     <div id="wkTeamGuides"></div>
-                     <button class="btn btn-outline-primary btn-sm mt-2" data-add="wkTeamGuides" type="button"><i class="fas fa-plus me-1"></i> Add guide</button>
+                  <div class="row g-4">
+                     <div class="col-lg-6">
+                        <h6>Main talks</h6>
+                        <div id="wkMainTalks"></div>
+                        <button class="btn btn-outline-primary btn-sm mt-2" data-add="wkMainTalks" type="button"><i class="fas fa-plus me-1"></i> Add talk</button>
+                     </div>
+                     <div class="col-lg-6">
+                        <h6>Training videos</h6>
+                        <div id="wkTraining"></div>
+                        <button class="btn btn-outline-primary btn-sm mt-2" data-add="wkTraining" type="button"><i class="fas fa-plus me-1"></i> Add video</button>
+                     </div>
+                     <div class="col-lg-6">
+                        <h6>Guest guides</h6>
+                        <div id="wkGuides"></div>
+                        <button class="btn btn-outline-primary btn-sm mt-2" data-add="wkGuides" type="button"><i class="fas fa-plus me-1"></i> Add guide</button>
+                     </div>
+                     <div class="col-lg-6">
+                        <h6>Team guides</h6>
+                        <div id="wkTeamGuides"></div>
+                        <button class="btn btn-outline-primary btn-sm mt-2" data-add="wkTeamGuides" type="button"><i class="fas fa-plus me-1"></i> Add guide</button>
+                     </div>
                   </div>
                </div>
-            </div>
 
-            <!-- Extra resources -->
-            <div class="tab-pane fade" id="tab-guides">
-               <p class="text-muted small mb-2">Cards in the "Additional Resources" section.</p>
-               <div id="guidesList"></div>
-               <button class="btn btn-outline-primary btn-sm mt-2" id="addGuideBtn" type="button"><i class="fas fa-plus me-1"></i> Add resource</button>
+               <!-- Extra resources -->
+               <div class="tab-pane fade" id="tab-guides" role="tabpanel">
+                  <p class="text-muted small mb-2">Cards in the "Additional Resources" section.</p>
+                  <div id="guidesList"></div>
+                  <button class="btn btn-outline-primary btn-sm mt-2" id="addGuideBtn" type="button"><i class="fas fa-plus me-1"></i> Add resource</button>
+               </div>
+
             </div>
          </div>
       </div>

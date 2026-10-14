@@ -478,6 +478,23 @@ function validate() {
          errors.push('Week ' + (numInput.value || '?') + ' needs a title.');
       }
    });
+   const emptyRowSections = [
+      ['#videosList', 'Training videos'],
+      ['#wkMainTalks', 'Weekend Away - main talks'],
+      ['#wkTraining', 'Weekend Away - training videos'],
+      ['#wkGuides', 'Weekend Away - guest guides'],
+      ['#wkTeamGuides', 'Weekend Away - team guides'],
+      ['#guidesList', 'Extra resources']
+   ];
+   emptyRowSections.forEach(function (entry) {
+      $$(entry[0] + ' .edit-row').forEach((row, i) => {
+         const anyFilled = $$('[data-field]', row).some(inp => inp.value.trim());
+         if (!anyFilled) {
+            row.classList.add('is-invalid');
+            errors.push(entry[1] + ' row ' + (i + 1) + ' is empty - fill it in or remove it.');
+         }
+      });
+   });
    return errors;
 }
 
@@ -549,7 +566,10 @@ async function save() {
    setSaving(true);
    try {
       const result = await pushContent(json, 'Update content via admin panel');
-      try { await loadContent(); } catch (e) { /* refresh sha; non-fatal */ }
+      // Adopt the pushed content as the new baseline instead of re-fetching
+      // and re-rendering, so open accordions, scroll position and any typing
+      // done while the save was in flight are not wiped out.
+      dataState = JSON.parse(json);
       buildStatusSuccess(result && result.commit ? result.commit.html_url : '');
       toast('Saved successfully', 'success');
    } catch (err) {
@@ -581,6 +601,7 @@ function handleSaveError(err) {
 }
 
 function downloadBackup() {
+   if (!dataState) return;
    const json = buildJson();
    const blob = new Blob([json], { type: 'application/json' });
    const a = document.createElement('a');
@@ -605,7 +626,10 @@ function bindEditor() {
    $('#tabButtons').addEventListener('click', e => {
       const btn = e.target.closest('[data-tab]');
       if (!btn) return;
-      $$('#tabButtons .nav-link').forEach(b => b.classList.toggle('active', b === btn));
+      $$('#tabButtons .nav-link').forEach(b => {
+         b.classList.toggle('active', b === btn);
+         b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+      });
       $$('.tab-pane').forEach(pane => {
          const on = pane.id === btn.dataset.tab;
          pane.classList.toggle('active', on);
