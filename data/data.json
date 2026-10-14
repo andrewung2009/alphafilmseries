@@ -574,10 +574,5 @@
             "icon": "fas fa-mobile-alt"
         }
     ],
-    "faqs": [
-        {
-            "question": "This is a test question",
-            "answer": "This is a test answer."
-        }
-    ]
+    "faqs": []
 }
